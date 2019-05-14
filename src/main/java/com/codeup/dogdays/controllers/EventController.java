@@ -17,7 +17,7 @@ public class EventController {
 
     @GetMapping("/events")
     public String allEvents(){
-        return "events";
+        return "/events/events";
     }
 
 

@@ -1,8 +1,5 @@
 package com.codeup.dogdays.models;
 
-
-
-
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.util.List;

@@ -1,6 +1,5 @@
 package com.codeup.dogdays.models;
 
-
 import javax.persistence.*;
 import java.util.List;
 
