@@ -3,6 +3,7 @@ package com.codeup.dogdays.models;
 import javax.persistence.*;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity @Table(name = "events")
 public class Event {
@@ -28,6 +29,19 @@ public class Event {
 
     @OneToOne
     private User user;
+
+    public List<Comment> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Comment> events) {
+        this.events = events;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "events")
+    private List<Comment> events;
+
+
 
     public Event (){}
 
