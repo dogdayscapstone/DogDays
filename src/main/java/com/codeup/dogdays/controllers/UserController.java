@@ -18,16 +18,18 @@ public class UserController {
 
 
 
-    @GetMapping("/signup")
-    public String showRegisterForm() {
-        return "users/signup";
+    @GetMapping("/register")
+    public String showRegisterForm(Model viewModel) {
+
+        viewModel.addAttribute("user", new User());
+        return "users/register";
     }
 
 
 
-    @PostMapping("/signup")
-    public String saveUser(){
-        return "users/signup";
+    @PostMapping("/register")
+    public String saveUser(Model viewModel){
+        return "users/register";
     }
 
 
