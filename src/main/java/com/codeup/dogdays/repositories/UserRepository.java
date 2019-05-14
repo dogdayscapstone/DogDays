@@ -1,4 +1,7 @@
 package com.codeup.dogdays.repositories;
 
-public class UserRepository {
+import com.codeup.dogdays.models.User;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<User,Long> {
 }
