@@ -34,9 +34,13 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Event> events;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dogs")
+   private List<Dog> dogs;
 
-/*    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dogs")
-    private List<Dog> dogs;*/
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "comments")
+    private List<Comment> comments;
+
 
     public User(){}
 
@@ -124,11 +128,11 @@ public class User {
         this.events = events;
     }
 
-/*    public List<Dog> getDogs() {
+    public List<Dog> getDogs() {
         return dogs;
     }
 
     public void setDogs(List<Dog> dogs) {
         this.dogs = dogs;
-    }*/
+    }
 }
