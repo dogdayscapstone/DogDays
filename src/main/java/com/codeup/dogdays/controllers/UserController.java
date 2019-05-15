@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class UserController {
     private final UserRepository userRepo;
@@ -50,18 +52,21 @@ public class UserController {
             }
 
             @PostMapping("/login")
-            public String loginUser (@RequestParam("username") String username, @RequestParam("password") String password) {
+            public String loginUser (HttpServletRequest request, @RequestParam("username") String username, @RequestParam("password") String password) {
                 User user = userRepo.findByUsername(username);
 
                 if (password.equals(user.getPassword())) {
-                    return "redirect:/profile";
+                    request.getSession().setAttribute("user", user);
+                    return "redirect:/";
                 } else {
                     return "redirect:/login";
                 }
             }
 
             @GetMapping("/profile")
-            public String showProfilePage () {
+            public String showProfilePage (HttpServletRequest request, Model vmodel) {
+                User user = (User)request.getSession().getAttribute("user");
+                vmodel.addAttribute("user", user);
                 return "users/profile";
             }
 
