@@ -83,6 +83,9 @@ public class Dog {
     private User dogs;
 
 
+
+
+
     public long getId() {
         return id;
     }
