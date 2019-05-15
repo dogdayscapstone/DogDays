@@ -9,6 +9,9 @@
 
 
 <h1>EVENTS</h1>
+
+<button><a th:href="'events/create'">create</a></button>
+
 <div th:each="item : ${events}">
     <a th:href="@{'events'}">
         <h3 th:text="${item.title}"></h3></a>
@@ -21,7 +24,16 @@
 
 
     <button><a th:href="'events/'+ ${item.getId()}">see more</a></button>
-    <button><a th:href="'events/'+ ${item.getId()}+'/edit'">edit</a></button>
+
+
+        <button><a th:href="'events/'+ ${item.id}+'/edit'">edit</a></button>
+<form method="GET" >
+
+    <button><a th:href="'events/'+ ${item.id}+'/delete'">delete</a></button>
+
+
+</form>
+
 
 </div>
 
