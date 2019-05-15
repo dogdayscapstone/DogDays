@@ -49,14 +49,27 @@ public class EventController {
         return "events/show";
     }
 
-
+//    @GetMapping("/posts/{id}/edit")
+//    public String editForm(@PathVariable long id, Model model) {
+//        Post post = postRepo.findOne(id);
+//        model.addAttribute("post", post);
+//        return "posts/edit";
+//    }
 
 
 
     @GetMapping("/events/{id}/edit")
-    public String editEvent(@PathVariable int id) {
-
+    public String editForm(@PathVariable int id,Model model) {
+        Event event = eventRepo.findOne((long) id);
+        model.addAttribute("event", event);
         return "events/edit";
+
+    }
+
+    @PostMapping("/events/{id}/edit")
+    public String editPost(@ModelAttribute Event event) {
+        eventRepo.save(event);
+        return "redirect:/events/" ;
     }
 
 
