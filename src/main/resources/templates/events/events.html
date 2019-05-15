@@ -10,7 +10,7 @@
 
 <h1>EVENTS</h1>
 <div th:each="item : ${events}">
-    <a th:href="@{'/events'}">
+    <a th:href="@{'events'}">
         <h3 th:text="${item.title}"></h3></a>
     <p th:text="${item.description}"></p>
     <p th:text="${item.location}"></p>

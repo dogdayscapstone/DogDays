@@ -9,7 +9,7 @@
 <body>
 <h1>EDIT</h1>
 
-<form th:action="@{/events/{id}/edit(id = ${event.id})}" th:method="POST" th:object="${event}">
+<form th:action="@{events/{id}/edit(id = ${event.id})}" th:method="POST" th:object="${event}">
 <div class="form-group">
     <label for="title">Title</label>
     <input class="form-control" id="title" type="text"

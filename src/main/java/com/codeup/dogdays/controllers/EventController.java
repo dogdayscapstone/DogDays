@@ -19,30 +19,30 @@ public class EventController {
         this.eventRepo = eventRepo;
     }
 
-    @GetMapping("/events")
+    @GetMapping("events")
     public String allEvents(Model model) {
         model.addAttribute("events", eventRepo.findAll());
 
-        return "/events/events";
+        return "eventsevents";
     }
 
-    @GetMapping("/events/create")
+    @GetMapping("events/create")
     public String createPost(Model model) {
         model.addAttribute("event", new Event());
         return "events/create";
     }
 
-    @PostMapping("/events/create")
+    @PostMapping("events/create")
     public String createPost(@ModelAttribute Event event) {
 
         eventRepo.save(event);
-        return "redirect:/events";
+        return "redirect:events";
 
 
     }
 
 
-    @GetMapping("/events/{id}")
+    @GetMapping("events/{id}")
     public String getOneBook(Model model, @PathVariable Long id) {
         Event event=eventRepo.findOne(id);
        model.addAttribute("event",event);
@@ -58,7 +58,7 @@ public class EventController {
 
 
 
-    @GetMapping("/events/{id}/edit")
+    @GetMapping("events/{id}/edit")
     public String editForm(@PathVariable int id,Model model) {
         Event event = eventRepo.findOne((long) id);
         model.addAttribute("event", event);
@@ -66,10 +66,10 @@ public class EventController {
 
     }
 
-    @PostMapping("/events/{id}/edit")
+    @PostMapping("events/{id}/edit")
     public String editPost(@ModelAttribute Event event) {
         eventRepo.save(event);
-        return "redirect:/events/" ;
+        return "redirect:events/" ;
     }
 
 
