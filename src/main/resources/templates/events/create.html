@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+
+<body>
+
+
+<h2>Create New Post</h2>
+
+
+<form th:action="@{/events/create}" th:method="post" th:object="${event}">
+    Title:
+    <input th:field="*{title}" />
+    <br />
+    Description:
+    <input th:field="*{description}" />
+    <br />
+
+    Location:
+    <input th:field="*{location}" />
+    <br />
+
+    Date:
+    <input th:field="*{date}" />
+    <br />
+
+    Time:
+    <input th:field="*{time}" />
+    <br />
+    <input type="submit" />
+</form>
+
+
+
+</body>
+</html>

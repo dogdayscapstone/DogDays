@@ -30,6 +30,9 @@ public class Event {
     @OneToOne
     private User user;
 
+
+
+
     public List<Comment> getEvents() {
         return events;
     }
@@ -40,6 +43,9 @@ public class Event {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "events")
     private List<Comment> events;
+
+
+
 
 
 

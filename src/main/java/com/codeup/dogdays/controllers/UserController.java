@@ -16,8 +16,7 @@ public class UserController {
     }
 
 
-
-
+          
     @GetMapping("/register")
     public String showRegisterForm (Model viewModel){
 
@@ -26,14 +25,6 @@ public class UserController {
     }
 
 
-/*    @PostMapping("/signup")
-    public String saveUser (@ModelAttribute User user, @RequestParam("password") String password, @RequestParam("confirmedPassword") String confirmedPassword) {
-
-        if(password.equals(confirmedPassword)){
-            userRepo.save(user);
-        }
-        return "redirect:/login";
-    }*/
 
     @PostMapping("/register")
     public String saveUser (@ModelAttribute User user,
@@ -44,6 +35,7 @@ public class UserController {
         }
         return "redirect:/login";
     }
+
 
 
             @GetMapping("/login")
