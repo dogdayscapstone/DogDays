@@ -55,6 +55,13 @@ public class UserController {
                 }
             }
 
+            @GetMapping("/logout")
+            public String logoutUser(HttpServletRequest request){
+                request.getSession().removeAttribute("user");
+                request.getSession().invalidate();
+                return "redirect:/login";
+            }
+
             @GetMapping("/profile")
             public String showProfilePage (HttpServletRequest request, Model vmodel) {
                 User user = (User)request.getSession().getAttribute("user");
