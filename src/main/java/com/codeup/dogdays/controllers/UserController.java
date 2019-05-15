@@ -50,8 +50,14 @@ public class UserController {
             }
 
             @PostMapping("/login")
-            public String loginUser () {
-                return "redirect:/profile";
+            public String loginUser (@RequestParam("username") String username, @RequestParam("password") String password) {
+                User user = userRepo.findByUsername(username);
+
+                if (password.equals(user.getPassword())) {
+                    return "redirect:/profile";
+                } else {
+                    return "redirect:/login";
+                }
             }
 
             @GetMapping("/profile")
