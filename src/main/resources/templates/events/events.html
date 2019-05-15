@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <span th:include="fragments/navbar :: bootstrap"></span>
 
 </head>
 <body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
 
 
 <h1>EVENTS</h1>

@@ -20,7 +20,7 @@ public class EventController {
     public String allEvents(Model model) {
         model.addAttribute("events", eventRepo.findAll());
 
-        return "eventsevents";
+        return "events/events";
     }
 
     @GetMapping("events/create")

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class HomeController {
+
     @GetMapping("/")
     public String welcome(){
         return "home/home";
