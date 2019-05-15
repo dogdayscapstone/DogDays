@@ -4,10 +4,7 @@ import com.codeup.dogdays.models.Event;
 import com.codeup.dogdays.repositories.EventRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -71,6 +68,16 @@ public class EventController {
         eventRepo.save(event);
         return "redirect:/events/" ;
     }
+
+
+
+    @GetMapping("/events/{id}/delete")
+    public String deletePost(@PathVariable Long id, Model model) {
+        Event event = eventRepo.findOne(id);
+        eventRepo.delete(event);
+        return "redirect:/events";
+    }
+
 
 
     }
