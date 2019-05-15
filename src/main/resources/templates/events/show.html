@@ -18,7 +18,11 @@
 
 
 </div>
-
+<form th:action="@{'/events/'+${event.getId()}+'/comment'}" th:method="post" th:object="${comment}">
+    <textarea th:field="*{comment}"></textarea>
+    <br/>
+    <input type="submit" />
+</form>
 </body>
 </html>
 
