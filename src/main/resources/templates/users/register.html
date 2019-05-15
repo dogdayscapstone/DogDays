@@ -10,8 +10,7 @@
 
 <div class="container">
     <h1>Create an account</h1>
-<h1>Create an account</h1>
-    <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+    <form th:action="@{/register}" method="POST" th:object="${user}">
 
         <div class="form-group">
             <label for="username">Username</label>
@@ -30,7 +29,7 @@
 
         <div class="form-group">
             <label for="confirmedPassword">Confirm Your Password</label>
-            <input id="confirmedPassword" class="form-control" type="password" />
+            <input id="confirmedPassword" name="confirmedPassword" class="form-control" type="password" />
         </div>
 
         <input value="Join Dog Days!" class="btn btn-block btn-primary" type="submit" />

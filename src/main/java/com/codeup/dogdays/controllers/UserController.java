@@ -4,9 +4,9 @@ import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UserController {
@@ -16,23 +16,26 @@ public class UserController {
     }
 
 
+          
+    @GetMapping("/register")
+    public String showRegisterForm (Model viewModel){
+
+        viewModel.addAttribute("user", new User());
+        return "users/register";
+    }
 
 
 
-        @GetMapping("/register")
-        public String showRegisterForm (Model viewModel){
-
-            viewModel.addAttribute("user", new User());
-            return "users/register";
+    @PostMapping("/register")
+    public String saveUser (@ModelAttribute User user,
+                            @RequestParam("confirmedPassword") String confirmedPassword){
+        if(user.getPassword().equals(confirmedPassword)){
+            user.setPicture("/images/person_default.png");
+            userRepo.save(user);
         }
+        return "redirect:/login";
+    }
 
-
-
-            @PostMapping("/register")
-            public String saveUser (Model viewModel){
-
-                return "users/register";
-            }
 
 
             @GetMapping("/login")
@@ -41,12 +44,21 @@ public class UserController {
             }
 
             @PostMapping("/login")
-            public String loginUser () {
-                return "redirect:/profile";
+            public String loginUser (HttpServletRequest request, @RequestParam("username") String username, @RequestParam("password") String password) {
+                User user = userRepo.findByUsername(username);
+
+                if (password.equals(user.getPassword())) {
+                    request.getSession().setAttribute("user", user);
+                    return "redirect:/";
+                } else {
+                    return "redirect:/login";
+                }
             }
 
             @GetMapping("/profile")
-            public String showProfilePage () {
+            public String showProfilePage (HttpServletRequest request, Model vmodel) {
+                User user = (User)request.getSession().getAttribute("user");
+                vmodel.addAttribute("user", user);
                 return "users/profile";
             }
 
