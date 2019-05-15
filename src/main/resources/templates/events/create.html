@@ -12,7 +12,7 @@
 <h2>Create New Post</h2>
 
 
-<form th:action="@{events/create}" th:method="post" th:object="${event}">
+<form th:action="@{/events/create}" th:method="post" th:object="${event}">
     Title:
     <input th:field="*{title}" />
     <br />
