@@ -18,10 +18,7 @@ public class UserController {
 
 
 
-    @GetMapping("/signup")
-    public String showRegisterForm() {
-        return "register";
-    }
+
         @GetMapping("/register")
         public String showRegisterForm (Model viewModel){
 
@@ -30,13 +27,10 @@ public class UserController {
         }
 
 
-        @PostMapping("/signup")
-        public String saveUser () {
-            return "register";
-        }
 
             @PostMapping("/register")
             public String saveUser (Model viewModel){
+
                 return "users/register";
             }
 

@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
-    <span th:include="fragments/navbar :: bootstrap"></span>
+
 </head>
 <body>
-<nav th:replace="fragments/navbar :: navbar"></nav>
+
 
 <h1>EVENTS</h1>
+<div th:each="item : ${events}">
+    <a th:href="@{'/events'}">
+        <h3 th:text="${item.title}"></h3></a>
+    <p th:text="${item.description}"></p>
+    <p th:text="${item.location}"></p>
+    <p th:text="${item.date}"></p>
+    <p th:text="${item.time}"></p>
+
+
+
+
+    <button><a th:href="'events/'+ ${item.getId()}">see more</a></button>
+
+</div>
 
 </body>
 </html>

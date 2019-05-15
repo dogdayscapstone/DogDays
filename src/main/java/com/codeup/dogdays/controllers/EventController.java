@@ -15,46 +15,49 @@ public class EventController {
 
     private final EventRepository eventRepo;
 
-    public EventController(EventRepository eventRepo){
+    public EventController(EventRepository eventRepo) {
         this.eventRepo = eventRepo;
     }
 
     @GetMapping("/events")
-    public String allEvents(Model model){
-        model.addAttribute("posts", eventRepo.findAll());
+    public String allEvents(Model model) {
+        model.addAttribute("events", eventRepo.findAll());
 
         return "/events/events";
     }
 
+    @GetMapping("/events/create")
+    public String createPost(Model model) {
+        model.addAttribute("event", new Event());
+        return "events/create";
+    }
+
     @PostMapping("/events/create")
-    public String createPost(@ModelAttribute Event post){
+    public String createPost(@ModelAttribute Event event) {
 
-        eventRepo.save(post);
-         return "redirect:/events";
+        eventRepo.save(event);
+        return "redirect:/events";
 
 
     }
 
 
     @GetMapping("/events/{id}")
-    public String getOneBook(Model model, @PathVariable Long id){
-        model.addAttribute("book",eventRepo.findOne(id));
-        return "single";
-    }
-
-
-    @GetMapping("/events/{id}")
-    public String showEvent(@PathVariable int id){
-
+    public String getOneBook(Model model, @PathVariable Long id) {
+        Event event=eventRepo.findOne(id);
+       model.addAttribute("event",event);
         return "events/show";
     }
 
 
 
+
+
     @GetMapping("/events/{id}/edit")
-    public String editEvent(@PathVariable int id){
+    public String editEvent(@PathVariable int id) {
 
         return "events/edit";
     }
 
-}
+
+    }
