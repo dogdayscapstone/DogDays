@@ -2,7 +2,9 @@ package com.codeup.dogdays.controllers;
 
 import com.codeup.dogdays.models.Comment;
 import com.codeup.dogdays.models.Event;
+
 import com.codeup.dogdays.repositories.CommentRepository;
+
 import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.EventRepository;
 import com.codeup.dogdays.repositories.UserRepository;
@@ -18,7 +20,11 @@ public class EventController {
 
     private final EventRepository eventRepo;
     private final UserRepository userRepo;
+
     private final CommentRepository commentRepo;
+
+
+
 
 
     public EventController(EventRepository eventRepo, UserRepository userRepo, CommentRepository commentRepo) {
@@ -26,6 +32,7 @@ public class EventController {
         this.commentRepo = commentRepo;
             this.userRepo = userRepo;
         }
+
 
         @GetMapping("/events")
         public String allEvents (Model model){
@@ -35,16 +42,16 @@ public class EventController {
         }
 
 
+
         @GetMapping("/events/create")
         public String showPostForm (Model model){
 
             model.addAttribute("event", new Event());
             return "events/create";
-
         }
 
         @PostMapping("/events/create")
-        public String createPost (@ModelAttribute Event event){
+        public String createPost (@ModelAttribute Event event) {
 
 
 //        User user = (User)request.getSession().getAttribute("user");
@@ -52,7 +59,6 @@ public class EventController {
 //        event.setUser(dbUser);
 
             eventRepo.save(event);
-
             return "redirect:/events";
 
         }
@@ -91,5 +97,7 @@ public class EventController {
         }
 
 
+
+
     }
-}
+
