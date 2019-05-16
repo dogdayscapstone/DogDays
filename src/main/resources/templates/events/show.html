@@ -16,14 +16,23 @@
 <p th:text="${event.date}"></p>
 <p th:text="${event.time}"></p>
 
-
 </div>
-<form th:action="@{'/events/'+${event.getId()}+'/comment'}" th:method="post" th:object="${comment}">
-    <textarea th:field="*{comment}"></textarea>
+
+    <div th:each="comment : ${comments}">
+
+        <p th:text="${comment.getCommentText()}"></p>
+        <p th:text="${comment.getUser().getUsername()}"></p>
+
+    </div>
+
+<form th:action="@{'/events/'+${event.getId()}+'/comment'}" th:method="post" th:object="${commentA}">
+    <textarea th:field="*{commentText}"></textarea>
     <br/>
     <input type="submit" />
 </form>
+
 </body>
+
 </html>
 
 

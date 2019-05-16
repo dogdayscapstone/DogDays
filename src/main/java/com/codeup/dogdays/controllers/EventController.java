@@ -47,7 +47,7 @@ public class EventController {
     public String getOneBook(Model model, @PathVariable Long id) {
         Event event=eventRepo.findOne(id);
         model.addAttribute("event", event);
-        model.addAttribute("comment", new Comment());
+        model.addAttribute("commentA", new Comment());
         model.addAttribute("comments", commentRepo.findAll());
         return "events/show";
     }
