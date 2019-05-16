@@ -7,14 +7,15 @@ import java.io.Serializable;
 @Table(name = "attendees")
 public class Attendees implements Serializable {
 
-    @Id
-    @GeneratedValue
-    @OneToOne
+
+    @ManyToOne
+    @JoinColumn(name = "event_id")
     private Event event;
 
     @OneToOne
     private Dog dogs;
 
+    public Attendees(){};
 
     public Attendees(Dog dogs) {
         this.dogs = dogs;

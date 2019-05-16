@@ -14,8 +14,7 @@
 <form th:action="@{/events/{id}/edit(id = ${event.id})}" th:method="POST" th:object="${event}">
 <div class="form-group">
     <label for="title">Title</label>
-    <input class="form-control" id="title" type="text"
-           th:field="*{title}" />
+    <input class="form-control" id="title" type="text" th:field="*{title}" />
 </div>
 <div class="form-group">
     <label for="body">Description</label>
@@ -23,23 +22,20 @@
 </div>
     <div class="form-group">
     <label for="location">Location</label>
-    <input class="form-control" id="location" type="text"
-           th:field="*{location}" />
+    <input class="form-control" id="location" type="text" th:field="*{location}" />
 </div>
 
     <div class="form-group">
         <label for="date">Date</label>
-        <input class="form-control" id="date" type="text"
-               th:field="*{date}" />
+        <input class="form-control" id="date" type="text" th:field="*{date}" />
     </div>
 
     <div class="form-group">
         <label for="date">Time</label>
-        <input class="form-control" id="time" type="text"
-               th:field="*{time}" />
+        <input class="form-control" id="time" type="text" th:field="*{time}" />
     </div>
 
-<button class="btn btn-success">Submit</button>
+    <button class="btn btn-success">Submit</button>
 </form>
 
 </body>

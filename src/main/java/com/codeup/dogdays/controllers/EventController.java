@@ -1,5 +1,6 @@
 package com.codeup.dogdays.controllers;
 
+import com.codeup.dogdays.models.Attendees;
 import com.codeup.dogdays.models.Comment;
 import com.codeup.dogdays.models.Event;
 
@@ -68,6 +69,7 @@ public class EventController {
     public String getOneBook (Model model, @PathVariable Long id){
         Event event = eventRepo.findOne(id);
         model.addAttribute("event", event);
+        model.addAttribute("attendee", new Attendees());
         model.addAttribute("commentA", new Comment());
         model.addAttribute("comments", commentRepo.findAll());
         return "events/show";

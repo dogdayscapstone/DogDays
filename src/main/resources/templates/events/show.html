@@ -29,9 +29,19 @@
     </div>
 
 <form th:action="@{'/events/'+${event.getId()}+'/comment'}" th:method="post" th:object="${commentA}">
+
     <textarea th:field="*{commentText}"></textarea>
     <br/>
     <input type="submit" />
+</form>
+
+
+<form th:action="">
+<!--<input type="hidden" name="add" id="add" value="${product.quantity}" />-->
+<input class="btn btn-increment btn-success btn-sm" type="submit" value="+1" />
+<!--<input type="hidden" name="subtract" id="subtract" value="${product.quantity}" />-->
+<input class="btn btn-decrement btn-warning btn-sm" type="submit" value="-1" />
+
 </form>
 
 
