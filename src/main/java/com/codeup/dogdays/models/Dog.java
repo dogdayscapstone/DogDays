@@ -26,7 +26,7 @@ public class Dog {
     @Column(nullable=false,length=5)
     private String gender;
 
-    @Column(nullable=false,length=5)
+    @Column(nullable=false,length=500)
     private String dogPicture;
 
 

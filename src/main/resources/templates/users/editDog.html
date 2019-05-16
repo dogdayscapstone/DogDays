@@ -7,7 +7,59 @@
 
 </head>
 <body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 
-<h1>EDIT DOG PROFILE</h1>
+<h1>EDIT</h1>
+
+<form th:action="@{/profile/mydogs/{id}/edit(id = ${dog.id})}" th:method="POST" th:object="${dog}">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" id="name" type="text"
+               th:field="*{name}" />
+    </div>
+    <div class="form-group">
+        <label for="body">Description</label>
+        <textarea class="form-control" id="body"  rows = "10" cols = "10" th:field="*{description}" ></textarea>
+    </div>
+    <div class="form-group">
+        <label for="breed">Breed</label>
+        <input class="form-control" id="breed" type="text"
+               th:field="*{breed}" />
+    </div>
+
+    <div class="form-group">
+        <label for="dob">DOB</label>
+        <input class="form-control" id="dob" type="text"
+               th:field="*{dob}" />
+    </div>
+
+    <div class="form-group">
+        <label for="dob">Gender</label>
+        <input class="form-control" id="gender" type="text"
+               th:field="*{gender}" />
+    </div>
+
+    <div class="form-group">
+        <label for="temperament">Temperament</label>
+        <input class="form-control" id="temperament" type="text"
+               th:field="*{temperament}" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="picture">Picture</label>
+        <input class="form-control" id="picture" type="text"
+               th:field="*{dogPicture}" />
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input class="form-control" id="description" type="text"
+               th:field="*{description}" />
+    </div>
+
+    <button class="btn btn-success">Submit</button>
+</form>
+
 </body>
 </html>
