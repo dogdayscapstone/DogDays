@@ -3,6 +3,7 @@ package com.codeup.dogdays.models;
 import javax.persistence.*;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity @Table(name = "events")
@@ -22,10 +23,10 @@ public class Event {
     private String location;
 
     @Column(nullable = false, length = 255)
-    private String date;
+    private Date date;
 
-    @Column(nullable = false, length = 5)
-    private int time;
+    @Column(nullable = false, length = 255)
+    private java.sql.Time time;
 
     @OneToOne
     private User user;
@@ -46,7 +47,7 @@ public class Event {
 
     public Event (){}
 
-    public Event(String title, String description, String location, String date, int time, User user){
+    public Event(String title, String description, String location, Date date, java.sql.Time time, User user){
 
         this.title = title;
         this.description = description;
@@ -82,19 +83,19 @@ public class Event {
         this.location = location;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public int getTime() {
+    public java.sql.Time getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(java.sql.Time time) {
         this.time = time;
     }
 
