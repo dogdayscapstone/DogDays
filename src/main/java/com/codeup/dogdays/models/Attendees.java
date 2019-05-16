@@ -35,4 +35,5 @@ public class Attendees implements Serializable {
     public void setDogs(Dog dogs) {
         this.dogs = dogs;
     }
+    //test comment
 }
