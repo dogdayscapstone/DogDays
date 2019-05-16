@@ -31,22 +31,17 @@ public class Event {
     private User user;
 
 
-
-
-    public List<Comment> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Comment> events) {
-        this.events = events;
-    }
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "events")
-    private List<Comment> events;
+    private List<Comment> comments;
 
 
+    public List<Comment> getComments() {
+        return comments;
+    }
 
-
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
 
     public Event (){}
