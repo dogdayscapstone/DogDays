@@ -2,9 +2,7 @@ package com.codeup.dogdays.models;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity @Table(name = "events")
@@ -24,33 +22,31 @@ public class Event {
     private String location;
 
     @Column(nullable = false, length = 255)
-    private LocalDate date;
+    private String date;
 
-    @Column(nullable = false, length = 255)
-    private java.sql.Time time;
+    @Column(nullable = false, length = 5)
+    private int time;
 
     @OneToOne
     private User user;
 
 
-    public List<Comment> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Comment> events) {
-        this.events = events;
-    }
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "events")
-    private List<Comment> events;
+    private List<Comment> comments;
 
 
+    public List<Comment> getComments() {
+        return comments;
+    }
 
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
 
     public Event (){}
 
-    public Event(String title, String description, String location, LocalDate date, java.sql.Time time, User user){
+    public Event(String title, String description, String location, String date, int time, User user){
 
         this.title = title;
         this.description = description;
@@ -86,19 +82,19 @@ public class Event {
         this.location = location;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public java.sql.Time getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(java.sql.Time time) {
+    public void setTime(int time) {
         this.time = time;
     }
 

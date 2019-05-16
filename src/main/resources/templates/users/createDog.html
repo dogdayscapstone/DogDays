@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <span th:include="fragments/navbar :: bootstrap"></span>
+</head>
+
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+
+<h2>Create Dog Post</h2>
+
+
+<form th:action="@{/profile/createDog}" th:method="post" th:object="${dog}">
+    Name:
+    <input th:field="*{name}" />
+    <br />
+    Breed:
+    <input th:field="*{breed}" />
+    <br />
+
+    dob:
+    <input th:field="*{dob}" />
+    <br />
+
+    Gender:
+    <input th:field="*{gender}" />
+    <br />
+
+    Temperament:
+    <input th:field="*{temperament}" />
+    <br />
+
+    Picture:
+    <input th:field="*{dogPicture}" />
+    <br />
+
+
+    Description:
+    <input th:field="*{description}" />
+    <br />
+    <input type="submit" />
+</form>
+
+
+
+</body>
+</html>
