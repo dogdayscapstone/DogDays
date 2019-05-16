@@ -7,8 +7,8 @@ import com.codeup.dogdays.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalTime;
 
 
 @Controller
@@ -32,8 +32,6 @@ public class EventController {
 
 
 
-
-
     @GetMapping("/events/create")
     public String showPostForm(Model model) {
 
@@ -43,7 +41,7 @@ public class EventController {
     }
 
     @PostMapping("/events/create")
-    public String createPost(@ModelAttribute Event event) {
+    public String createPost(@ModelAttribute Event event, @RequestParam("time") String time) {
 
 //        User user = (User)request.getSession().getAttribute("user");
 //        User dbUser = userRepo.findOne(user.getId());
