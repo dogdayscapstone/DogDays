@@ -1,6 +1,8 @@
 package com.codeup.dogdays.controllers;
 
+import com.codeup.dogdays.models.Comment;
 import com.codeup.dogdays.models.Event;
+import com.codeup.dogdays.repositories.CommentRepository;
 import com.codeup.dogdays.repositories.EventRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +16,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class EventController {
 
     private final EventRepository eventRepo;
+    private final CommentRepository commentRepo;
 
-    public EventController(EventRepository eventRepo) {
+    public EventController(EventRepository eventRepo, CommentRepository commentRepo) {
         this.eventRepo = eventRepo;
+        this.commentRepo = commentRepo;
     }
 
     @GetMapping("/events")
     public String allEvents(Model model) {
         model.addAttribute("events", eventRepo.findAll());
 
-        return "/events/events";
+        return "events/events";
     }
 
     @GetMapping("/events/create")
@@ -34,18 +38,17 @@ public class EventController {
 
     @PostMapping("/events/create")
     public String createPost(@ModelAttribute Event event) {
-
         eventRepo.save(event);
         return "redirect:/events";
-
-
     }
 
 
     @GetMapping("/events/{id}")
     public String getOneBook(Model model, @PathVariable Long id) {
         Event event=eventRepo.findOne(id);
-       model.addAttribute("event",event);
+        model.addAttribute("event", event);
+        model.addAttribute("commentA", new Comment());
+        model.addAttribute("comments", commentRepo.findAll());
         return "events/show";
     }
 
