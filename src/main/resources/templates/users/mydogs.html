@@ -7,7 +7,47 @@
 
 </head>
 <body>
-<h1>MY DOGS PAGES</h1>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+
+
+<h1>Dog</h1>
+
+
+
+<div th:each="item : ${dogs}">
+    <a th:href="@{'/profile/mydogs'}">
+        <h3 th:text="${item.name}"></h3></a>
+    <p th:text="${item.breed}"></p>
+    <p th:text="${item.dob}"></p>
+    <p th:text="${item.gender}"></p>
+    <p th:text="${item.temperament}"></p>
+
+
+
+
+
+        <img class="img-thumbnail"  th:src="@{${item.dogPicture}}"/>
+
+    <p th:text="${item.description}"></p>
+
+
+    <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/edit'">edit</a></button>
+
+    <form method="GET" >
+        <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/delete'">delete</a></button>
+    </form>
+
+
+
+
+
+
+
+
+
+
+</div>
 
 </body>
 </html>
