@@ -7,6 +7,8 @@
 
 </head>
 <body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
 <h1>SHOW</h1>
 
 <div>
@@ -17,6 +19,7 @@
 <p th:text="${event.time}"></p>
 
 </div>
+
 
     <div th:each="comment : ${comments}">
 
@@ -30,6 +33,7 @@
     <br/>
     <input type="submit" />
 </form>
+
 
 </body>
 

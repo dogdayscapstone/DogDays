@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
+<span th:include="fragments/navbar :: bootstrap"></span>
 </head>
 
 <body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 
 
 <h2>Create New Post</h2>
