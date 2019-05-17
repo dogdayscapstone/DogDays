@@ -52,7 +52,12 @@ public class CommentController {
 
         comment.setUser(user);
         comment.setEvents(eventRepo.findOne(id));
-        comment.setId(comment.getId());
+
+        if(comment.getId() == comment.getId()){
+            comment.setId((comment.getId()) + 1);
+        } else {
+            comment.setId(comment.getId());
+        }
         commentRepo.save(comment);
 
         return "redirect:/events/" + id;
