@@ -41,7 +41,7 @@ public class EventController {
         return "events/events";
     }
 
-
+//sdf
 
     @GetMapping("/events/create")
     public String showPostForm (Model model){
@@ -52,7 +52,6 @@ public class EventController {
 
     @PostMapping("/events/create")
     public String createPost (@ModelAttribute Event event,HttpServletRequest request) {
-
 
         User user = (User)request.getSession().getAttribute("user");
         User dbUser = userRepo.findOne(user.getId());
