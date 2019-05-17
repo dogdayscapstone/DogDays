@@ -29,6 +29,14 @@ public class Dog {
     @Column(nullable=false,length=500)
     private String dogPicture;
 
+    @Column(nullable=false,length=250)
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User dogs;
+
+
 
     public Dog(String name) {
         this.name = name;
@@ -66,8 +74,6 @@ public class Dog {
         this.description = description;
     }
 
-    @Column(nullable=false,length=250)
-    private String description;
 
 
     public User getDogs() {
@@ -78,9 +84,6 @@ public class Dog {
         this.dogs = dogs;
     }
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User dogs;
 
 
 
