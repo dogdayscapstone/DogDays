@@ -11,8 +11,11 @@ import com.codeup.dogdays.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.expression.Lists;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Iterator;
+import java.util.List;
 
 
 @Controller
@@ -20,17 +23,17 @@ public class EventController {
 
     private final EventRepository eventRepo;
     private final UserRepository userRepo;
-
     private final CommentRepository commentRepo;
+    private CommentController CC;
 
 
 
 
-
-    public EventController(EventRepository eventRepo, UserRepository userRepo, CommentRepository commentRepo) {
+    public EventController(EventRepository eventRepo, UserRepository userRepo, CommentRepository commentRepo, CommentController CC) {
         this.eventRepo = eventRepo;
         this.commentRepo = commentRepo;
         this.userRepo = userRepo;
+        this.CC = CC;
     }
 
 
@@ -68,7 +71,7 @@ public class EventController {
         Event event = eventRepo.findOne(id);
         model.addAttribute("event", event);
         model.addAttribute("commentA", new Comment());
-        model.addAttribute("comments", commentRepo.findAll());
+        model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
         return "events/show";
     }
 
