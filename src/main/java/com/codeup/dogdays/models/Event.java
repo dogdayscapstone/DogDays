@@ -24,7 +24,7 @@ public class Event {
     private String location;
 
     @Column(nullable = false, length = 255)
-    private Date date;
+    private java.sql.Date date;
 
     @Column(nullable = false, length = 255)
     private java.sql.Time time;
@@ -50,7 +50,7 @@ public class Event {
 
     public Event (){}
 
-    public Event(String title, String description, String location, Date date, java.sql.Time time, User user){
+    public Event(String title, String description, String location, java.sql.Date date, java.sql.Time time, User user){
 
         this.title = title;
         this.description = description;
@@ -90,7 +90,7 @@ public class Event {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(java.sql.Date date) {
         this.date = date;
     }
 

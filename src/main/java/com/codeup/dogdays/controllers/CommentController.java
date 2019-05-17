@@ -2,6 +2,7 @@ package com.codeup.dogdays.controllers;
 
 
 import com.codeup.dogdays.models.Comment;
+import com.codeup.dogdays.models.Event;
 import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.CommentRepository;
 import com.codeup.dogdays.repositories.EventRepository;
@@ -36,6 +37,7 @@ public class CommentController {
         User user = (User)request.getSession().getAttribute("user");
         comment.setUser(user);
         comment.setEvents(eventRepo.findOne(id));
+        comment.setId(comment.getId());
         commentRepo.save(comment);
         return "redirect:/events/" + id;
     }
