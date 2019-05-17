@@ -2,6 +2,7 @@ package com.codeup.dogdays.controllers;
 
 
 import com.codeup.dogdays.models.Comment;
+import com.codeup.dogdays.models.Event;
 import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.CommentRepository;
 import com.codeup.dogdays.repositories.EventRepository;
