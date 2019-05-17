@@ -50,7 +50,10 @@ public class DogController {
 
 
     @PostMapping("/profile/mydogs/{id}/edit")
-    public String editDog(@ModelAttribute Dog dog) {
+    public String editDog(@ModelAttribute Dog dog,HttpServletRequest request) {
+        User user = (User)request.getSession().getAttribute("user");
+        User dbUser = userRepo.findOne(user.getId());
+        dog.setDogs(dbUser);
         dogRepo.save(dog);
         return "redirect:/profile/mydogs";
     }

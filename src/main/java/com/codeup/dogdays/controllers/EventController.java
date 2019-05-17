@@ -75,6 +75,8 @@ public class EventController {
 
     @GetMapping("/events/{id}/edit")
     public String editForm ( @PathVariable int id, Model model){
+
+
         Event event = eventRepo.findOne((long) id);
         model.addAttribute("event", event);
         return "events/edit";
@@ -82,7 +84,10 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/edit")
-    public String editPost (@ModelAttribute Event event){
+    public String editPost (@ModelAttribute Event event,HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("user");
+        User dbUser = userRepo.findOne(user.getId());
+        event.setUser(dbUser);
         eventRepo.save(event);
         return "redirect:/events";
     }
