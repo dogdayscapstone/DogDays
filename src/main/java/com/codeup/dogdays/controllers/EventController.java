@@ -41,7 +41,7 @@ public class EventController {
         return "events/events";
     }
 
-
+//sdf
 
     @GetMapping("/events/create")
     public String showPostForm (Model model){
