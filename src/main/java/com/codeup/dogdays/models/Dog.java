@@ -29,6 +29,7 @@ public class Dog {
     @Column(nullable=false,length=500)
     private String dogPicture;
 
+
     public Dog(String name, String breed, String temperament, String dob, String gender, String dogPicture, String description, User dogs) {
         this.name = name;
         this.breed = breed;
@@ -48,8 +49,7 @@ public class Dog {
         this.description = description;
     }
 
-    @Column(nullable=false,length=250)
-    private String description;
+
 
     @ManyToOne
     @JoinColumn(name="user_id")

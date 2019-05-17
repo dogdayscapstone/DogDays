@@ -6,7 +6,8 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
-@Entity @Table(name = "events")
+@Entity
+@Table(name = "events")
 public class Event {
 
     @Id
@@ -34,6 +35,8 @@ public class Event {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "events")
     private List<Comment> comments;
+
+
 
 
     public List<Comment> getComments() {
