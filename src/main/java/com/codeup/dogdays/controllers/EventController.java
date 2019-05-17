@@ -54,9 +54,9 @@ public class EventController {
     public String createPost (@ModelAttribute Event event, HttpServletRequest request) {
 
 
-        User user = (User)request.getSession().getAttribute("user");
-        User dbUser = userRepo.findOne(user.getId());
-        event.setUser(dbUser);
+//        User user = (User)request.getSession().getAttribute("user");
+//        User dbUser = userRepo.findOne(user.getId());
+//        event.setUser(dbUser);
 
         eventRepo.save(event);
         return "redirect:/events";
