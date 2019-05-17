@@ -37,6 +37,7 @@ public class CommentController {
         User user = (User)request.getSession().getAttribute("user");
         comment.setUser(user);
         comment.setEvents(eventRepo.findOne(id));
+        comment.setId(comment.getId());
         commentRepo.save(comment);
         return "redirect:/events/" + id;
     }
