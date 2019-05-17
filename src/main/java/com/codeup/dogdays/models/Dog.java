@@ -29,6 +29,9 @@ public class Dog {
     @Column(nullable=false,length=500)
     private String dogPicture;
 
+    @Column(nullable=false,length=500)
+    private String description;
+
 
     public Dog(String name, String breed, String temperament, String dob, String gender, String dogPicture, String description, User dogs) {
         this.name = name;
