@@ -29,14 +29,6 @@ public class Dog {
     @Column(nullable=false,length=500)
     private String dogPicture;
 
-
-    public Dog(String name) {
-        this.name = name;
-    }
-
-    public Dog() {
-    }
-
     public Dog(String name, String breed, String temperament, String dob, String gender, String dogPicture, String description, User dogs) {
         this.name = name;
         this.breed = breed;
@@ -47,16 +39,6 @@ public class Dog {
         this.description = description;
         this.dogs = dogs;
     }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
-
 
     public String getDescription() {
         return description;
@@ -69,22 +51,14 @@ public class Dog {
     @Column(nullable=false,length=250)
     private String description;
 
-
-    public User getDogs() {
-        return dogs;
-    }
-
-    public void setDogs(User dogs) {
-        this.dogs = dogs;
-    }
-
     @ManyToOne
     @JoinColumn(name="user_id")
     private User dogs;
 
 
 
-
+    public Dog() {
+    }
 
     public long getId() {
         return id;
@@ -118,6 +92,14 @@ public class Dog {
         this.temperament = temperament;
     }
 
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -134,5 +116,11 @@ public class Dog {
         this.dogPicture = dogPicture;
     }
 
+    public User getDogs() {
+        return dogs;
+    }
 
+    public void setDogs(User dogs) {
+        this.dogs = dogs;
+    }
 }
