@@ -33,7 +33,9 @@ public class DogController {
 
 
     @GetMapping("/profile/mydogs")
-    public String showDogsProfile(Model model) {
+    public String showDogsProfile(Model model, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        model.addAttribute("user", user);
         model.addAttribute("dogs", dogRepo.findAll());
         return "users/mydogs";
     }

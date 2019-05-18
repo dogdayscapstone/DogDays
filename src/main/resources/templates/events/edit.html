@@ -9,6 +9,8 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
+<div class="container">
+
 <h1>EDIT</h1>
 
 <form th:action="@{/events/{id}/edit(id = ${event.id})}" th:method="POST" th:object="${event}">
@@ -37,6 +39,6 @@
 
     <button class="btn btn-success">Submit</button>
 </form>
-
+</div>
 </body>
 </html>

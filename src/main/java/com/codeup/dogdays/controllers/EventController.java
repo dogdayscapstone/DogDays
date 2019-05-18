@@ -47,7 +47,11 @@ public class EventController {
 //sdf
 
     @GetMapping("/events/create")
-    public String showPostForm (Model model){
+    public String showPostForm (Model model, HttpServletRequest request){
+
+        if(request.getSession().getAttribute("user") == null){
+            return "redirect:/login";
+        }
 
         model.addAttribute("event", new Event());
         return "events/create";

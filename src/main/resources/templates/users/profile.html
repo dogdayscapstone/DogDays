@@ -7,9 +7,22 @@
 
 </head>
 <body>
-<h1>profile page: <span th:text="${user.getUsername()}"></span></h1>
-<button><a th:href="'/profile/createDog'">create</a></button>
+<div class="container">
+<nav th:replace="fragments/navbar :: navbar"></nav>
 
+<h1>Your Profile: <span th:text="${user.getUsername()}"></span></h1>
+
+<div>
+    <p>Profile Information</p>
+    <p>Username: <span th:text="${user.getUsername()}"></span></p>
+    <p>Email: <span th:text="${user.getEmail()}"></span></p>
+</div>
+
+
+<button><a th:href="'/profile/createDog'">Attach a Dog</a></button>
+<button><a th:href="'/profile/mydogs'">My Dogs</a></button>
+
+</div>
 
 
 
