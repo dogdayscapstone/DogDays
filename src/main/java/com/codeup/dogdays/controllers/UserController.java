@@ -38,6 +38,8 @@ public class UserController {
 
 
 
+
+
             @GetMapping("/login")
             public String showLoginForm () {
                 return "users/login";
@@ -64,6 +66,11 @@ public class UserController {
 
             @GetMapping("/profile")
             public String showProfilePage (HttpServletRequest request, Model vmodel) {
+
+                if(request.getSession().getAttribute("user") == null){
+                    return "redirect:/login";
+                }
+
                 User user = (User)request.getSession().getAttribute("user");
                 vmodel.addAttribute("user", user);
                 return "users/profile";

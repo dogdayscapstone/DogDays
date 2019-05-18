@@ -58,6 +58,7 @@ public class CommentController {
         } else {
             comment.setId(comment.getId());
         }
+
         commentRepo.save(comment);
 
         return "redirect:/events/" + id;
