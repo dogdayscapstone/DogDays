@@ -3,8 +3,10 @@ package com.codeup.dogdays.models;
 import javax.persistence.*;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "events")
@@ -36,6 +38,14 @@ public class Event {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "events")
     private List<Comment> comments;
 
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "attendees",
+            joinColumns = @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "dog_id")
+    )
+    private List<Dog> dogAttendees = new ArrayList<>();
 
 
 
@@ -116,5 +126,14 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Dog> getDogAttendees() {
+        return dogAttendees;
+    }
+
+    public void setDogAttendees(List<Dog> dogAttendee, Dog dog) {
+        dogAttendee.add(dog);
+        this.dogAttendees = dogAttendee;
     }
 }

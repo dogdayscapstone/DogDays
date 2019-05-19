@@ -1,6 +1,7 @@
 package com.codeup.dogdays.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,11 +35,11 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Event> events;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dogs")
-   private List<Dog> dogs;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "dogs")
+    private List<Dog> dogs;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
 
     public User(){}

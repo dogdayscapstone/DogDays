@@ -2,7 +2,9 @@ package com.codeup.dogdays.models;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "dogs")
@@ -33,6 +35,16 @@ public class Dog {
     private String description;
 
 
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User dogs;
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "dogAttendees")
+    private List<Event> events = new ArrayList<>();
+
+    public Dog() {
+    }
+
     public Dog(String name, String breed, String temperament, String dob, String gender, String dogPicture, String description, User dogs) {
         this.name = name;
         this.breed = breed;
@@ -52,16 +64,6 @@ public class Dog {
         this.description = description;
     }
 
-
-
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User dogs;
-
-
-
-    public Dog() {
-    }
 
     public long getId() {
         return id;
@@ -126,4 +128,14 @@ public class Dog {
     public void setDogs(User dogs) {
         this.dogs = dogs;
     }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> Events, Event event) {
+        Events.add(event);
+        this.events = Events;
+    }
+
 }

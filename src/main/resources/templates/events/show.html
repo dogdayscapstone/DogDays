@@ -19,6 +19,7 @@
 <p th:text="${event.time}"></p>
 
 </div>
+<p th:text="{}countAttending"></p>
 
 
     <div th:each="comment : ${comments}">
@@ -36,12 +37,12 @@
 </form>
 
 
-<form th:action="">
-<!--<input type="hidden" name="add" id="add" value="${product.quantity}" />-->
-<input class="btn btn-increment btn-success btn-sm" type="submit" value="+1" />
-<!--<input type="hidden" name="subtract" id="subtract" value="${product.quantity}" />-->
-<input class="btn btn-decrement btn-warning btn-sm" type="submit" value="-1" />
+<form th:action="@{'/event/' + ${event.getId()} + '/attend'}"  th:method="post">
+    <input class="btn btn-increment btn-success btn-sm" type="submit" value="+1" />
+</form>
 
+<form th:action="@{'/event/' + ${event.getId()} + '/unattend'}"  th:method="post">
+    <input class="btn btn-decrement btn-warning btn-sm" type="submit" value="-1" />
 </form>
 
 

@@ -1,6 +1,7 @@
 package com.codeup.dogdays.controllers;
 
 import com.codeup.dogdays.models.Comment;
+import com.codeup.dogdays.models.Dog;
 import com.codeup.dogdays.models.Event;
 
 import com.codeup.dogdays.repositories.CommentRepository;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 
 @Controller
@@ -41,7 +43,7 @@ public class EventController {
         return "events/events";
     }
 
-//sdf
+
 
     @GetMapping("/events/create")
     public String showPostForm (Model model){
@@ -64,11 +66,17 @@ public class EventController {
 
 
     @GetMapping("/events/{id}")
-    public String getOneBook (Model model, @PathVariable Long id){
+    public String getOneBook (Model model, @PathVariable Long id, HttpServletRequest request){
         Event event = eventRepo.findOne(id);
+
+        User user = event.getUser();
+        request.getSession().setAttribute("user", user);
+
         model.addAttribute("event", event);
         model.addAttribute("commentA", new Comment());
         model.addAttribute("comments", commentRepo.findAll());
+
+        model.addAttribute("countAttending", event.getDogAttendees().size());
         return "events/show";
     }
 
@@ -100,7 +108,21 @@ public class EventController {
         return "redirect:/events";
     }
 
+    @PostMapping("/events/{id}/attend")
+    public String attendEvent (HttpServletRequest request, @PathVariable Long id,  @ModelAttribute Event event){
 
+        User user = (User)request.getSession().getAttribute("user");
 
+        List<Dog> dogs = user.getDogs();
+
+        for(int i = 0; i < dogs.size(); i++){
+
+            Dog dog = user.getDogs().get(i);
+            event.setDogAttendees(event.getDogAttendees(), dog);
+            dog.setEvents(dog.getEvents(), event);
+
+        }
+        return "redirect:/events/" + id;
+    }
 
 }
