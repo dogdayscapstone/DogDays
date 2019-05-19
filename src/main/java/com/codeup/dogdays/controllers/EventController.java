@@ -107,6 +107,13 @@ public class EventController {
         return "redirect:/events";
     }
 
+    @GetMapping("/search")
+    public String search(@RequestParam String  q, Model viewModel) {
+        viewModel.addAttribute("searchedContent", eventRepo.search("%" + q + "%"));
+
+        return "events/search";
+    }
+
 
 
 
