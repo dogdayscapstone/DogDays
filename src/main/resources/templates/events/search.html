@@ -13,20 +13,21 @@
     <body>
     <nav th:replace="fragments/navbar :: navbar"></nav>
 
-    <h1>search</h1>
+    <div class="container">
+        <h1>Results for: <em>'<span th:text="${searchTerm}"></span>'</em></h1>
 
 
 
     <div th:each="item : ${searchedContent}">
-        <a th:href="@{'search'}">
-            <h3 th:text="${item.title}"></h3></a>
-        <p th:text="${item.description}"></p>
-        <p th:text="${item.location}"></p>
-        <p th:text="${item.date}"></p>
-        <p th:text="${item.time}"></p>
+        <a th:href="'events/'+ ${item.getId()}">
+            <h3>Title: <span th:text="${item.title}"></span></h3></a>
+        <p>Description: <span th:text="${item.description}"></span></p>
+        <p>Location: <span th:text="${item.location}"></span></p>
+        <p>Date: <span th:text="${item.date}"></span></p>
+        <p>Time:  <span th:text="${item.time}"></span></p>
 
     </div>
-
+    </div>
 
 
 

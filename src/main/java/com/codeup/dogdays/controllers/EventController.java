@@ -110,6 +110,7 @@ public class EventController {
     @GetMapping("/search")
     public String search(@RequestParam String  q, Model viewModel) {
         viewModel.addAttribute("searchedContent", eventRepo.search("%" + q + "%"));
+        viewModel.addAttribute("searchTerm", q);
 
         return "events/search";
     }

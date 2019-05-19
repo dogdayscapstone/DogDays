@@ -11,11 +11,13 @@
 
 <div class="container">
 
-    <h1>EVENTS</h1>
+    <h1 class="text-center">EVENTS</h1>
 
     <button><a th:href="'events/create'">Schedule An Event</a></button>
 
-    <div th:each="item : ${events}">
+    <div class="row">
+
+    <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
         <h3> Title: <a th:href="'events/'+ ${item.getId()}"><span th:text="${item.title}"></span></a></h3>
         <p>Description: <span th:text="${item.description}"></span></p>
         <p>Location: <span th:text="${item.location}"></span></p>
@@ -33,6 +35,6 @@
 
     </div>
 </div>
-
+</div>
 </body>
 </html>
