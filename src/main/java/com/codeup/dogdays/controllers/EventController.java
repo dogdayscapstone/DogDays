@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.expression.Lists;
 
 import javax.servlet.http.HttpServletRequest;
+
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import java.util.List;
 
 
@@ -83,11 +85,18 @@ public class EventController {
 
 
     @GetMapping("/events/{id}")
-    public String getOneBook (Model model, @PathVariable Long id){
+    public String getOneBook (Model model, @PathVariable Long id, HttpServletRequest request){
         Event event = eventRepo.findOne(id);
+
+        User user = event.getUser();
+        request.getSession().setAttribute("user", user);
+
         model.addAttribute("event", event);
-        model.addAttribute("commentA", new Comment());
-        model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
+        model.addAttribute("commentA", new Comment()
+
+       model.addAttribute("countAttending", event.getDogAttendees().size());
+
+        model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)))
         return "events/show";
     }
 
@@ -119,6 +128,7 @@ public class EventController {
         return "redirect:/events";
     }
 
+
     @GetMapping("/search")
     public String search(@RequestParam String  q, Model viewModel) {
         viewModel.addAttribute("searchedContent", eventRepo.search("%" + q + "%"));
@@ -128,6 +138,20 @@ public class EventController {
     }
 
 
+@PostMapping("/events/{id}/attend")
+    public String attendEvent (HttpServletRequest request, @PathVariable Long id,  @ModelAttribute Event event){
+        User user = (User)request.getSession().getAttribute("user");
 
+        List<Dog> dogs = user.getDogs();
+
+        for(int i = 0; i < dogs.size(); i++){
+
+            Dog dog = user.getDogs().get(i);
+            event.setDogAttendees(event.getDogAttendees(), dog);
+            dog.setEvents(dog.getEvents(), event);
+
+        }
+        return "redirect:/events/" + id;
+    }
 
 }
