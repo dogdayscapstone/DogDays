@@ -48,6 +48,7 @@ public class CommentController {
 
     @PostMapping("/events/{id}/comment")
     public String saveComment(HttpServletRequest request, @ModelAttribute Comment comment, @PathVariable long id) {
+
         User user = (User)request.getSession().getAttribute("user");
 
         comment.setUser(user);
