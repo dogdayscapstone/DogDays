@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Dog Days | Detailed Event</title>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="icon" href="images/download.png" type="image/x-icon"/>
+
 
     <span th:include="fragments/navbar :: bootstrap"></span>
 
 </head>
 <body>
+<script
+        src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="/js/keys.js"></script>
+<script src="/js/show-page.js"></script>
+
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
 <div class="container">
@@ -18,7 +29,7 @@
 <div>
     <h2>Event: <span th:text="${event.title}"></span></h2>
     <p>Description: <span th:text="${event.description}"></span></p>
-    <p>Location: <span th:text="${event.location}"></span></p>
+    <p>Location: <span  id="location" th:text="${event.location}"></span></p>
     <p>Date: <span th:text="${event.date}"></span></p>
     <p>Time: <span th:text="${event.time}"></span></p>
 
@@ -51,9 +62,8 @@
 </form>
 
 
-<!--</form>-->
-
 </div>
+<div id='map' style='width: 50%; height: 400px;'></div>
 </body>
 
 </html>
