@@ -89,7 +89,6 @@ public class EventController {
         Event event = eventRepo.findOne(id);
 
         User user = event.getUser();
-        request.getSession().setAttribute("user", user);
 
         model.addAttribute("event", event);
         model.addAttribute("commentA", new Comment());
