@@ -95,6 +95,7 @@ public class EventController {
         model.addAttribute("commentA", new Comment());
 
        model.addAttribute("countAttending", event.getDogAttendees().size());
+       model.addAttribute("location", event.getLocation());
 
         model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
         return "events/show";
@@ -154,9 +155,6 @@ public class EventController {
         return "redirect:/events/" + id;
     }
 
-    @GetMapping("/test")
-    public String mapTest (){
-        return "events/mapTest";
-    }
+
 
 }

@@ -8,7 +8,7 @@ $(document).ready(function () {
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 5
+        zoom: 13
         // center: [-98.4916, 29.4252]
 
     });
@@ -27,9 +27,13 @@ $(document).ready(function () {
 
 
     //Sets center of map at SA,TX
+    var location = $('#location').html();
+    var completeLocation = location + ", San Antonio";
+    console.log(location);
 
-    geocode("San Antonio, Texas", mapBoxKey).then(function (data) {
+    geocode(completeLocation, mapBoxKey).then(function (data) {
         map.setCenter(data);
+
         var marker = new mapboxgl.Marker({
             draggable: true
         })
@@ -38,5 +42,8 @@ $(document).ready(function () {
         console.log(data);
 
     })
+
+
+
 
 })
