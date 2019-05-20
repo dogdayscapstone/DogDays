@@ -3,7 +3,7 @@
 $(document).ready(function () {
 
 
-    mapboxgl.accessToken = publicMapBoxKey;
+    mapboxgl.accessToken = mapBoxKey;
 
     var map = new mapboxgl.Map({
         container: 'map',
