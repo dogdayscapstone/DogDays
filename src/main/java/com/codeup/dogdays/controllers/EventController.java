@@ -12,8 +12,13 @@ import com.codeup.dogdays.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.expression.Lists;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import java.util.List;
 
 
@@ -22,19 +27,30 @@ public class EventController {
 
     private final EventRepository eventRepo;
     private final UserRepository userRepo;
-
     private final CommentRepository commentRepo;
+    private CommentController CC;
 
 
 
 
-
-    public EventController(EventRepository eventRepo, UserRepository userRepo, CommentRepository commentRepo) {
+    public EventController(EventRepository eventRepo, UserRepository userRepo, CommentRepository commentRepo, CommentController CC) {
         this.eventRepo = eventRepo;
         this.commentRepo = commentRepo;
         this.userRepo = userRepo;
+        this.CC = CC;
     }
 
+    public List<Dog> dogsByUser(List<Dog> dogs, User user){
+        List<Dog> filteredDogs = new ArrayList<>();
+
+        for(int i = 0; i < dogs.size(); i++){
+            if(dogs.get(i).getDogs().getId() == user.getId()){
+                filteredDogs.add(dogs.get(i));
+            }
+        }
+
+        return filteredDogs;
+    }
 
     @GetMapping("/events")
     public String allEvents (Model model){
@@ -44,9 +60,12 @@ public class EventController {
     }
 
 
-
     @GetMapping("/events/create")
-    public String showPostForm (Model model){
+    public String showPostForm (Model model, HttpServletRequest request){
+
+        if(request.getSession().getAttribute("user") == null){
+            return "redirect:/login";
+        }
 
         model.addAttribute("event", new Event());
         return "events/create";
@@ -73,10 +92,11 @@ public class EventController {
         request.getSession().setAttribute("user", user);
 
         model.addAttribute("event", event);
-        model.addAttribute("commentA", new Comment());
-        model.addAttribute("comments", commentRepo.findAll());
+        model.addAttribute("commentA", new Comment()
 
-        model.addAttribute("countAttending", event.getDogAttendees().size());
+       model.addAttribute("countAttending", event.getDogAttendees().size());
+
+        model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)))
         return "events/show";
     }
 
@@ -108,9 +128,18 @@ public class EventController {
         return "redirect:/events";
     }
 
-    @PostMapping("/events/{id}/attend")
-    public String attendEvent (HttpServletRequest request, @PathVariable Long id,  @ModelAttribute Event event){
 
+    @GetMapping("/search")
+    public String search(@RequestParam String  q, Model viewModel) {
+        viewModel.addAttribute("searchedContent", eventRepo.search("%" + q + "%"));
+        viewModel.addAttribute("searchTerm", q);
+
+        return "events/search";
+    }
+
+
+@PostMapping("/events/{id}/attend")
+    public String attendEvent (HttpServletRequest request, @PathVariable Long id,  @ModelAttribute Event event){
         User user = (User)request.getSession().getAttribute("user");
 
         List<Dog> dogs = user.getDogs();

@@ -9,34 +9,32 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
+<div class="container">
+
+    <h1 class="text-center">Upcoming Dog Days</h1>
+
+    <button><a th:href="'events/create'">Schedule An Event</a></button>
+
+    <div class="row">
+
+    <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
+        <h3> Title: <a th:href="'events/'+ ${item.getId()}"><span th:text="${item.title}"></span></a></h3>
+        <p>Description: <span th:text="${item.description}"></span></p>
+        <p>Location: <span th:text="${item.location}"></span></p>
+        <p>Date: <span th:text="${item.date}"></span></p>
+        <p>Time: <span th:text="${item.time}"></span></p>
 
 
-<h1>EVENTS</h1>
 
-<button><a th:href="'events/create'">create</a></button>
+            <button><a th:href="'events/'+ ${item.id}+'/edit'">Edit</a></button>
 
-<div th:each="item : ${events}">
-    <a th:href="@{'events'}">
-        <h3 th:text="${item.title}"></h3></a>
-    <p th:text="${item.description}"></p>
-    <p th:text="${item.location}"></p>
-    <p th:text="${item.date}"></p>
-    <p th:text="${item.time}"></p>
+    <form method="GET">
+        <button><a th:href="'events/'+ ${item.id}+'/delete'">Delete</a></button>
+    </form>
 
 
-
-
-    <button><a th:href="'events/'+ ${item.getId()}">see more</a></button>
-
-
-        <button><a th:href="'events/'+ ${item.id}+'/edit'">edit</a></button>
-
-<form method="GET" >
-    <button><a th:href="'events/'+ ${item.id}+'/delete'">delete</a></button>
-</form>
-
-
+    </div>
 </div>
-
+</div>
 </body>
 </html>

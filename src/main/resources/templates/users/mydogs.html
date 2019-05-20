@@ -9,42 +9,40 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
+<div class="container">
 
 
-<h1>Dog</h1>
+<h1>My Dogs</h1>
+<h2>User: <a th:href="'/profile'"><span th:text="${user.getUsername()}"></span></a></h2>
 
+<div class="row">
 
+<div class="col-12 col-sm-6 col-lg-4" th:each="item : ${dogs}">
+    <h3>Dog: <span th:text="${item.name}"></span></h3>
+    <p>Breed: <span th:text="${item.breed}"></span></p>
+    <p>DOB: <span th:text="${item.dob}"></span></p>
+    <p>Gender: <span th:text="${item.gender}"></span></p>
+    <p>Mood: <span th:text="${item.temperament}"></span></p>
+    <p>Desciption: <span th:text="${item.description}"></span></p>
 
-<div th:each="item : ${dogs}">
-    <a th:href="@{'/profile/mydogs'}">
-        <h3 th:text="${item.name}"></h3></a>
-    <p th:text="${item.breed}"></p>
-    <p th:text="${item.dob}"></p>
-    <p th:text="${item.gender}"></p>
-    <p th:text="${item.temperament}"></p>
+    <div>
+        <img width="150" th:src="@{${item.dogPicture}}"/>
 
+    </div>
 
-
-
-
-        <img class="img-thumbnail"  th:src="@{${item.dogPicture}}"/>
-
-    <p th:text="${item.description}"></p>
-
-
-    <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/edit'">edit</a></button>
+    <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/edit'">Edit <span th:text="${item.name}"></span></a></button>
 
     <form method="GET" >
-        <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/delete'">delete</a></button>
+        <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/delete'">Delete <span th:text="${item.name}"></span></a></button>
     </form>
 
 
+</div>
 
 
 
 
-
-
+</div>
 
 
 </div>

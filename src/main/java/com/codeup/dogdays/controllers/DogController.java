@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class DogController {
@@ -23,18 +24,23 @@ public class DogController {
 
     private final DogRepository dogRepo;
     private final UserRepository userRepo;
+    private EventController EC;
 
-    public DogController(DogRepository dogRepo, UserRepository userRepo) {
+    public DogController(DogRepository dogRepo, UserRepository userRepo, EventController EC) {
         this.dogRepo = dogRepo;
         this.userRepo = userRepo;
+        this.EC = EC;
     }
 
 
 
 
     @GetMapping("/profile/mydogs")
-    public String showDogsProfile(Model model) {
-        model.addAttribute("dogs", dogRepo.findAll());
+    public String showDogsProfile(Model model, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        model.addAttribute("user", user);
+        model.addAttribute("dogs", EC.dogsByUser((List<Dog>)dogRepo.findAll(), userRepo.findOne(user.getId())));
+
         return "users/mydogs";
     }
 

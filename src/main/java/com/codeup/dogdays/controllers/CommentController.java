@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class CommentController {
@@ -30,15 +32,35 @@ public class CommentController {
         this.userRepo = userRepo;
     }
 
+    public List<Comment> commentsByEvent(List<Comment> comments, Event event){
+        List<Comment> filteredComments = new ArrayList<>();
+
+        for(int i = 0; i < comments.size(); i++){
+            if(comments.get(i).getEvents().getId() == event.getId()){
+                filteredComments.add(comments.get(i));
+            }
+        }
+
+        return filteredComments;
+    }
+
 
 
     @PostMapping("/events/{id}/comment")
     public String saveComment(HttpServletRequest request, @ModelAttribute Comment comment, @PathVariable long id) {
         User user = (User)request.getSession().getAttribute("user");
+
         comment.setUser(user);
         comment.setEvents(eventRepo.findOne(id));
-        comment.setId(comment.getId());
+
+        if(comment.getId() == comment.getId()){
+            comment.setId((comment.getId()) + 1);
+        } else {
+            comment.setId(comment.getId());
+        }
+
         commentRepo.save(comment);
+
         return "redirect:/events/" + id;
     }
 

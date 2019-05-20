@@ -129,6 +129,7 @@ public class Dog {
         this.dogs = dogs;
     }
 
+
     public List<Event> getEvents() {
         return events;
     }
@@ -137,5 +138,6 @@ public class Dog {
         Events.add(event);
         this.events = Events;
     }
+
 
 }

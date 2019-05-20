@@ -9,23 +9,25 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
+<div class="container">
+
 <h1>SHOW</h1>
 
 <div>
-<h2 th:text="${event.title}"></h2>
-<p th:text="${event.description}"></p>
-<p th:text="${event.location}"></p>
-<p th:text="${event.date}"></p>
-<p th:text="${event.time}"></p>
+    <h2>Event: <span th:text="${event.title}"></span></h2>
+    <p>Description: <span th:text="${event.description}"></span></p>
+    <p>Location: <span th:text="${event.location}"></span></p>
+    <p>Date: <span th:text="${event.date}"></span></p>
+    <p>Time: <span th:text="${event.time}"></span></p>
 
 </div>
 <p th:text="${countAttending}"></p>
 
-
+<h3>Comments</h3>
     <div th:each="comment : ${comments}">
 
-        <p th:text="${comment.getCommentText()}"></p>
-        <!--<p th:text="${comment.getUser().getUsername()}"></p>-->
+        <p>Comment: <span th:text="${comment.getCommentText()}"></span></p>
+        <p>Comment By User: <span th:text="${comment.getUser().getUsername()}"></span></p>
 
     </div>
 
@@ -37,6 +39,7 @@
 </form>
 
 
+
 <form th:action="@{'/event/' + ${event.getId()} + '/attend'}"  th:method="post">
     <input class="btn btn-increment btn-success btn-sm" type="submit" value="+1" />
 </form>
@@ -46,6 +49,9 @@
 </form>
 
 
+<!--</form>-->
+
+</div>
 </body>
 
 </html>
