@@ -92,11 +92,11 @@ public class EventController {
         request.getSession().setAttribute("user", user);
 
         model.addAttribute("event", event);
-        model.addAttribute("commentA", new Comment()
+        model.addAttribute("commentA", new Comment());
 
        model.addAttribute("countAttending", event.getDogAttendees().size());
 
-        model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)))
+        model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
         return "events/show";
     }
 
