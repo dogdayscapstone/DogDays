@@ -1,6 +1,7 @@
 package com.codeup.dogdays.controllers;
 
 import com.codeup.dogdays.models.Comment;
+import com.codeup.dogdays.models.Dog;
 import com.codeup.dogdays.models.Event;
 
 import com.codeup.dogdays.repositories.CommentRepository;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.expression.Lists;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,6 +38,17 @@ public class EventController {
         this.CC = CC;
     }
 
+    public List<Dog> dogsByUser(List<Dog> dogs, User user){
+        List<Dog> filteredDogs = new ArrayList<>();
+
+        for(int i = 0; i < dogs.size(); i++){
+            if(dogs.get(i).getDogs().getId() == user.getId()){
+                filteredDogs.add(dogs.get(i));
+            }
+        }
+
+        return filteredDogs;
+    }
 
     @GetMapping("/events")
     public String allEvents (Model model){
@@ -44,7 +57,6 @@ public class EventController {
         return "events/events";
     }
 
-//sdf
 
     @GetMapping("/events/create")
     public String showPostForm (Model model, HttpServletRequest request){

@@ -126,4 +126,5 @@ public class Dog {
     public void setDogs(User dogs) {
         this.dogs = dogs;
     }
+
 }

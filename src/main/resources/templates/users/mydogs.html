@@ -15,9 +15,9 @@
 <h1>My Dogs</h1>
 <h2>User: <a th:href="'/profile'"><span th:text="${user.getUsername()}"></span></a></h2>
 
+<div class="row">
 
-
-<div th:each="item : ${dogs}">
+<div class="col-12 col-sm-6 col-lg-4" th:each="item : ${dogs}">
     <h3>Dog: <span th:text="${item.name}"></span></h3>
     <p>Breed: <span th:text="${item.breed}"></span></p>
     <p>DOB: <span th:text="${item.dob}"></span></p>
@@ -37,7 +37,7 @@
     </form>
 
 
-
+</div>
 
 
 
