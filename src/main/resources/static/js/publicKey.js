@@ -1,0 +1,1 @@
+var publicMapBoxKey = 'pk.eyJ1IjoibWFyY3VzLWFndWlycmUiLCJhIjoiY2p2eDBoNmdjMDAzcTQzcDRvd3FhbjZrZSJ9.IGK-P3NwTE-6PH2AoZbYFg';
