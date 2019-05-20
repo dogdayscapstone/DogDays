@@ -138,7 +138,7 @@ public class EventController {
     }
 
 
-@PostMapping("/events/{id}/attend")
+    @PostMapping("/events/{id}/attend")
     public String attendEvent (HttpServletRequest request, @PathVariable Long id,  @ModelAttribute Event event){
         User user = (User)request.getSession().getAttribute("user");
 
@@ -152,6 +152,11 @@ public class EventController {
 
         }
         return "redirect:/events/" + id;
+    }
+
+    @GetMapping("/test")
+    public String mapTest (){
+        return "events/mapTest";
     }
 
 }
