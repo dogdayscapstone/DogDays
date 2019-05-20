@@ -48,16 +48,17 @@ public class CommentController {
 
     @PostMapping("/events/{id}/comment")
     public String saveComment(HttpServletRequest request, @ModelAttribute Comment comment, @PathVariable long id) {
+
         User user = (User)request.getSession().getAttribute("user");
 
         comment.setUser(user);
         comment.setEvents(eventRepo.findOne(id));
 
-        if(comment.getId() == comment.getId()){
-            comment.setId((comment.getId()) + 1);
-        } else {
-            comment.setId(comment.getId());
-        }
+        List<Comment> allComments = (List<Comment>)commentRepo.findAll();
+        long count = allComments.size();
+
+        comment.setId(count + 1);
+
 
         commentRepo.save(comment);
 
