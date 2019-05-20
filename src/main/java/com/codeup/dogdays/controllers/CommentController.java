@@ -54,7 +54,7 @@ public class CommentController {
         comment.setEvents(eventRepo.findOne(id));
 
         List<Comment> allComments = (List<Comment>)commentRepo.findAll();
-        int count = allComments.size();
+        long count = allComments.size();
 
 
 
