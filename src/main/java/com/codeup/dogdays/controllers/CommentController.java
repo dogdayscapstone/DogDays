@@ -53,10 +53,15 @@ public class CommentController {
         comment.setUser(user);
         comment.setEvents(eventRepo.findOne(id));
 
+        List<Comment> allComments = (List<Comment>)commentRepo.findAll();
+        int count = allComments.size();
+
+
+
         if(comment.getId() == comment.getId()){
             comment.setId((comment.getId()) + 1);
         } else {
-            comment.setId(comment.getId());
+            comment.setId(count);
         }
 
         commentRepo.save(comment);
