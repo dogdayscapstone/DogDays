@@ -5,11 +5,15 @@
     <title>Dog Days | Schedule An Event</title>
     <link rel="icon" href="images/download.png" type="image/x-icon"/>
 
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <span th:include="fragments/navbar :: bootstrap"></span>
+
 </head>
 <body>
 
-<nav th:replace="fragments/navbar :: navbar"></nav>
+
 
 <div class="container">
 
@@ -28,14 +32,54 @@
     <input th:field="*{location}" />
     <br />
 
-    Date:
-    <input th:field="*{date}" />
+
+
+        Date:
+
+    <div class="row">
+        <div class='col-sm-6'>
+
+
+                    <div class='input-group date' id='datepicker'>
+                        <!--<input type='text' class="form-control" />-->
+                        <input th:field="*{date}"  />
+                        <span class="input-group-addon">
+		                        <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+                    </div>
+                <!--</div>-->
+
+        </div>
+    </div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script >
+    $(function () {
+        $('#datepicker').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: true,
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            autoclose: true,
+            changeMonth: true,
+            changeYear: true,
+            orientation: "button"
+        });
+    });
+</script>
+
+
+
+
+
     <br />
 
     Time:
     <input th:field="*{time}" />
     <br />
     <input type="submit" />
+
 </form>
 
 </div>
