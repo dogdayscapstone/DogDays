@@ -85,7 +85,7 @@ public class EventController {
 
 
     @GetMapping("/events/{id}")
-    public String getOneBook (Model model, @PathVariable Long id, HttpServletRequest request){
+    public String getOneBook (Model model, @PathVariable Long id){
         Event event = eventRepo.findOne(id);
 
         User user = event.getUser();
@@ -113,6 +113,7 @@ public class EventController {
 
     @PostMapping("/events/{id}/edit")
     public String editPost (@ModelAttribute Event event,HttpServletRequest request){
+
         User user = (User)request.getSession().getAttribute("user");
         User dbUser = userRepo.findOne(user.getId());
         event.setUser(dbUser);
