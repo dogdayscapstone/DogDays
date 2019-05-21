@@ -16,6 +16,8 @@ import org.thymeleaf.expression.Lists;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -72,12 +74,27 @@ public class EventController {
     }
 
     @PostMapping("/events/create")
-    public String createPost (@ModelAttribute Event event,HttpServletRequest request) {
+    public String createPost (@ModelAttribute Event event,HttpServletRequest request, @RequestParam String untime, @RequestParam String undate) {
 
         User user = (User)request.getSession().getAttribute("user");
         User dbUser = userRepo.findOne(user.getId());
         event.setUser(dbUser);
 
+try {
+
+    java.sql.Time formattedTime = java.sql.Time.valueOf(untime);
+    Time newTime = (java.sql.Time) formattedTime;
+    event.setTime(newTime);
+}catch(NumberFormatException e) {
+    System.out.println(e);
+}
+try {
+    java.sql.Date formattedDate = java.sql.Date.valueOf(undate);
+    java.sql.Date newDate = (java.sql.Date) formattedDate;
+    event.setDate(newDate);
+}catch(NumberFormatException e){
+    System.out.println(e);
+}
         eventRepo.save(event);
         return "redirect:/events";
 
@@ -93,7 +110,8 @@ public class EventController {
         model.addAttribute("event", event);
         model.addAttribute("commentA", new Comment());
 
-       model.addAttribute("countAttending", event.getDogAttendees().size());
+        model.addAttribute("countAttending", event.getDogAttendees().size());
+        model.addAttribute("location", event.getLocation());
 
         model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
         return "events/show";
@@ -137,7 +155,7 @@ public class EventController {
     }
 
 
-@PostMapping("/events/{id}/attend")
+    @PostMapping("/events/{id}/attend")
     public String attendEvent (HttpServletRequest request, @PathVariable Long id,  @ModelAttribute Event event){
         User user = (User)request.getSession().getAttribute("user");
 
@@ -153,4 +171,7 @@ public class EventController {
         return "redirect:/events/" + id;
     }
 
+
+
 }
+
