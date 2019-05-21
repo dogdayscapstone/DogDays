@@ -49,6 +49,10 @@ public class CommentController {
     @PostMapping("/events/{id}/comment")
     public String saveComment(HttpServletRequest request, @ModelAttribute Comment comment, @PathVariable long id) {
 
+        if(request.getSession().getAttribute("user") == null){
+            return "redirect:/login";
+        }
+
         User user = (User)request.getSession().getAttribute("user");
 
         comment.setUser(user);

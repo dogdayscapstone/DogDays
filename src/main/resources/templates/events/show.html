@@ -4,10 +4,8 @@
     <meta charset="UTF-8"/>
     <title>Dog Days | Detailed Event</title>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-    <link rel="icon" href="images/download.png" type="image/x-icon"/>
 
-
-    <span th:include="fragments/navbar :: bootstrap"></span>
+    <th:block th:include="fragments/navbar :: bootstrap"></th:block>
 
 </head>
 <body>
@@ -24,7 +22,7 @@
 <div class="container">
 
 <h1>SHOW</h1>
-
+<img src="/images/download.png" height="50" alt="dog picture" />
 <div>
     <h2>Event: <span th:text="${event.title}"></span></h2>
     <p>Description: <span th:text="${event.description}"></span></p>
