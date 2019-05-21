@@ -50,11 +50,11 @@
 
 
 
-<form th:action="@{'/event/' + ${event.getId()} + '/attend'}"  th:method="post">
+<form th:action="@{'/events/' + ${event.getId()} + '/attend'}"  th:method="post">
     <input class="btn btn-increment btn-success btn-sm" type="submit" value="+1" />
 </form>
 
-<form th:action="@{'/event/' + ${event.getId()} + '/unattend'}"  th:method="post">
+<form th:action="@{'/events/' + ${event.getId()} + '/unattend'}"  th:method="post">
     <input class="btn btn-decrement btn-warning btn-sm" type="submit" value="-1" />
 </form>
 
