@@ -3,12 +3,12 @@
 $(document).ready(function () {
 
 
-    mapboxgl.accessToken = mapBoxKey;
-
+    var token = "pk.eyJ1IjoibWFyY3VzLWFndWlycmUiLCJhIjoiY2pza21jajFsMGhwcjQ5b2FjNjljdW5iNSJ9.ELjeXU8wsJLEfalIceCL_g";
+    mapboxgl.accessToken = token;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 13
+        zoom: 11
         // center: [-98.4916, 29.4252]
 
     });
@@ -31,7 +31,7 @@ $(document).ready(function () {
     var completeLocation = location + ", San Antonio";
     console.log(location);
 
-    geocode(completeLocation, mapBoxKey).then(function (data) {
+    geocode(completeLocation, token).then(function (data) {
         map.setCenter(data);
 
         var marker = new mapboxgl.Marker({
