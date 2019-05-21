@@ -93,8 +93,9 @@ public class EventController {
         model.addAttribute("event", event);
         model.addAttribute("commentA", new Comment());
 
-       model.addAttribute("countAttending", event.getDogAttendees().size());
-       model.addAttribute("location", event.getLocation());
+        model.addAttribute("countAttending", event.getDogAttendees().size());
+
+        model.addAttribute("location", event.getLocation());
 
         model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
         return "events/show";
@@ -139,18 +140,21 @@ public class EventController {
 
 
     @PostMapping("/events/{id}/attend")
-    public String attendEvent (HttpServletRequest request, @PathVariable Long id,  @ModelAttribute Event event){
-        User user = (User)request.getSession().getAttribute("user");
+    public String attendEvent (HttpServletRequest request, @PathVariable Long id){
 
+        User user = (User)request.getSession().getAttribute("user");
+        Event event = eventRepo.findOne(id);
         List<Dog> dogs = user.getDogs();
+
 
         for(int i = 0; i < dogs.size(); i++){
 
             Dog dog = user.getDogs().get(i);
             event.setDogAttendees(event.getDogAttendees(), dog);
-            dog.setEvents(dog.getEvents(), event);
+            eventRepo.save(event);
 
         }
+
         return "redirect:/events/" + id;
     }
 
