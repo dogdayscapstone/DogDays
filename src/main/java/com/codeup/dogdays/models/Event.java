@@ -26,10 +26,10 @@ public class Event {
     private String location;
 
     @Column(nullable = false, length = 255)
-    private java.sql.Date date;
+    private String date;
 
     @Column(nullable = false, length = 255)
-    private java.sql.Time time;
+    private String time;
 
     @OneToOne
     private User user;
@@ -60,7 +60,7 @@ public class Event {
 
     public Event (){}
 
-    public Event(String title, String description, String location, java.sql.Date date, java.sql.Time time, User user){
+    public Event(String title, String description, String location, String date, String time, User user){
 
         this.title = title;
         this.description = description;
@@ -96,19 +96,19 @@ public class Event {
         this.location = location;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(java.sql.Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public java.sql.Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(java.sql.Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

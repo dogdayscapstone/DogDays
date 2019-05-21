@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Dog Days | Schedule An Event</title>
+    <link rel="icon" href="images/download.png" type="image/x-icon"/>
 
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet" id="bootstrap-css"/>
@@ -16,88 +17,124 @@
 
 <div class="container">
 
-<h2>Schedule A New Dog Day</h2>
+    <h2>Schedule A New Dog Day</h2>
 
 
-<form th:action="@{/events/create}" th:method="post" th:object="${event}">
+    <form th:action="@{/events/create}" th:method="post" th:object="${event}">
 
-    <div class="form-group">
-        <label for="title">Event</label>
-        <input id="title" class="form-control" th:field="*{title}" />
-    </div>
+        <div class="form-group">
+            <label for="title">Event</label>
+            <input id="title" class="form-control" th:field="*{title}" />
+        </div>
 
-    <br />
+        <br />
 
-    <div class="form-group">
-        <label for="description">Description</label>
-        <input id="description" class="form-control" th:field="*{description}" />
-    </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input id="description" class="form-control" th:field="*{description}" />
+        </div>
 
-    <br />
+        <br />
 
-    <div class="form-group">
-        <label for="location">Location</label>
-        <input id="location" class="form-control" th:field="*{location}" />
-    </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input id="location" class="form-control" th:field="*{location}" />
+        </div>
 
-    <br />
+        <br />
 
-    <div class="form-group">
-        <label for="date">Date</label>
+        <div class="form-group">
+            <label for="undate">Date</label>
 
-        <div class="row">
-         <div class='col-sm-6'>
+            <div class="row">
+                <div class='col-sm-6'>
 
 
                     <div class='input-group date' id='datepicker'>
-                        <input id="date" class="form-control" th:field="*{date}"  />
+                        <input class="form-control" id="undate" name="undate" th:field="*{date}" />
                         <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
                     </div>
 
+                </div>
             </div>
         </div>
-    </div>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+        <link rel="stylesheet"
+              href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
+        <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js"></script>
+        <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>-->
+        <script >
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-<script >
-    $(function () {
-        $('#datepicker').datepicker({
-            format: "yyyy-mm-dd",
-            autoclose: true,
-            todayHighlight: true,
-            showOtherMonths: true,
-            selectOtherMonths: true,
-            autoclose: true,
-            changeMonth: true,
-            changeYear: true,
-            orientation: "button"
-        });
-    });
-</script>
+            $('#datepicker').datetimepicker({
+                defaultDate: new Date(),
+                format: ' YYYY-MM-DD ',
+
+                sideBySide: true
+            });
+            $(document).ready(function () {
+                $('#datepicker').datetimepicker({
+                    defaultDate: new Date()});
+            }).fillseconds();
+
+        </script>
+        <br />
+
+        <div class="form-group">
+            <!--<label for="time">Time</label>-->
+            time:
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class='input-group date' id='timepicker'>
+                        <input type='text' class="form-control" id="untime" name="untime" th:field="*{time}"/>
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-adjust"></span>
+                    </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+        <link rel="stylesheet"
+              href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
+        <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js"></script>
+
+        <script>
+
+            $('#timepicker').datetimepicker({
+                defaultDate: new Date(),
+                format: ' hh:mm:ss A ',
+                // orientation: "button",
+
+                sideBySide: true
+            });
+            $(document).ready(function () {
+                $('#timepicker').datetimepicker({
+                    defaultDate: new Date()});
+            }).fillseconds();
+        </script>
+        <br />
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-block btn-primary" />
+        </div>
 
 
+    </form>
 
 
-
-    <br />
-
-    <div class="form-group">
-        <label for="time">Time</label>
-        <input id="time" class="form-control" th:field="*{time}" />
-    </div>
-
-    <br />
-
-    <div class="form-group">
-        <input type="submit" class="btn btn-block btn-primary" />
-    </div>
-
-</form>
-
-    </div>
+</div>
 
 
 </body>
 </html>
+
+
