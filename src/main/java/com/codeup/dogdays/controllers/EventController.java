@@ -159,6 +159,42 @@ public class EventController {
         return "redirect:/events/" + id;
     }
 
+    @PostMapping("/events/{id}/unattend")
+    public String unattendEvent (HttpServletRequest request, @PathVariable Long id){
 
+        User user = (User)request.getSession().getAttribute("user");
+        Event event = eventRepo.findOne(id);
+        List<Dog> dogs = user.getDogs();
+        List<Dog> eventDogs = event.getDogAttendees();
+
+
+        for(int i = 0; i < dogs.size(); i++){
+
+            Dog dog = dogs.get(i);
+            Dog goodDog = new Dog();
+
+            for(int x = 0; x < event.getDogAttendees().size(); x++){
+               if(event.getDogAttendees().get(x).getId() == dogs.get(i).getId()){
+                   goodDog = event.getDogAttendees().get(x);
+
+               }
+           }
+
+
+
+            int index = event.getDogAttendees().indexOf(goodDog);
+
+            eventDogs.remove(index);
+
+            event.setDogAttendees(eventDogs);
+
+            eventRepo.save(event);
+
+        }
+
+
+
+        return "redirect:/events/" + id;
+    }
 
 }
