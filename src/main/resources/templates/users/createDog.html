@@ -33,9 +33,18 @@
     <input th:field="*{dob}" />
     <br />
 
+
     Gender:
-    <input th:field="*{gender}" />
-    <br />
+
+
+    <select name="gender_preference" th:field="*{gender}">
+
+        <option value="M">M</option>
+        <option value="F">F</option>
+
+    </select>
+    <br/>
+
 
     Temperament:
     <input th:field="*{temperament}" />

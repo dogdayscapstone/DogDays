@@ -24,15 +24,23 @@
     <p>Username: <span th:text="${user.getUsername()}"></span></p>
     <p>Email: <span th:text="${user.getEmail()}"></span></p>
 </div>
+<form method="GET" action="/profile/createDog">
+<button>Attach a Dog</button>
+</form>
 
-<button><a th:href="'/profile/createDog'">Attach a Dog</a></button>
-<button><a th:href="'/profile/mydogs'">My Dogs</a></button>
+<form method="GET" action="/profile/mydogs">
+<button>My Dogs</button>
+</form>
 
     <div class="container">
 
         <h1 class="text-center">My Dog Days</h1>
+        <form method="GET" action="events/create">
 
-        <button><a th:href="'events/create'">Schedule An Event</a></button>
+        <button>Schedule An Event</button>
+
+</form>
+
 
         <div class="row">
 
@@ -45,10 +53,12 @@
 
 
 
-                <button><a th:href="'events/'+ ${item.id}+'/edit'">Edit</a></button>
+            <form method="GET" th:action="@{/events/{id}/edit(id = ${item.getId()})}">
+                <button  class="btn btn-primary">Edit</button>
+            </form>
 
-                <form method="GET">
-                    <button><a th:href="'events/'+ ${item.id}+'/delete'">Delete</a></button>
+                <form method="GET" th:action="@{/events/{id}/delete(id = ${item.getId()})}">
+                    <button class="btn btn-primary">Delete</button>
                 </form>
 
 
