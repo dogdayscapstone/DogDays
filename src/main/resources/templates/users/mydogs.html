@@ -14,7 +14,7 @@
 
 
 <h1>My Dogs</h1>
-<h2>User: <a th:href="'/profile'"><span th:text="${user.getUsername()}"></span></a></h2>
+<!--<h2>User: <a th:href="'/profile'"><span th:text="${user.getUsername()}"></span></a></h2>-->
 
 <div class="row">
 
@@ -34,7 +34,7 @@
     <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/edit'">Edit <span th:text="${item.name}"></span></a></button>
 
     <form method="GET" >
-        <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/delete'">Delete <span th:text="${item.name}"></span></a></button>
+        <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/delete'">Delete</a></button>
     </form>
 
 

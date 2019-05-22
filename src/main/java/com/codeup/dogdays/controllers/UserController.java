@@ -16,7 +16,7 @@ public class UserController {
     }
 
 
-          
+
     @GetMapping("/register")
     public String showRegisterForm (Model viewModel){
 
@@ -40,55 +40,55 @@ public class UserController {
 
 
 
-            @GetMapping("/login")
-            public String showLoginForm () {
-                return "users/login";
-            }
+    @GetMapping("/login")
+    public String showLoginForm () {
+        return "users/login";
+    }
 
-            @PostMapping("/login")
-            public String loginUser (HttpServletRequest request, @RequestParam("username") String username, @RequestParam("password") String password) {
-                User user = userRepo.findByUsername(username);
-
-                if (password.equals(user.getPassword())) {
-                    request.getSession().setAttribute("user", user);
-                    return "redirect:/";
-                } else {
-                    return "redirect:/login";
-                }
-            }
-
-            @GetMapping("/logout")
-            public String logoutUser(HttpServletRequest request){
-                request.getSession().removeAttribute("user");
-                request.getSession().invalidate();
-                return "redirect:/login";
-            }
-
-            @GetMapping("/profile")
-            public String showProfilePage (HttpServletRequest request, Model vmodel) {
-
-                if(request.getSession().getAttribute("user") == null){
-                    return "redirect:/login";
-                }
-
-                User user = (User)request.getSession().getAttribute("user");
-                vmodel.addAttribute("user", user);
-                return "users/profile";
-            }
+    @PostMapping("/login")
+    public String loginUser (HttpServletRequest request, @RequestParam("username") String username, @RequestParam("password") String password) {
+        User user = userRepo.findByUsername(username);
 
 
-            @GetMapping("/users/{id}/edit")
-            public String getEditUserForm ( @PathVariable int id){
+        if (password.equals(user.getPassword())) {
+            request.getSession().setAttribute("user", user);
+            return "redirect:/";
+        } else {
+            return "redirect:/login";
+        }
+    }
 
-                return "users/editUser";
-            }
+    @GetMapping("/logout")
+    public String logoutUser(HttpServletRequest request){
+        request.getSession().removeAttribute("user");
+        request.getSession().invalidate();
+        return "redirect:/login";
+    }
 
-            @PostMapping("/users/{id}/edit")
-            public String EditUser ( @PathVariable int id){
+    @GetMapping("/profile")
+    public String showProfilePage (HttpServletRequest request, Model vmodel) {
 
-                return "users/editUser";
-            }
-
-
+        if(request.getSession().getAttribute("user") == null){
+            return "redirect:/login";
         }
 
+        User user = (User)request.getSession().getAttribute("user");
+        vmodel.addAttribute("user", user);
+        return "users/profile";
+    }
+
+
+    @GetMapping("/users/{id}/edit")
+    public String getEditUserForm ( @PathVariable int id){
+
+        return "users/editUser";
+    }
+
+    @PostMapping("/users/{id}/edit")
+    public String EditUser ( @PathVariable int id){
+
+        return "users/editUser";
+    }
+
+
+}

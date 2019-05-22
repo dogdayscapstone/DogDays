@@ -83,7 +83,7 @@ public class DogController {
     }
 
     @GetMapping("/profile/mydogs/{id}/delete")
-    public String deletePost(@PathVariable Long id, Model model) {
+    public String deleteDogPost(@PathVariable Long id, Model model) {
         Dog dog = dogRepo.findOne(id);
         dogRepo.delete(dog);
         return "redirect:/profile/mydogs";
@@ -93,3 +93,5 @@ public class DogController {
 
 
 }
+
+
