@@ -39,10 +39,8 @@
     </div>
 
     <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/edit'">Edit <span th:text="${item.name}"></span></a></button>
+    <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/delete'">Delete <span th:text="${item.name}"></span></a></button>
 
-    <form method="GET" >
-        <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/delete'">Delete <span th:text="${item.name}"></span></a></button>
-    </form>
 
 
 </div>

@@ -52,6 +52,19 @@ public class EventController {
         return filteredDogs;
     }
 
+    public List<Event> eventsByUser(List<Event> events, User user){
+        List<Event> filteredEvents = new ArrayList<>();
+
+        for(int i = 0; i < events.size(); i++){
+            if(events.get(i).getUser().getId() == user.getId()){
+                filteredEvents.add(events.get(i));
+            }
+        }
+
+        return filteredEvents;
+    }
+
+
     @GetMapping("/events")
     public String allEvents (Model model){
         model.addAttribute("events", eventRepo.findAll());

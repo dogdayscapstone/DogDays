@@ -76,16 +76,36 @@ public class DogController {
     @PostMapping("/profile/createDog")
     public String createDogPost(@ModelAttribute Dog dog,HttpServletRequest request) {
         User user = (User)request.getSession().getAttribute("user");
+
         User dbUser = userRepo.findOne(user.getId());
+
         dog.setDogs(dbUser);
+
         dogRepo.save(dog);
+
         return "redirect:/profile/mydogs";
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     @GetMapping("/profile/mydogs/{id}/delete")
-    public String deletePost(@PathVariable Long id, Model model) {
+    public String deletePost(@PathVariable Long id) {
+
         Dog dog = dogRepo.findOne(id);
+
         dogRepo.delete(dog);
+
+
         return "redirect:/profile/mydogs";
     }
 

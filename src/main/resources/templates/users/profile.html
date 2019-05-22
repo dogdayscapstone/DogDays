@@ -25,9 +25,36 @@
     <p>Email: <span th:text="${user.getEmail()}"></span></p>
 </div>
 
-
 <button><a th:href="'/profile/createDog'">Attach a Dog</a></button>
 <button><a th:href="'/profile/mydogs'">My Dogs</a></button>
+
+    <div class="container">
+
+        <h1 class="text-center">My Dog Days</h1>
+
+        <button><a th:href="'events/create'">Schedule An Event</a></button>
+
+        <div class="row">
+
+            <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
+                <h3> Title: <a th:href="'events/'+ ${item.getId()}"><span th:text="${item.title}"></span></a></h3>
+                <p>Description: <span th:text="${item.description}"></span></p>
+                <p>Location: <span th:text="${item.location}"></span></p>
+                <p>Date: <span th:text="${item.date}"></span></p>
+                <p>Time: <span th:text="${item.time}"></span></p>
+
+
+
+                <button><a th:href="'events/'+ ${item.id}+'/edit'">Edit</a></button>
+
+                <form method="GET">
+                    <button><a th:href="'events/'+ ${item.id}+'/delete'">Delete</a></button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
 
 </div>
 
