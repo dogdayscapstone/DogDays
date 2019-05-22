@@ -36,11 +36,11 @@
             <p>Email: <span th:text="${user.getEmail()}"></span></p>
             
             <form method="GET" action="/profile/createDog">
-              <button>Attach a Dog</button>
+              <button class="btn btn-primary mt-2">Attach a Dog</button>
             </form>
       
             <form method="GET" action="/profile/mydogs">
-              <button>My Dogs</button>
+              <button class="btn btn-info pt-2">My Dogs</button>
             </form>
              
         </div>
@@ -53,7 +53,7 @@
         <h1 class="text-center">My Dog Days</h1>
         <form method="GET" action="events/create">
 
-        <button>Schedule An Event</button>
+        <button class="btn btn-info">Schedule An Event</button>
 
 </form>
 
@@ -71,7 +71,7 @@
 
 
             <form method="GET" th:action="@{/events/{id}/edit(id = ${item.getId()})}">
-                <button  class="btn btn-primary">Edit</button>
+                <button  class="btn btn-primary mt-2">Edit</button>
             </form>
 
                 <form method="GET" th:action="@{/events/{id}/delete(id = ${item.getId()})}">
