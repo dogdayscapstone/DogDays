@@ -48,6 +48,7 @@ public class UserController {
             @PostMapping("/login")
             public String loginUser (HttpServletRequest request, @RequestParam("username") String username, @RequestParam("password") String password) {
                 User user = userRepo.findByUsername(username);
+                
 
                 if (password.equals(user.getPassword())) {
                     request.getSession().setAttribute("user", user);

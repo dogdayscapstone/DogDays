@@ -17,7 +17,14 @@
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="/js/show-page.js"></script>
 
-<!--<nav th:replace="fragments/navbar :: navbar"></nav>-->
+<td>
+    <span th:if="${session.user == null}"  >
+        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
+    </span>
+    <span th:unless="${session.user == null}">
+        <nav th:replace="fragments/navbar :: navbar"></nav>
+    </span>
+</td>
 
 
 <div class="container">
