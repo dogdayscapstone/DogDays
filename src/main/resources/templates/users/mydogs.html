@@ -32,10 +32,10 @@
     </div>
 
     <form method="GET" th:action="@{/profile/mydogs/{id}/edit(id = ${item.getId()})}">
-    <button class="btn btn-primary"><a th:href="'/profile/mydogs/'+ ${item.id}+'/edit'">Edit <span th:text="${item.name}"></span></a></button>
+    <button class="btn btn-primary">Edit <span th:text="${item.name}"></span></button>
 </form>
     <form method="GET" >
-        <button class=" btn btn-primary"><a th:href="'/profile/mydogs/'+ ${item.id}+'/delete'">Delete <span th:text="${item.name}"></span></a></button>
+        <button class=" btn btn-primary">Delete <span th:text="${item.name}"></span></a></button>
     </form>
 
 
