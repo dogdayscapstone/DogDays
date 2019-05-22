@@ -18,39 +18,57 @@
 </td>
 
 
-<h2>Create Dog Post</h2>
+<h2 class="text-center">Attach A Dog Profile</h2>
 
+<div class="container">
+    <form th:action="@{/profile/createDog}" th:method="post" th:object="${dog}">
 
-<form th:action="@{/profile/createDog}" th:method="post" th:object="${dog}">
-    Name:
-    <input th:field="*{name}" />
-    <br />
-    Breed:
-    <input th:field="*{breed}" />
-    <br />
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id ="name" class="form-control" th:field="*{name}" />
+        </div>
 
-    dob:
-    <input th:field="*{dob}" />
-    <br />
+        <div class="form-group">
+            <label for="breed">Breed</label>
+            <input id="breed" class="form-control" th:field="*{breed}" />
+        </div>
 
-    Gender:
-    <input th:field="*{gender}" />
-    <br />
+        <div class="form-group">
+            <label for="dob">Birthday (Month/Year)</label>
+            <input id="dob" class="form-control" th:field="*{dob}" />
+        </div>
 
-    Temperament:
-    <input th:field="*{temperament}" />
-    <br />
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" class="form-control" th:field="*{gender}">
+                <option value="M">M</option>
+                <option value="F">F</option>
+            </select>
+        </div>
 
-    Picture:
-    <input th:field="*{dogPicture}" />
-    <br />
+        <div class="form-group">
+            <label for="temperament">Temperament</label>
+            <select id="temperament" name="temperament" class="form-control" th:field="*{temperament}">
+                <option value="friendly with all dogs">Friendly / All Dogs</option>
+                <option value="friendly only with big dogs">Friendly / Only Big Dogs</option>
+                <option value="friendly only with small dogs">Friendly / Only Small Dogs</option>
+            </select>
+        </div>
 
+        <div class="form-group">
+            <label for="picture">Picture</label>
+            <input id="picture" class="form-control" th:field="*{dogPicture}" />
+        </div>
 
-    Description:
-    <input th:field="*{description}" />
-    <br />
-    <input type="submit" />
-</form>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" class="form-control" th:field="*{description}" />
+        </div>
+
+        <input type="submit" class="btn btn-block btn-primary" value="Attach Now" />
+    </form>
+
+</div>
 
 
 

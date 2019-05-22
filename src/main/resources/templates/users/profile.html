@@ -15,18 +15,33 @@
     <span th:unless="${session.user == null}">
         <nav th:replace="fragments/navbar :: navbar"></nav>
     </span>
-</td><div class="container">
+</td>
+
+<div class="container">
 
 <h1>Your Profile: <span th:text="${user.getUsername()}"></span></h1>
 
-<div>
-    <p>Profile Information</p>
-    <p>Username: <span th:text="${user.getUsername()}"></span></p>
-    <p>Email: <span th:text="${user.getEmail()}"></span></p>
-</div>
+    <div class="container">
+        <div class="row">
 
-<button><a th:href="'/profile/createDog'">Attach a Dog</a></button>
-<button><a th:href="'/profile/mydogs'">My Dogs</a></button>
+        <div class="col-sm-6 col-lg-4">
+            <p>
+                <img width="150" th:src="@{${user.getPicture()}}"/>
+            </p>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <p>Profile Information</p>
+            <p>Username: <span th:text="${user.getUsername()}"></span></p>
+            <p>Email: <span th:text="${user.getEmail()}"></span></p>
+            <button><a th:href="'/profile/createDog'">Attach a Dog</a></button>
+            <button><a th:href="'/profile/mydogs'">My Dogs</a></button>
+        </div>
+
+        </div>
+    </div>
+
+
 
     <div class="container">
 
@@ -35,6 +50,7 @@
         <button><a th:href="'events/create'">Schedule An Event</a></button>
 
         <div class="row">
+
 
             <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
                 <h3> Title: <a th:href="'events/'+ ${item.getId()}"><span th:text="${item.title}"></span></a></h3>
@@ -56,12 +72,12 @@
         </div>
     </div>
 
+
+
+
+
+
 </div>
-
-
-
-
-
 
 </body>
 </html>
