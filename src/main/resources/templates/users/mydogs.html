@@ -8,14 +8,7 @@
 
 </head>
 <body>
-<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 
 <div class="container">
 
@@ -38,9 +31,12 @@
 
     </div>
 
-    <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/edit'">Edit <span th:text="${item.name}"></span></a></button>
-    <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/delete'">Delete <span th:text="${item.name}"></span></a></button>
-
+    <form method="GET" th:action="@{/profile/mydogs/{id}/edit(id = ${item.getId()})}">
+    <button class="btn btn-primary">Edit <span th:text="${item.name}"></span></button>
+</form>
+    <!--<form method="GET" >-->
+        <!--<button class=" btn btn-primary">Delete <span th:text="${item.name}"></span></button>-->
+    <!--</form>-->
 
 
 </div>
