@@ -1,11 +1,8 @@
 package com.codeup.dogdays.controllers;
 
-import com.codeup.dogdays.models.Comment;
 import com.codeup.dogdays.models.Dog;
-import com.codeup.dogdays.models.Event;
 import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.DogRepository;
-import com.codeup.dogdays.repositories.EventRepository;
 import com.codeup.dogdays.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +38,7 @@ public class DogController {
         model.addAttribute("user", user);
         model.addAttribute("dogs", EC.dogsByUser((List<Dog>)dogRepo.findAll(), userRepo.findOne(user.getId())));
 
-        return "users/mydogs";
+        return "dogs/mydogs";
     }
 
 
@@ -51,7 +48,7 @@ public class DogController {
     public String getEditDogUserForm( Model model,@PathVariable Long id) {
         Dog dog = dogRepo.findOne(id);
         model.addAttribute("dog", dog);
-        return "users/editDog";
+        return "dogs/editDog";
     }
 
 
@@ -70,7 +67,7 @@ public class DogController {
     @GetMapping("/profile/createDog")
     public String showCreateDogForm(Model model) {
         model.addAttribute("dog", new Dog());
-        return "users/createDog";
+        return "dogs/createDog";
     }
 
     @PostMapping("/profile/createDog")
