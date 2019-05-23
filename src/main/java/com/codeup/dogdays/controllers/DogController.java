@@ -1,11 +1,8 @@
 package com.codeup.dogdays.controllers;
 
-import com.codeup.dogdays.models.Comment;
 import com.codeup.dogdays.models.Dog;
-import com.codeup.dogdays.models.Event;
 import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.DogRepository;
-import com.codeup.dogdays.repositories.EventRepository;
 import com.codeup.dogdays.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -43,7 +40,7 @@ public class DogController {
         model.addAttribute("user", sessionUser);
         model.addAttribute("dogs", EC.dogsByUser((List<Dog>)dogRepo.findAll(), userRepo.findOne(sessionUser.getId())));
 
-        return "users/mydogs";
+        return "dogs/mydogs";
     }
 
 
@@ -53,7 +50,7 @@ public class DogController {
     public String getEditDogUserForm( Model model,@PathVariable Long id) {
         Dog dog = dogRepo.findOne(id);
         model.addAttribute("dog", dog);
-        return "users/editDog";
+        return "dogs/editDog";
     }
 
 
@@ -77,23 +74,43 @@ public class DogController {
     @GetMapping("/profile/createDog")
     public String showCreateDogForm(Model model) {
         model.addAttribute("dog", new Dog());
-        return "users/createDog";
+        return "dogs/createDog";
     }
 
     @PostMapping("/profile/createDog")
     public String createDogPost(@ModelAttribute Dog dog,HttpServletRequest request) {
+
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = (User)request.getSession().getAttribute("user");
+
         User dbUser = userRepo.findOne(sessionUser.getId());
+
         dog.setDogs(dbUser);
+
         dogRepo.save(dog);
+
         return "redirect:/profile/mydogs";
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     @GetMapping("/profile/mydogs/{id}/delete")
-    public String deletePost(@PathVariable Long id, Model model) {
+    public String deletePost(@PathVariable Long id) {
+
         Dog dog = dogRepo.findOne(id);
+
         dogRepo.delete(dog);
+
+
         return "redirect:/profile/mydogs";
     }
 

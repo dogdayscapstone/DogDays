@@ -7,16 +7,10 @@
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
 
 </head>
+
 <body sec:authorize="isAuthenticated()">
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
-<!--<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>-->
+
 
 <div class="container">
 
@@ -32,18 +26,19 @@
     <p>DOB: <span th:text="${item.dob}"></span></p>
     <p>Gender: <span th:text="${item.gender}"></span></p>
     <p>Mood: <span th:text="${item.temperament}"></span></p>
-    <p>Desciption: <span th:text="${item.description}"></span></p>
+    <p>Description: <span th:text="${item.description}"></span></p>
 
     <div>
         <img width="150" th:src="@{${item.dogPicture}}"/>
 
     </div>
 
-    <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/edit'">Edit <span th:text="${item.name}"></span></a></button>
-
-    <form method="GET" >
-        <button><a th:href="'/profile/mydogs/'+ ${item.id}+'/delete'">Delete <span th:text="${item.name}"></span></a></button>
-    </form>
+    <form method="GET" th:action="@{/profile/mydogs/{id}/edit(id = ${item.getId()})}">
+    <button class="btn btn-primary">Edit <span th:text="${item.name}"></span></button>
+</form>
+    <!--<form method="GET" >-->
+        <!--<button class=" btn btn-primary">Delete <span th:text="${item.name}"></span></button>-->
+    <!--</form>-->
 
 
 </div>

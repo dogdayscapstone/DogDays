@@ -53,6 +53,19 @@ public class EventController {
         return filteredDogs;
     }
 
+    public List<Event> eventsByUser(List<Event> events, User user){
+        List<Event> filteredEvents = new ArrayList<>();
+
+        for(int i = 0; i < events.size(); i++){
+            if(events.get(i).getUser().getId() == user.getId()){
+                filteredEvents.add(events.get(i));
+            }
+        }
+
+        return filteredEvents;
+    }
+
+
     @GetMapping("/events")
     public String allEvents (Model model){
         model.addAttribute("events", eventRepo.findAll());
@@ -162,17 +175,17 @@ public class EventController {
     @PostMapping("/events/{id}/attend")
     public String attendEvent (HttpServletRequest request, @PathVariable Long id){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+        User currentUser = userRepo.findOne(sessionUser.getId());
 
 //        User user = (User)request.getSession().getAttribute("user");
 
         Event event = eventRepo.findOne(id);
-        List<Dog> dogs = sessionUser.getDogs();
+        List<Dog> dogs = currentUser.getDogs();
 
 
         for(int i = 0; i < dogs.size(); i++){
 
-            Dog dog = sessionUser.getDogs().get(i);
+            Dog dog = currentUser.getDogs().get(i);
             event.setDogAttendees(event.getDogAttendees(), dog);
             eventRepo.save(event);
 
@@ -184,9 +197,12 @@ public class EventController {
     @PostMapping("/events/{id}/unattend")
     public String unattendEvent (HttpServletRequest request, @PathVariable Long id){
 
-        User user = (User)request.getSession().getAttribute("user");
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userRepo.findOne(sessionUser.getId());
+
+//        User user = (User)request.getSession().getAttribute("user");
         Event event = eventRepo.findOne(id);
-        List<Dog> dogs = user.getDogs();
+        List<Dog> dogs = currentUser.getDogs();
         List<Dog> eventDogs = event.getDogAttendees();
 
 

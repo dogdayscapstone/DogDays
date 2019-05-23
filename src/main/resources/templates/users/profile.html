@@ -9,40 +9,81 @@
 </head>
 <body sec:authorize="isAuthenticated()">
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
-<!--<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>-->
+
 
 <div class="container" sec:authorize="isAuthenticated()">
 
 <h1>Your Profile: <span th:text="${user.getUsername()}"></span></h1>
 
-<div>
-    <p>Profile Information</p>
+    <div class="container">
+        <div class="row">
 
-   <!-- <p>Username: <span th:text="${session.user}"/></p>
-    <p>Email: <span th:text="${session.user}"/></p>-->
 
-    <p>Username: <span th:text="${user.getUsername()}"></span></p>
-    <p>Email: <span th:text="${user.getEmail()}"></span></p>
+        <div class="col-sm-6 col-lg-4">
+            <p>
+                <img width="150" th:src="@{${user.getPicture()}}"/>
+            </p>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <p>Profile Information</p>
+            <p>Username: <span th:text="${user.getUsername()}"></span></p>
+            <p>Email: <span th:text="${user.getEmail()}"></span></p>
+            
+            <form method="GET" action="/profile/createDog">
+              <button class="btn btn-primary mt-2">Attach a Dog</button>
+            </form>
+      
+            <form method="GET" action="/profile/mydogs">
+              <button class="btn btn-info pt-2">My Dogs</button>
+            </form>
+             
+        </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <h1 class="text-center">My Dog Days</h1>
+        <form method="GET" action="events/create">
+
+        <button class="btn btn-info">Schedule An Event</button>
+
+</form>
+
+
+        <div class="row">
+
+
+            <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
+                <h3> Title: <a th:href="'events/'+ ${item.getId()}"><span th:text="${item.title}"></span></a></h3>
+                <p>Description: <span th:text="${item.description}"></span></p>
+                <p>Location: <span th:text="${item.location}"></span></p>
+                <p>Date: <span th:text="${item.date}"></span></p>
+                <p>Time: <span th:text="${item.time}"></span></p>
+
+
+
+            <form method="GET" th:action="@{/events/{id}/edit(id = ${item.getId()})}">
+                <button  class="btn btn-primary mt-2">Edit</button>
+            </form>
+
+                <form method="GET" th:action="@{/events/{id}/delete(id = ${item.getId()})}">
+                    <button class="btn btn-primary mt-2">Delete</button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 
 </div>
-
-
-<button><a th:href="'/profile/createDog'">Attach a Dog</a></button>
-<button><a th:href="'/profile/mydogs'">My Dogs</a></button>
-
-</div>
-
-
-
-
-
 
 </body>
 </html>

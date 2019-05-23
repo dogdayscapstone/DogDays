@@ -6,6 +6,25 @@
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
 
+    <style>
+        .aboutUs{
+            background: grey;
+            height: 600px;
+            border-radius: 15px;
+            max-width: 350px;
+            color: white;
+            text-align: center;
+            margin: 5px;
+        }
+        .round{
+            border-radius: 15px;
+        }
+        a.links{
+            color: white;
+            text-underline: none;
+            font-size: 2em;
+        }
+    </style>
 </head>
 <body>
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
@@ -18,10 +37,44 @@
     </span>
 </td>-->
 <div class="container">
+    <div class="row" align="center">
+
+        <div class="col col-lg-4 aboutUs">
+            <h3>Megan Simmons</h3>
+            <p>
+                <img width="300" class="round" src="/images/Megan.jpg"/>
+            </p>
+            <p><a class="links" href="https://alumni.codeup.com/uploads/671-1558463980.pdf">Resume</a></p>
+            <p><a class="links" href="https://www.linkedin.com/in/megan-l-simmons/">LinkedIn</a></p>
+            <p><a class="links" href="https://github.com/megansimmons">GitHub</a></p>
 
 
-<h1>ABOUT US</h1>
-<p>Dog Days was developed by a small team of developers who love dogs.</p>
+        </div>
+        <div class="col col-lg-4 aboutUs">
+            <h3>Sabita Regmi</h3>
+            <p>
+                <img width="300" class="round" src="/images/Sabita.jpg"/>
+            </p>
+            <p><a class="links" href="https://alumni.codeup.com/uploads/672-1558124422.pdf">Resume</a></p>
+            <p><a class="links" href="https://www.linkedin.com/in/sabita-regmi/">LinkedIn</a></p>
+            <p><a class="links" href="https://github.com/Sabita-Regmi">GitHub</a></p>
+
+        </div>
+        <div class="col col-lg-4 aboutUs">
+            <h3>Marcus Aguirre</h3>
+            <p>
+                <img width="300" class="round" src="/images/Marcus.jpg"/>
+            </p>
+            <p><a class="links" href="https://alumni.codeup.com/uploads/663-1558106927.pdf">Resume</a></p>
+            <p><a class="links" href="https://www.linkedin.com/in/marcus-a-aguirre/">LinkedIn</a></p>
+            <p><a class="links" href="https://github.com/Marcus-Aguirre">GitHub</a></p>
+
+        </div>
+
+    </div>
+
+
+
 </div>
 </body>
 </html>
