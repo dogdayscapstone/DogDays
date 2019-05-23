@@ -4,6 +4,8 @@ import com.codeup.dogdays.models.Event;
 import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.EventRepository;
 import com.codeup.dogdays.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,17 +16,22 @@ import java.util.List;
 @Controller
 public class UserController {
     private final UserRepository userRepo;
+
+
+    private PasswordEncoder passwordEncoder;
     private final EventRepository eventRepo;
     private EventController EC;
 
-    public UserController(UserRepository userRepo, EventController EC, EventRepository eventRepo) {
+    public UserController(UserRepository userRepo, EventController EC, EventRepository eventRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.eventRepo = eventRepo;
         this.EC = EC;
+        this.passwordEncoder = passwordEncoder;
+
     }
 
 
-          
+
     @GetMapping("/register")
     public String showRegisterForm (Model viewModel){
 
@@ -35,28 +42,32 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public String saveUser (@ModelAttribute User user,
-                            @RequestParam("confirmedPassword") String confirmedPassword){
-        if(user.getPassword().equals(confirmedPassword)){
-            user.setPicture("/images/person_default.png");
-            userRepo.save(user);
+    public String saveUser (@ModelAttribute User user, Model vmodel){
+        for(User registeredUser : userRepo.findAll()){
+            if(user.getUsername().equals(registeredUser.getUsername()) || user.getEmail().equals(registeredUser.getEmail())){
+                if((user.getUsername().equals(registeredUser.getUsername()))){
+                    vmodel.addAttribute("invalidUserName", "Username already taken");
+                    return "users/signup-form";
+                } else if(user.getEmail().equals(registeredUser.getEmail())){
+                    vmodel.addAttribute("duplicateEmail", "Email already in use");
+                    return "users/signup-form";
+                }
+            }
         }
+
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        user.setPicture("/images/person_default.png");
+        userRepo.save(user);
+
         return "redirect:/login";
     }
 
 
-
-
-
-            @GetMapping("/login")
-            public String showLoginForm () {
-                return "users/login";
-            }
-
             @PostMapping("/login")
             public String loginUser (HttpServletRequest request, @RequestParam("username") String username, @RequestParam("password") String password) {
-                User user = userRepo.findByUsername(username);
-                
+//                User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                 User user = userRepo.findByUsername(username);
 
                 if (password.equals(user.getPassword())) {
                     request.getSession().setAttribute("user", user);
@@ -75,14 +86,18 @@ public class UserController {
 
             @GetMapping("/profile")
             public String showProfilePage (HttpServletRequest request, Model vmodel) {
-
-                if(request.getSession().getAttribute("user") == null){
+                User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                if(sessionUser == null){
                     return "redirect:/login";
                 }
 
-                User user = (User)request.getSession().getAttribute("user");
-                vmodel.addAttribute("user", user);
-                vmodel.addAttribute("events", EC.eventsByUser((List<Event>)eventRepo.findAll(), user));
+                User currentUser = userRepo.findOne(sessionUser.getId());
+
+                vmodel.addAttribute("user", currentUser);
+
+
+                vmodel.addAttribute("events", EC.eventsByUser((List<Event>)eventRepo.findAll(), currentUser));
+
                 return "users/profile";
             }
 

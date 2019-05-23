@@ -8,6 +8,8 @@
 
 </head>
 <body>
+<nav th:replace = "fragments/navbar :: navbar" ></nav>
+<!--
 <td>
     <span th:if="${session.user == null}"  >
         <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
@@ -16,9 +18,17 @@
         <nav th:replace="fragments/navbar :: navbar"></nav>
     </span>
 </td>
+-->
 
 <div class="container">
 <h1>Login</h1>
+    <div th:if="${param.error}">
+        Invalid Username and Password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+
     <form th:action="@{/login}" method="post">
 
         <div class="form-group">

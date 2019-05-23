@@ -7,6 +7,7 @@ import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.CommentRepository;
 import com.codeup.dogdays.repositories.EventRepository;
 import com.codeup.dogdays.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,14 +49,18 @@ public class CommentController {
 
     @PostMapping("/events/{id}/comment")
     public String saveComment(HttpServletRequest request, @ModelAttribute Comment comment, @PathVariable long id) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        if(request.getSession().getAttribute("user") == null){
+        /*if(request.getSession().getAttribute("user") == null){
             return "redirect:/login";
         }
 
-        User user = (User)request.getSession().getAttribute("user");
+        User user = (User)request.getSession().getAttribute("user");*/
 
-        comment.setUser(user);
+
+        User currentUser = userRepo.findOne(sessionUser.getId());
+
+        comment.setUser(currentUser);
         comment.setEvents(eventRepo.findOne(id));
 
         List<Comment> allComments = (List<Comment>)commentRepo.findAll();

@@ -17,7 +17,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique= true)
     private String email;
 
     @Column(nullable = false)
@@ -43,6 +43,16 @@ public class User {
 
 
     public User(){}
+
+    public User(User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        picture = copy.picture;
+        isAdmin = copy.isAdmin;
+        isFlagged = copy.isFlagged;
+    }
 
 
     public User(String username, String email, String password, String picture){
