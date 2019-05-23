@@ -58,9 +58,13 @@ public class DogController {
 
 
     @PostMapping("/profile/mydogs/{id}/edit")
+
     public String editDog(@ModelAttribute Dog dog,HttpServletRequest request) {
+
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
 //        User user = (User)request.getSession().getAttribute("user");
+
         User dbUser = userRepo.findOne(sessionUser.getId());
         dog.setDogs(dbUser);
         dogRepo.save(dog);
