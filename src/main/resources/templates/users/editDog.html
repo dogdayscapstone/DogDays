@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <title>Dog Days | Edit Dog</title>
@@ -7,15 +7,16 @@
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
 
 </head>
-<body>
-<td>
+<body sec:authorize="isAuthenticated()">
+<nav th:replace="fragments/navbar :: navbar" ></nav>
+<!--<td>
     <span th:if="${session.user == null}"  >
         <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
     </span>
     <span th:unless="${session.user == null}">
         <nav th:replace="fragments/navbar :: navbar"></nav>
     </span>
-</td>
+</td>-->
 
 <div class="container">
 

@@ -9,6 +9,7 @@ import com.codeup.dogdays.repositories.CommentRepository;
 import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.EventRepository;
 import com.codeup.dogdays.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -62,10 +63,15 @@ public class EventController {
 
     @GetMapping("/events/create")
     public String showPostForm (Model model, HttpServletRequest request){
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        if(request.getSession().getAttribute("user") == null){
+
+/*        if(sessionUser == null){
             return "redirect:/login";
-        }
+        }*/
+      /*  if(request.getSession().getAttribute("user") == null){
+            return "redirect:/login";
+        }*/
 
         model.addAttribute("event", new Event());
         return "events/create";
@@ -74,9 +80,15 @@ public class EventController {
     @PostMapping("/events/create")
     public String createPost (@ModelAttribute Event event,HttpServletRequest request) {
 
-        User user = (User)request.getSession().getAttribute("user");
-        User dbUser = userRepo.findOne(user.getId());
-        event.setUser(dbUser);
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userRepo.findOne(sessionUser.getId());
+        event.setUser(currentUser);
+
+//        User user = (User)request.getSession().getAttribute("user");
+
+//        User dbUser = userRepo.findOne(user.getId());
+
+//        event.setUser(dbUser);
 
         eventRepo.save(event);
         return "redirect:/events";
@@ -115,9 +127,16 @@ public class EventController {
     @PostMapping("/events/{id}/edit")
     public String editPost (@ModelAttribute Event event,HttpServletRequest request){
 
-        User user = (User)request.getSession().getAttribute("user");
-        User dbUser = userRepo.findOne(user.getId());
-        event.setUser(dbUser);
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userRepo.findOne(sessionUser.getId());
+        event.setUser(currentUser);
+
+//        User user = (User)request.getSession().getAttribute("user");
+//        User dbUser = userRepo.findOne(user.getId());
+
+//        event.setUser(dbUser);
+
+
         eventRepo.save(event);
         return "redirect:/events";
     }
@@ -142,15 +161,18 @@ public class EventController {
 
     @PostMapping("/events/{id}/attend")
     public String attendEvent (HttpServletRequest request, @PathVariable Long id){
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        User user = (User)request.getSession().getAttribute("user");
+
+//        User user = (User)request.getSession().getAttribute("user");
+
         Event event = eventRepo.findOne(id);
-        List<Dog> dogs = user.getDogs();
+        List<Dog> dogs = sessionUser.getDogs();
 
 
         for(int i = 0; i < dogs.size(); i++){
 
-            Dog dog = user.getDogs().get(i);
+            Dog dog = sessionUser.getDogs().get(i);
             event.setDogAttendees(event.getDogAttendees(), dog);
             eventRepo.save(event);
 

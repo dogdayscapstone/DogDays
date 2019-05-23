@@ -7,6 +7,7 @@ import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.DogRepository;
 import com.codeup.dogdays.repositories.EventRepository;
 import com.codeup.dogdays.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,9 +38,10 @@ public class DogController {
 
     @GetMapping("/profile/mydogs")
     public String showDogsProfile(Model model, HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute("user");
-        model.addAttribute("user", user);
-        model.addAttribute("dogs", EC.dogsByUser((List<Dog>)dogRepo.findAll(), userRepo.findOne(user.getId())));
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = (User) request.getSession().getAttribute("user");
+        model.addAttribute("user", sessionUser);
+        model.addAttribute("dogs", EC.dogsByUser((List<Dog>)dogRepo.findAll(), userRepo.findOne(sessionUser.getId())));
 
         return "users/mydogs";
     }
@@ -57,8 +59,9 @@ public class DogController {
 
     @PostMapping("/profile/mydogs/{id}/edit")
     public String editDog(@ModelAttribute Dog dog,HttpServletRequest request) {
-        User user = (User)request.getSession().getAttribute("user");
-        User dbUser = userRepo.findOne(user.getId());
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = (User)request.getSession().getAttribute("user");
+        User dbUser = userRepo.findOne(sessionUser.getId());
         dog.setDogs(dbUser);
         dogRepo.save(dog);
         return "redirect:/profile/mydogs";
@@ -75,8 +78,9 @@ public class DogController {
 
     @PostMapping("/profile/createDog")
     public String createDogPost(@ModelAttribute Dog dog,HttpServletRequest request) {
-        User user = (User)request.getSession().getAttribute("user");
-        User dbUser = userRepo.findOne(user.getId());
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = (User)request.getSession().getAttribute("user");
+        User dbUser = userRepo.findOne(sessionUser.getId());
         dog.setDogs(dbUser);
         dogRepo.save(dog);
         return "redirect:/profile/mydogs";

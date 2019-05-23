@@ -8,15 +8,15 @@
 
 </head>
 <body>
-
-<td>
+<nav th:replace = "fragments/navbar :: navbar" ></nav>
+<!--<td>
     <span th:if="${session.user == null}"  >
         <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
     </span>
     <span th:unless="${session.user == null}">
         <nav th:replace="fragments/navbar :: navbar"></nav>
     </span>
-</td>
+</td>-->
 <div class="container">
 
 
