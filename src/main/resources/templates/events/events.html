@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:max-width="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title>Dog Days | Upcoming</title>
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
+
+    <style>
+        .card{
+            border-radius:10px;
+        }
+        .f-color{
+            black;
+        }
+    </style>
 
 </head>
 <body>
@@ -20,23 +29,27 @@
 
 <div class="container">
 
-    <h1 class="text-center">Upcoming Dog Days</h1>
+    <h1 class=" event-heading text-center">Upcoming Dog Days</h1>
     <form method="GET" action="events/create">
 
     <button class="btn btn-info">Schedule An Event</button>
     </form>
 
     <div class="row">
-
+<div class="card">
     <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
-        <h3> Title: <a th:href="'events/'+ ${item.getId()}"><span th:text="${item.title}"></span></a></h3>
+        <div class=" f-color card-header card-title bg-primary width=200px height=200px text-black text-center">
+            <h3> Title: <a th:href="'events/'+ ${item.getId()}"><span th:text="${item.title}"></span></a></h3>
+        </div>
+        <div class="card card-body card-text text-black bg-info width=400px height=500px mt-2 mb-2 text-center">
         <p>Description: <span th:text="${item.description}"></span></p>
         <p>Location: <span th:text="${item.location}"></span></p>
         <p>Date: <span th:text="${item.date}"></span></p>
         <p>Time: <span th:text="${item.time}"></span></p>
+        </div>
 
 
-
+    </div>
     </div>
 </div>
 </div>
