@@ -9,6 +9,7 @@ import com.codeup.dogdays.repositories.CommentRepository;
 import com.codeup.dogdays.models.User;
 import com.codeup.dogdays.repositories.EventRepository;
 import com.codeup.dogdays.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -76,10 +77,8 @@ public class EventController {
     @GetMapping("/events/create")
     public String showPostForm (Model model, HttpServletRequest request){
 
-        if(request.getSession().getAttribute("user") == null){
-            return "redirect:/login";
-        }
-
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userRepo.findOne(sessionUser.getId());
         model.addAttribute("event", new Event());
         return "events/create";
     }
@@ -87,8 +86,10 @@ public class EventController {
     @PostMapping("/events/create")
     public String createPost (@ModelAttribute Event event,HttpServletRequest request) {
 
-        User user = (User)request.getSession().getAttribute("user");
-        User dbUser = userRepo.findOne(user.getId());
+
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userRepo.findOne(sessionUser.getId());
+        event.setUser(dbUser);
         event.setUser(dbUser);
 
         eventRepo.save(event);

@@ -48,7 +48,7 @@ public class DogController {
     public String getEditDogUserForm( Model model,@PathVariable Long id) {
         Dog dog = dogRepo.findOne(id);
         model.addAttribute("dog", dog);
-        return "dogs/editDog";
+        return "dogss/editDog";
     }
 
 
@@ -67,7 +67,7 @@ public class DogController {
     @GetMapping("/profile/createDog")
     public String showCreateDogForm(Model model) {
         model.addAttribute("dog", new Dog());
-        return "dogs/createDog";
+        return "users/createDog";
     }
 
     @PostMapping("/profile/createDog")

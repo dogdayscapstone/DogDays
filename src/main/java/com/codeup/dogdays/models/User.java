@@ -63,6 +63,16 @@ public class User {
         this.isFlagged = false;
     }
 
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        picture=copy.picture;
+        isAdmin=copy.isAdmin;
+        isFlagged=copy.isFlagged;
+    }
+
 
     public Long getId() {
         return id;

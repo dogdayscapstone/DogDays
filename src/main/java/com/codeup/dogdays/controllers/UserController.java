@@ -1,30 +1,22 @@
 package com.codeup.dogdays.controllers;
 
-import com.codeup.dogdays.models.Event;
 import com.codeup.dogdays.models.User;
-import com.codeup.dogdays.repositories.EventRepository;
 import com.codeup.dogdays.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @Controller
 public class UserController {
     private final UserRepository userRepo;
-    private final EventRepository eventRepo;
-    private EventController EC;
-
-    public UserController(UserRepository userRepo, EventController EC, EventRepository eventRepo) {
+    public UserController(UserRepository userRepo) {
         this.userRepo = userRepo;
-        this.eventRepo = eventRepo;
-        this.EC = EC;
     }
 
 
-          
+
     @GetMapping("/register")
     public String showRegisterForm (Model viewModel){
 
@@ -56,7 +48,6 @@ public class UserController {
             @PostMapping("/login")
             public String loginUser (HttpServletRequest request, @RequestParam("username") String username, @RequestParam("password") String password) {
                 User user = userRepo.findByUsername(username);
-                
 
                 if (password.equals(user.getPassword())) {
                     request.getSession().setAttribute("user", user);
@@ -82,7 +73,6 @@ public class UserController {
 
                 User user = (User)request.getSession().getAttribute("user");
                 vmodel.addAttribute("user", user);
-                vmodel.addAttribute("events", EC.eventsByUser((List<Event>)eventRepo.findAll(), user));
                 return "users/profile";
             }
 
