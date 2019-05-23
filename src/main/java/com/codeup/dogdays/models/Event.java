@@ -136,4 +136,8 @@ public class Event {
         dogAttendee.add(dog);
         this.dogAttendees = dogAttendee;
     }
+
+    public void setDogAttendees(List<Dog> dogAttendees){
+        this.dogAttendees = dogAttendees;
+    }
 }
