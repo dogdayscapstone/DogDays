@@ -1,3 +1,16 @@
+
+.jumbotron{
+    background-image:url("../images/eventsDog.jpg");
+    height:400px;
+    width:100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+
+}
+
+
 .addMore:hover{
     border: 1px solid #888;
     background-color: darkorange;
@@ -13,5 +26,5 @@
     border-radius:15px;
 }
 .card-b{
-    background-color:#OEE097026;
+    background-color:#EE9726;
 }

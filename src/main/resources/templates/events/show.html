@@ -4,8 +4,9 @@
     <meta charset="UTF-8"/>
     <title>Dog Days | Detailed Event</title>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
+    <link rel="stylesheet" href="../css/navbar.css"/>
+    <link rel="stylesheet" href="../css/show.css"/>
 
 </head>
 <body>
@@ -19,21 +20,27 @@
 
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
+    <div class=" text-center jumbotron ml-0 mr-0 pr-0 pl-0">
+
+        <h1 class="mt-2 pt-2">Upcoming Events</h1>
+    </div>
+
 <div class="container">
 
-<h1>Learn More</h1>
+
+    <!--<h1>Event Details</h1>-->
 
     <div class="row">
         <div class="col col-sm-6 col-lg-6">
-            <div>
-                <h2>Event: <span th:text="${event.title}"></span></h2>
-                <p>Description: <span th:text="${event.description}"></span></p>
-                <p>Location: <span  id="location" th:text="${event.location}"></span></p>
-                <p>Date: <span th:text="${event.date}"></span></p>
-                <p>Time: <span th:text="${event.time}"></span></p>
+            <div class = "info">
+                <h2><strong><span th:text="${event.title}"></span></strong> </h2>
+                <p><strong>Description: </strong><span th:text="${event.description}"></span></p>
+                <p><strong>Location: </strong><span  id="location" th:text="${event.location}"></span></p>
+                <p><strong>Date: </strong> <span th:text="${event.date}"></span></p>
+                <p><strong>Time: </strong> <span th:text="${event.time}"></span></p>
 
             </div>
-               <p>Total Dogs Attending: <span th:text="${countAttending}"></span></p>
+               <p id="count">Total Dogs Attending: <span th:text="${countAttending}"></span></p>
 
 
             <div sec:authorize="isAuthenticated()">
