@@ -1,0 +1,22 @@
+.jumbotron{
+    background-image:url("../images/searchDog.jpg");
+    height:200px;
+    width:100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+
+}
+
+.jumbotron h1{
+    background: white;
+    opacity: .6;
+    color: black;
+    font-size: 4em;
+}
+.event{
+    box-sizing: border-box;
+    background-color: darkgray;
+    border-radius: 10px;
+}
