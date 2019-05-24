@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8" />
     <title>Dog Days | Home</title>
+    <link rel="stylesheet" href="css/home.css"/>
+
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
 
 
 </head>
 <body>
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
-<!--
-<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>-->
-<div class="container">
 
-<h1>Welcome to Dog Days</h1>
-<p>A dog meetup application to bring together San Antonio dog owners</p>
+<div class="container p-0 m-0">
+
+    <div class=" text-center jumbotron ml-0 mr-0 pr-0 pl-0">
+
+            <h1 class="mt-2 pt-2">Welcome to Dog Days</h1>
+        </div>
+
+    <p class="text-center homeFont">This is a group for anyone that has a love for dogs, helping others, and making a difference in your community!
+
+        What will we do? Take your dog for a walk together, check out the best local hang outs, find the best tacos, look for the best local brewery, listen to music, explore the outdoors together – you name it and we will consider it!
+
+    </p>
+
 </div>
+<!--</div>-->
 </body>
 </html>
