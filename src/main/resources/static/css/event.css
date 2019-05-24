@@ -1,0 +1,17 @@
+.addMore:hover{
+    border: 1px solid #888;
+    background-color: darkorange;
+}
+.card-h{
+    background-color: orangered;
+}
+.btn-h{
+    background-color:orangered;
+    color:white;
+}
+.card-h ,.card-b{
+    border-radius:15px;
+}
+.card-b{
+    background-color:#OEE097026;
+}

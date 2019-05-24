@@ -5,40 +5,44 @@
     <title>Dog Days | Upcoming</title>
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
+    <link rel="stylesheet" href="css/event.css"/>
+
+
+
 
 </head>
-<body>
+<body id="bg">
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
-<!--<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>-->
 
 <div class="container">
 
-    <h1 class="text-center">Upcoming Dog Days</h1>
+    <h1 class=" event-heading text-center">Upcoming Dog Days</h1>
     <form method="GET" action="events/create">
 
-    <button class="btn btn-info">Schedule An Event</button>
+        <button class="btn btn-info">Schedule An Event</button>
     </form>
 
     <div class="row">
+        <div class="card">
+            <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
+                <div class="card-h card-header card-title bg-primary width=200px height=300px text-black text-center">
+                    <h3> Title: <a th:href="'events/'+ ${item.getId()}">
+                        <button class=" btn btn-h addMore" title="click here for more info"><span th:text="${item.title}">
 
-    <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
-        <h3> Title: <a th:href="'events/'+ ${item.getId()}"><span th:text="${item.title}"></span></a></h3>
-        <p>Description: <span th:text="${item.description}"></span></p>
-        <p>Location: <span th:text="${item.location}"></span></p>
-        <p>Date: <span th:text="${item.date}"></span></p>
-        <p>Time: <span th:text="${item.time}"></span></p>
+                        </span>
+                        </button></a></h3>
+                </div>
+                <div class="card-b card-body card-text text-black bg-info width=400px height=650px mt-2 mb-2 text-center">
+                    <p>Description: <span th:text="${item.description}"></span></p>
+                    <p>Location: <span th:text="${item.location}"></span></p>
+                    <p>Date: <span th:text="${item.date}"></span></p>
+                    <p>Time: <span th:text="${item.time}"></span></p>
+                </div>
 
 
-
+            </div>
+        </div>
     </div>
-</div>
 </div>
 </body>
 </html>
