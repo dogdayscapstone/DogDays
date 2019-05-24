@@ -5,46 +5,90 @@
     <title>Dog Days | Login</title>
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
+<style>
 
+
+    .card-content {
+        min-width: 100% !important;
+        font-size: 0.8em !important;
+        padding: 2em !important;
+    }
+    .btn{
+        margin-bottom:3px;
+    }
+
+    .login-box {
+        width: 600px;
+        height:350px;
+        border-radius: 1em !important;
+        border:3px solid #53A1CF ;
+        font-famly:'Gills-Sans';
+        background-color:#53A1CF;
+        position:center;
+
+    }
+    input{
+        width:50%;
+
+
+    }
+    #size{
+        width:20%;
+    }
+
+    .login-btn{
+        background-color:darkorange;
+    }
+    #login-text{
+        font-family:'chalkduster',cursive;
+
+    }
+
+
+</style>
 </head>
 <body>
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
-<!--
-<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>
--->
 
-<div class="container">
-<h1>Login</h1>
-    <div th:if="${param.error}">
-        Invalid Username and Password.
-    </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
 
+
+
+
+<div class="container ">
+<div class="card text-center pb-2 mb-2 login-box">
+    <div class="row text-center">
+    <div class="col text-center">
+
+
+            <h1 class="text-center" id="login-text">Login</h1>
+            <div th:if="${param.error}">
+                Invalid Username and Password.
+            </div>
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
     <form th:action="@{/login}" method="post">
 
-        <div class="form-group">
+        <div class="form-group ">
             <label for="username">Username</label>
-            <input id="username" name="username" class="form-control" type="text" />
+            <br/>
+            <input id="username" name="username" class="w-50" type="text" />
         </div>
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input id="password" name="password" class="form-control" type="password" />
+            <br/>
+            <input height="50px" width="50px" id="password" name="password" class=" w-50" type="password" />
         </div>
         <p>Don't Have an account? <a href="/register">Register Now!</a></p>
 
-        <input type="submit" class="btn btn-block btn-primary" value="Log In" />
+        <input type="submit" id="size" class="btn login-btn pb-2 mb-2" value="Log In" />
     </form>
-</div>
 
+
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>
