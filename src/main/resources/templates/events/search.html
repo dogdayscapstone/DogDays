@@ -3,30 +3,23 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Dog Days | Results</title>
-
         <th:block th:include="fragments/navbar :: bootstrap"></th:block>
+        <link rel="stylesheet" href="css/search.css"/>
 
     </head>
     <body>
     <nav th:replace = "fragments/navbar :: navbar" ></nav>
-<!--    <td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-        <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-    </td>-->
 
+
+    <div class=" text-center jumbotron ml-0 mr-0 pr-0 pl-0">
+        <h1 class="mt-2 pt-2">Search Results for: <em>'<span th:text="${searchTerm}"></span>'</em></h1>
+    </div>
     <div class="container">
-        <h1>Results for: <em>'<span th:text="${searchTerm}"></span>'</em></h1>
 
 
-
-    <div th:each="item : ${searchedContent}">
+    <div class="col-12 col-sm-6 col-lg-3 " th:each="item : ${searchedContent}">
         <a th:href="'events/'+ ${item.getId()}">
             <h3>Title: <span th:text="${item.title}"></span></h3></a>
-        <p>Description: <span th:text="${item.description}"></span></p>
         <p>Location: <span th:text="${item.location}"></span></p>
         <p>Date: <span th:text="${item.date}"></span></p>
         <p>Time:  <span th:text="${item.time}"></span></p>

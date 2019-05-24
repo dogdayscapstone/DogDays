@@ -4,7 +4,7 @@
 
 .jumbotron{
     background-image:url("../images/playingdog.jpg");
-    height:400px;
+    height:300px;
     width:100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -20,6 +20,6 @@
 .jumbotron h1{
     background: white;
     opacity: .6;
-    color:#5A838D;
-    font-size:15px;
+    color: #5A838D;
+    font-size: 4em;
 }
