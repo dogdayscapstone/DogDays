@@ -44,6 +44,4 @@ $(document).ready(function () {
     })
 
 
-
-
 })
