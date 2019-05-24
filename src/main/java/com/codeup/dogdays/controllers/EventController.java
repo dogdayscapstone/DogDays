@@ -65,6 +65,26 @@ public class EventController {
         return filteredEvents;
     }
 
+    public boolean usersAttending(Event event, User user){
+        List<Dog> dogsAtEvent = event.getDogAttendees();
+        List<Dog> usersDogs = user.getDogs();
+
+        for(int i = 0; i < dogsAtEvent.size(); i++){
+            Dog eventDog = dogsAtEvent.get(i);
+
+            for(int x = 0; x < usersDogs.size(); x++){
+                if(eventDog.getId() == usersDogs.get(x).getId()){
+
+                    return true;
+                    }
+                }
+            }
+
+        return false;
+        }
+
+
+
 
     @GetMapping("/events")
     public String allEvents (Model model){
@@ -78,13 +98,6 @@ public class EventController {
     public String showPostForm (Model model, HttpServletRequest request){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-
-/*        if(sessionUser == null){
-            return "redirect:/login";
-        }*/
-      /*  if(request.getSession().getAttribute("user") == null){
-            return "redirect:/login";
-        }*/
 
         model.addAttribute("event", new Event());
         return "events/create";
@@ -115,6 +128,8 @@ public class EventController {
 
         User user = event.getUser();
 
+        Boolean isAttending = usersAttending(event, user);
+
         model.addAttribute("event", event);
         model.addAttribute("commentA", new Comment());
 
@@ -123,6 +138,9 @@ public class EventController {
         model.addAttribute("location", event.getLocation());
 
         model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
+
+        model.addAttribute("attending", isAttending);
+
         return "events/show";
     }
 

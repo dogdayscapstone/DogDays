@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title>Dog Days | Detailed Event</title>
@@ -19,16 +19,6 @@
 
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
-<!--<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>-->
-
-
 <div class="container">
 
 <h1>Learn More</h1>
@@ -45,6 +35,8 @@
             </div>
                <p>Total Dogs Attending: <span th:text="${countAttending}"></span></p>
 
+
+            <div sec:authorize="isAuthenticated()">
                 <h3>Comments</h3>
                 <div th:each="comment : ${comments}">
 
@@ -60,20 +52,25 @@
                 <input type="submit" />
                 </form>
 
+                <td>
+                    <span th:if="${attending == true}">
 
+                            <form th:action="@{'/events/' + ${event.getId()} + '/unattend'}"  th:method="post">
+                                <input id="decrement" class="btn btn-decrement btn-warning btn-sm" type="submit" value="Not Me!" />
+                            </form>
 
-                <form th:action="@{'/events/' + ${event.getId()} + '/attend'}"  th:method="post">
-                    <input class="btn btn-increment btn-success btn-sm" type="submit" value="+1" />
-                </form>
+                    </span>
+                    <span th:unless="${attending == true}">
 
-                <form th:action="@{'/events/' + ${event.getId()} + '/unattend'}"  th:method="post">
-                    <input class="btn btn-decrement btn-warning btn-sm" type="submit" value="-1" />
-                </form>
+                            <form th:action="@{'/events/' + ${event.getId()} + '/attend'}"  th:method="post">
+                                <input id="increment" class="btn btn-increment btn-success btn-sm" type="submit" value="Me Too!" />
+                            </form>
 
+                    </span>
 
+                </td>
             </div>
-
-
+    </div>
 
     <div class="col col-sm-6 col-lg-6">
 

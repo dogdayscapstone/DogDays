@@ -47,10 +47,10 @@ public class UserController {
             if(user.getUsername().equals(registeredUser.getUsername()) || user.getEmail().equals(registeredUser.getEmail())){
                 if((user.getUsername().equals(registeredUser.getUsername()))){
                     vmodel.addAttribute("invalidUserName", "Username already taken");
-                    return "users/signup-form";
+                    return "users/login";
                 } else if(user.getEmail().equals(registeredUser.getEmail())){
                     vmodel.addAttribute("duplicateEmail", "Email already in use");
-                    return "users/signup-form";
+                    return "users/login";
                 }
             }
         }
