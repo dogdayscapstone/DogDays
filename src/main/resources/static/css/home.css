@@ -19,8 +19,8 @@
 }
 .jumbotron h1{
     font-family: 'chalkduster', cursive;
-    background: black;
-    opacity: .1;
-    color: #5A838D;
+    background: white;
+    opacity: .8;
+    color: black;
     font-size: 4em;
 }

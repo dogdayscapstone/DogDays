@@ -29,6 +29,7 @@
 
     <div class="row">
         <div class="col col-sm-6 col-lg-6">
+            <div class="leftSide">
                 <div class="eventTitle">
                     <h2 class="title"><strong><span th:text="${event.title}"></span></strong> </h2>
                 </div>
@@ -38,52 +39,62 @@
                     <p><strong>Location: </strong><span th:text="${event.location}"></span></p>
                     <p><strong>Date: </strong><span th:text="${event.date}"></span></p>
                     <p><strong>Time: </strong><span th:text="${event.time}"></span></p>
+                    <p id="count"><strong>Dogs Attending:</strong> <span th:text="${countAttending}"></span>
+
+                    <div sec:authorize="isAuthenticated()">
+                        <td>
+                        <span th:if="${attending == true}">
+
+                                <form th:action="@{'/events/' + ${event.getId()} + '/unattend'}"  th:method="post">
+                                    <input id="decrement" class="btn unjoin btn-sm" type="submit" value="Not Me!" />
+                                </form>
+
+                        </span>
+                            <span th:unless="${attending == true}">
+
+                                <form th:action="@{'/events/' + ${event.getId()} + '/attend'}"  th:method="post">
+                                    <input id="increment" class="btn join btn-sm" type="submit" value="Me Too!" />
+                                </form>
+
+                        </span>
+                        </td>
+                    </div>
+
+                    </p>
                 </div>
-
-               <p id="count">Dogs Attending: <span th:text="${countAttending}"></span></p>
-
-
-            <div sec:authorize="isAuthenticated()">
-                <h3>Comments</h3>
-                <div th:each="comment : ${comments}">
-
-                    <p>Comment: <span th:text="${comment.getCommentText()}"></span></p>
-                    <p>User: <span th:text="${comment.getUser().getUsername()}"></span></p>
-
-                </div>
-
-                <form th:action="@{'/events/'+${event.getId()}+'/comment'}" th:method="post" th:object="${commentA}">
-
-                <textarea th:field="*{commentText}"></textarea>
-                <br/>
-                <input type="submit" />
-                </form>
-
-                <td>
-                    <span th:if="${attending == true}">
-
-                            <form th:action="@{'/events/' + ${event.getId()} + '/unattend'}"  th:method="post">
-                                <input id="decrement" class="btn btn-decrement btn-warning btn-sm" type="submit" value="Not Me!" />
-                            </form>
-
-                    </span>
-                    <span th:unless="${attending == true}">
-
-                            <form th:action="@{'/events/' + ${event.getId()} + '/attend'}"  th:method="post">
-                                <input id="increment" class="btn btn-increment btn-success btn-sm" type="submit" value="Me Too!" />
-                            </form>
-
-                    </span>
-
-                </td>
             </div>
+
+
+
     </div>
 
     <div class="col col-sm-6 col-lg-6">
 
-        <div id='map' style='width: 100%; height: 400px;'></div>
+        <div id='map' style='width: 100%; height: 450px;'></div>
 
     </div>
+        <div class="row">
+            <div sec:authorize="isAuthenticated()">
+                <div class="comment-section">
+                    <h3 class="comment-title">Comments</h3>
+                    <div class="comments" th:each="comment : ${comments}">
+
+                        <p><span th:text="${comment.getCommentText()}"></span>  - By: <span th:text="${comment.getUser().getUsername()}"></span></p>
+
+                    </div>
+
+                    <form th:action="@{'/events/'+${event.getId()}+'/comment'}" th:method="post" th:object="${commentA}">
+
+                    <textarea class="commentInput" placeholder="Type a comment here" th:field="*{commentText}"></textarea>
+                    <br/>
+                        <div class="comment-submit">
+                    <input class="btn btn-sm comment-btn" type="submit" />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
 
     </div>
 </div>

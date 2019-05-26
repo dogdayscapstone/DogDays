@@ -5,6 +5,8 @@
     <title>Dog Days | My Profile</title>
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
+    <link rel="stylesheet" href="/css/profile.css"/>
+
 
 </head>
 <body sec:authorize="isAuthenticated()">
@@ -57,21 +59,24 @@
 
 
             <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
-                <h3> Title: <a th:href="'events/'+ ${item.getId()}"><span th:text="${item.title}"></span></a></h3>
-                <p>Description: <span th:text="${item.description}"></span></p>
-                <p>Location: <span th:text="${item.location}"></span></p>
-                <p>Date: <span th:text="${item.date}"></span></p>
-                <p>Time: <span th:text="${item.time}"></span></p>
 
+                <div class="eventTitle">
+                    <h3><a class="title" th:href="'events/'+ ${item.getId()}">
+                        <span th:text="${item.title}"></span></a></h3>
+                </div>
+                <div class="eventBody">
+                    <p>Location: <span th:text="${item.location}"></span></p>
+                    <p>Date: <span th:text="${item.date}"></span></p>
+                    <p>Time: <span th:text="${item.time}"></span></p>
 
+                    <form method="GET" th:action="@{/events/{id}/edit(id = ${item.getId()})}">
+                        <button  class="btn btn-primary mt-2">Edit</button>
+                    </form>
 
-            <form method="GET" th:action="@{/events/{id}/edit(id = ${item.getId()})}">
-                <button  class="btn btn-primary mt-2">Edit</button>
-            </form>
-
-                <form method="GET" th:action="@{/events/{id}/delete(id = ${item.getId()})}">
-                    <button class="btn btn-primary mt-2">Delete</button>
-                </form>
+                    <form method="GET" th:action="@{/events/{id}/delete(id = ${item.getId()})}">
+                        <button class="btn btn-primary mt-2">Delete</button>
+                    </form>
+                </div>
 
 
             </div>

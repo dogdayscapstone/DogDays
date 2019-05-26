@@ -25,24 +25,89 @@
     background-color: lightsteelblue;
     border-radius: 10px;
     text-align: center;
-    height: 40px;
+    height: 60px;
     margin-bottom: 5px;
 }
 .title{
     color: white;
-    line-height: 40px;
-    font-size: 1.25em;
+    line-height: 60px;
+    margin-top: 0;
+    font-size: 2em;
 }
-.eventBody{
+.eventBody {
     font-family: 'Gill Sans Light Italic', sans-serif;
-    background-image:url("../images/silhouette.png");
-    background-size: 250px 150px;
+    background-image: url("../images/silhouette.png");
+    background-size: 450px 250px;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 10px;
-    height: 150px;
-    font-size: 1em;
-    text-align: center;
+    padding: 15px;
+    font-size: 1.5em;
     line-height: 40px;
+    margin-bottom: 5px;
+}
+#map{
+    border-radius: 15px;
+    border: 2px solid black;
+    box-shadow: grey;
+}
+.comment-btn{
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    width: 150px;
+
+}
+.join{
+    background-color: lightgreen;
+    color: black;
+    font-weight: bold;
+    border: 1px solid black;
+
+}
+.join:hover{
+    color: white;
+}
+.unjoin{
+    background-color: coral;
+    color: black;
+    font-weight: bold;
+    border: 1px solid black;
+}
+.unjoin:hover{
+    color: white;
+}
+
+.comment-title{
+    font-family: 'chalkduster', cursive;
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 475px;
+    color: white;
+    text-align: center;
+}
+.comments{
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 15px;
+    background-image: url("../images/pawPrint.png");
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position: right;
+    margin: 10px 0 0 0;
+
+}
+.commentInput{
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 15px;
+}
+.comment-submit{
+    text-align: center;
+    margin-bottom: 20px;
 }
