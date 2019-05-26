@@ -5,8 +5,9 @@
     <title>Dog Days | Detailed Event</title>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
-    <link rel="stylesheet" href="../css/navbar.css"/>
-    <link rel="stylesheet" href="../css/show.css"/>
+
+    <link rel="stylesheet" href="/css/show.css"/>
+    <link rel="stylesheet" href="/css/navbar.css"/>
 
 </head>
 <body>
@@ -21,26 +22,25 @@
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
     <div class=" text-center jumbotron ml-0 mr-0 pr-0 pl-0">
-
-        <h1 class="mt-2 pt-2">Upcoming Events</h1>
+        <h1 class="mt-2 pt-2">Detailed Information</h1>
     </div>
 
 <div class="container">
 
-
-    <!--<h1>Event Details</h1>-->
-
     <div class="row">
         <div class="col col-sm-6 col-lg-6">
-            <div class = "info">
-                <h2><strong><span th:text="${event.title}"></span></strong> </h2>
-                <p><strong>Description: </strong><span th:text="${event.description}"></span></p>
-                <p><strong>Location: </strong><span  id="location" th:text="${event.location}"></span></p>
-                <p><strong>Date: </strong> <span th:text="${event.date}"></span></p>
-                <p><strong>Time: </strong> <span th:text="${event.time}"></span></p>
+                <div class="eventTitle">
+                    <h2 class="title"><strong><span th:text="${event.title}"></span></strong> </h2>
+                </div>
 
-            </div>
-               <p id="count">Total Dogs Attending: <span th:text="${countAttending}"></span></p>
+                <div class="eventBody">
+                    <p><strong>Description: </strong><span th:text="${event.description}"></span></p>
+                    <p><strong>Location: </strong><span th:text="${event.location}"></span></p>
+                    <p><strong>Date: </strong><span th:text="${event.date}"></span></p>
+                    <p><strong>Time: </strong><span th:text="${event.time}"></span></p>
+                </div>
+
+               <p id="count">Dogs Attending: <span th:text="${countAttending}"></span></p>
 
 
             <div sec:authorize="isAuthenticated()">

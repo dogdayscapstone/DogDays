@@ -9,29 +9,12 @@
     background-size: cover;
 
 }
-
-
-
-/*.eventTitle:hover{*/
-    /*background-color: darkblue;*/
-/*}*/
-
-/*.card-h{*/
-    /*background-color: orangered;*/
-/*}*/
-
-/*.btn-h{*/
-    /*background-color:orangered;*/
-    /*color:white;*/
-/*}*/
-
-/*.card-h ,.card-b{*/
-    /*border-radius:15px;*/
-/*}*/
-
-/*.card-b{*/
-    /*background-color:#EE9726;*/
-/*}*/
+.jumbotron h1{
+    background: white;
+    opacity: .8;
+    color: black;
+    font-size: 4em;
+}
 .event-heading{
     font-family: 'chalkduster', cursive;
 }
@@ -47,14 +30,24 @@
 .title{
     color: white;
     line-height: 40px;
-    font-size: 1.5em;
+    font-size: 1.25em;
 }
 .eventBody{
     font-family: 'Gill Sans Light Italic', sans-serif;
-    background-color: lightgrey;
+    background-image:url("../images/silhouette.png");
+    background-size: 250px 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid black;
     border-radius: 10px;
     height: 150px;
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: center;
     line-height: 40px;
+}
+.schedule-btn{
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
 }

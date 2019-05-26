@@ -18,8 +18,9 @@
     color:#FD6B4B;
 }
 .jumbotron h1{
-    background: white;
-    opacity: .6;
+    font-family: 'chalkduster', cursive;
+    background: black;
+    opacity: .1;
     color: #5A838D;
     font-size: 4em;
 }

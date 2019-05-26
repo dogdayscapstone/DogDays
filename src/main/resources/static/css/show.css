@@ -1,13 +1,8 @@
-/*body{*/
-    /*!*background-color: #5A838D;*!*/
-    /*font-family: 'Gill Sans Light', sans-serif;*/
-/*}*/
-
-.info{
+/*.info{
     font-family: 'Gill Sans Light', sans-serif;
     color: #FD6B4B;
     font-size: 2em;
-}
+}*/
 .jumbotron{
     background-image:url("../images/dog_stick.jpeg");
     height:200px;
@@ -18,5 +13,36 @@
     background-size: cover;
 
 }
-
-.m
+.jumbotron h1{
+    font-family: 'chalkduster', cursive;
+    background: white;
+    opacity: .8;
+    color: black;
+    font-size: 4em;
+}
+.eventTitle{
+    font-family: 'chalkduster', cursive;
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 5px;
+}
+.title{
+    color: white;
+    line-height: 40px;
+    font-size: 1.25em;
+}
+.eventBody{
+    font-family: 'Gill Sans Light Italic', sans-serif;
+    background-image:url("../images/silhouette.png");
+    background-size: 250px 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 150px;
+    font-size: 1em;
+    text-align: center;
+    line-height: 40px;
+}
