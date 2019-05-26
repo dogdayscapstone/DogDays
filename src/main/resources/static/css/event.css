@@ -1,7 +1,7 @@
 
 .jumbotron{
     background-image:url("../images/eventsDog.jpg");
-    height:400px;
+    height:200px;
     width:100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -11,20 +11,50 @@
 }
 
 
-.addMore:hover{
-    border: 1px solid #888;
-    background-color: darkorange;
+
+/*.eventTitle:hover{*/
+    /*background-color: darkblue;*/
+/*}*/
+
+/*.card-h{*/
+    /*background-color: orangered;*/
+/*}*/
+
+/*.btn-h{*/
+    /*background-color:orangered;*/
+    /*color:white;*/
+/*}*/
+
+/*.card-h ,.card-b{*/
+    /*border-radius:15px;*/
+/*}*/
+
+/*.card-b{*/
+    /*background-color:#EE9726;*/
+/*}*/
+.event-heading{
+    font-family: 'chalkduster', cursive;
 }
-.card-h{
-    background-color: orangered;
+
+.eventTitle{
+    font-family: 'chalkduster', cursive;
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 5px;
 }
-.btn-h{
-    background-color:orangered;
-    color:white;
+.title{
+    color: white;
+    line-height: 40px;
+    font-size: 1.5em;
 }
-.card-h ,.card-b{
-    border-radius:15px;
-}
-.card-b{
-    background-color:#EE9726;
+.eventBody{
+    font-family: 'Gill Sans Light Italic', sans-serif;
+    background-color: lightgrey;
+    border-radius: 10px;
+    height: 150px;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 40px;
 }

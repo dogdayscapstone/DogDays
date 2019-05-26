@@ -31,15 +31,12 @@
     <div class="row">
         <div class="card">
             <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
-                <div class="card-h card-header card-title bg-primary width=200px height=300px text-black text-center">
-                    <h3> Title: <a th:href="'events/'+ ${item.getId()}">
-                        <button class=" btn btn-h addMore" title="click here for more info"><span th:text="${item.title}">
-
-                        </span>
-                        </button></a></h3>
+                <div class="eventTitle">
+                    <h3><a class="title" th:href="'events/'+ ${item.getId()}">
+                        <span th:text="${item.title}"></span></a></h3>
                 </div>
-                <div class="card-b card-body card-text text-black bg-info width=400px height=650px mt-2 mb-2 text-center">
-                    <p>Description: <span th:text="${item.description}"></span></p>
+                <div class="eventBody">
+                    <!--<p>Description: <span th:text="${item.description}"></span></p>-->
                     <p>Location: <span th:text="${item.location}"></span></p>
                     <p>Date: <span th:text="${item.date}"></span></p>
                     <p>Time: <span th:text="${item.time}"></span></p>
