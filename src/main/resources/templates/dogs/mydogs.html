@@ -5,7 +5,7 @@
     <title>Dog Days | My Dogs</title>
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
-
+    <link rel="stylesheet" href="../css/myDogs.css"/>
 </head>
 
 <body sec:authorize="isAuthenticated()">
@@ -15,38 +15,39 @@
 <div class="container">
 
 
-<h1>My Dogs</h1>
-<h2>User: <a th:href="'/profile'"><span th:text="${user.getUsername()}"></span></a></h2>
+    <h1 class="title">My Dogs</h1>
+    <h2 class="title">User: <a th:href="'/profile'"><span th:text="${user.getUsername()}"></span></a></h2>
 
-<div class="row">
+    <div class="row">
+        <div class="card">
+            <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${dogs}">
+                <div class="dogName">
+                    <h3>Dog:<span th:text="${item.name}"></span></h3>
+                </div>
+                <div class="dogBody row">
 
-<div class="col-12 col-sm-6 col-lg-4" th:each="item : ${dogs}">
-    <h3>Dog: <span th:text="${item.name}"></span></h3>
-    <p>Breed: <span th:text="${item.breed}"></span></p>
-    <p>DOB: <span th:text="${item.dob}"></span></p>
-    <p>Gender: <span th:text="${item.gender}"></span></p>
-    <p>Mood: <span th:text="${item.temperament}"></span></p>
-    <p>Description: <span th:text="${item.description}"></span></p>
+                    <p><strong>Breed:</strong> <span th:text="${item.breed}"></span></p>
+                    <p><strong>DOB:</strong> <span th:text="${item.dob}"></span></p>
+                    <p><strong>Gender:</strong> <span th:text="${item.gender}"></span></p>
+                    <p><strong>Mood:</strong> <span th:text="${item.temperament}"></span></p>
+                    <p><strong>Description:</strong> <span th:text="${item.description}"></span></p>
+                    <img width="150" th:src="@{${item.dogPicture}}"/>
+                    <form method="GET" th:action="@{/profile/mydogs/{id}/edit(id = ${item.getId()})}">
+                        <button class="btn btn-primary">Edit <span th:text="${item.name}"></span></button>
+                    </form>
 
-    <div>
-        <img width="150" th:src="@{${item.dogPicture}}"/>
+                </div>
+        <!--<form method="GET" >-->
+            <!--<button class=" btn btn-primary">Delete <span th:text="${item.name}"></span></button>-->
+        <!--</form>-->
+
+            </div>
+        </div>
+
+
+
 
     </div>
-
-    <form method="GET" th:action="@{/profile/mydogs/{id}/edit(id = ${item.getId()})}">
-    <button class="btn btn-primary">Edit <span th:text="${item.name}"></span></button>
-</form>
-    <!--<form method="GET" >-->
-        <!--<button class=" btn btn-primary">Delete <span th:text="${item.name}"></span></button>-->
-    <!--</form>-->
-
-
-</div>
-
-
-
-
-</div>
 
 
 </div>
