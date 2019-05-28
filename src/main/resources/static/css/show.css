@@ -1,8 +1,4 @@
-/*.info{
-    font-family: 'Gill Sans Light', sans-serif;
-    color: #FD6B4B;
-    font-size: 2em;
-}*/
+
 .jumbotron{
     background-image:url("../images/dog_stick.jpeg");
     height:200px;
@@ -50,7 +46,7 @@
 }
 #map{
     border-radius: 15px;
-    border: 2px solid black;
+    border: 2px solid #FB3640;
     box-shadow: grey;
 }
 .comment-btn{
