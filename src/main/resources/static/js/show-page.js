@@ -8,7 +8,7 @@ $(document).ready(function () {
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 1
+        zoom: 11
         // center: [-98.4916, 29.4252]
 
     });
@@ -40,6 +40,10 @@ $(document).ready(function () {
             .setLngLat(data)
             .addTo(map);
         console.log(data);
+        var popup = new mapboxgl.Popup()
+            .setLngLat(data)
+            .setHTML("<p>Dog Meetup!</p>")
+            .addTo(map)
 
 
     })
