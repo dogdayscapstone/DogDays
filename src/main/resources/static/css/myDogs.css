@@ -35,15 +35,25 @@
 }
 .dogBody{
     font-family: 'Gill Sans Light Italic', sans-serif;
-    background-color: lightgrey;
+    background-color: white;
+    border: 1px solid black;
     border-radius: 10px;
-    height: 320px;
+    height: 365px;
     font-size: 1.5em;
     text-align: center;
     line-height: 25px;
+    margin-bottom: 20px;
 }
-
+.breed{
+    margin-top: 15px;
+}
 .edit{
     margin-top:20px;
+    color: white;
+    background-color: lightsteelblue;
+    border: 1px solid black;
+}
+.edit:hover{
+    color: black;
 }
 
