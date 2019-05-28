@@ -1,4 +1,3 @@
-
 .jumbotron{
     background-image:url("../images/eventsDog.jpg");
     height:200px;
@@ -29,10 +28,13 @@
     margin-bottom: 5px;
 }
 .title{
-    color: white;
+    color: #474954;
     line-height: 40px;
     font-size: 1.25em;
 }
+.title:hover{
+    color: white;
+ }
 .eventBody{
     font-family: 'Gill Sans Light Italic', sans-serif;
     background-image:url("../images/silhouette.png");

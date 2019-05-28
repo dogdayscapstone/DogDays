@@ -16,6 +16,7 @@
 .jumbotron h1{
     font-family: 'chalkduster', cursive;
     background: white;
+    border-radius: 10px;
     opacity: .8;
     color: black;
     font-size: 4em;
@@ -61,7 +62,7 @@
 
 }
 .join{
-    background-color: lightgreen;
+    background-color: #00A676;
     color: black;
     font-weight: bold;
     border: 1px solid black;
@@ -71,7 +72,7 @@
     color: white;
 }
 .unjoin{
-    background-color: coral;
+    background-color: #FB3640;
     color: black;
     font-weight: bold;
     border: 1px solid black;
