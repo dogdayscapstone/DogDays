@@ -5,17 +5,12 @@
     <title>Dog Days | Attach a Dog</title>
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
+    <link rel="stylesheet" href="/css/navbar.css"/>
+
 </head>
 
 <body>
-<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>
+<nav th:replace="fragments/navbar :: navbar" ></nav>
 
 
 <h2 class="text-center">Attach A Dog Profile</h2>

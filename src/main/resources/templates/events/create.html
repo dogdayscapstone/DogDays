@@ -9,19 +9,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet" id="bootstrap-css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <span th:include="fragments/navbar :: bootstrap"></span>
+    <link rel="stylesheet" href="/css/navbar.css"/>
+
 
 </head>
 <body>
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
-
-<!--<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>-->
 
 <div class="container">
 
