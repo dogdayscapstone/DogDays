@@ -1,3 +1,8 @@
+.profile-Header{
+    text-align: center;
+    margin: 20px;
+
+}
 .eventTitle{
     font-family: 'chalkduster', cursive;
     background-color: lightsteelblue;
@@ -23,4 +28,44 @@
     font-size: 1em;
     text-align: center;
     line-height: 40px;
+}
+
+.attach-btn{
+    width: 150px;
+    background-color: lightsteelblue;
+    border: 1px solid black;
+    color: white;
+    margin-bottom: 5px;
+
+}
+.dogs-btn{
+    width: 150px;
+    background-color: lightsteelblue;
+    border: 1px solid black;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.attach-btn:hover{
+    color: black;
+}
+.dogs-btn:hover{
+    color: black;
+}
+.alter-btns{
+    text-align: center;
+}
+.edit-btn{
+    width: 100px;
+    background-color: lightsteelblue;
+    border: 1px solid black;
+    color: white;
+    margin-bottom: 5px;
+}
+.delete-btn{
+    width: 100px;
+    background-color: lightsteelblue;
+    border: 1px solid black;
+    color: white;
+    margin-bottom: 5px;
 }
