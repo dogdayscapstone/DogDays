@@ -1,12 +1,28 @@
 #main-font{
- font-family: 'chalkduster', cursive;
-color:#00A676;
+    font-family: 'chalkduster', cursive;
+    font-size: 1.6em;
+    color:#00A676;
 }
 .navbar-color{
     background-color:#474954;
     color:#F7F7FF;
 
 }
-li{
-    color:#F7F7FF;
+.nav-links a{
+    color:#00A676;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-family:'Noteworthy', sans-serif;
+    color:#00A676;
+    font-size: 1.25em;
+}
+.navbar-default .navbar-nav > li > a:hover {
+    color: white;
+}
+.navSearch{
+    font-family:'Noteworthy', sans-serif;
+    background-color:#474954;
+    color:#00A676;
+    font-size: 1.25em;
 }
