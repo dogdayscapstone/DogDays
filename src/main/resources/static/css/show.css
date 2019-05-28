@@ -16,13 +16,14 @@
 .jumbotron h1{
     font-family: 'chalkduster', cursive;
     background: white;
+    border-radius: 10px;
     opacity: .8;
     color: black;
     font-size: 4em;
 }
 .eventTitle{
     font-family: 'chalkduster', cursive;
-    background-color: lightsteelblue;
+    background-color: #00A676;
     border-radius: 10px;
     text-align: center;
     height: 60px;
@@ -53,7 +54,7 @@
     box-shadow: grey;
 }
 .comment-btn{
-    background-color: lightsteelblue;
+    background-color: #00A676;
     color: white;
     font-weight: bold;
     border: 1px solid black;
@@ -61,7 +62,7 @@
 
 }
 .join{
-    background-color: lightgreen;
+    background-color: #00A676;
     color: black;
     font-weight: bold;
     border: 1px solid black;
@@ -71,7 +72,7 @@
     color: white;
 }
 .unjoin{
-    background-color: coral;
+    background-color: #FB3640;
     color: black;
     font-weight: bold;
     border: 1px solid black;
@@ -82,7 +83,7 @@
 
 .comment-title{
     font-family: 'chalkduster', cursive;
-    background-color: lightsteelblue;
+    background-color: #00A676;
     border-radius: 10px;
     height: 50px;
     line-height: 50px;
