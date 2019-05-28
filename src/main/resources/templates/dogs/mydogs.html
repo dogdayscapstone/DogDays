@@ -14,17 +14,14 @@
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
     <div class=" text-center jumbotron ml-0 mr-0 pr-0 pl-0">
+        <div class="container header">
 
-        <h1 class="header">My Dogs</h1>
-
+            <h1 class="header"><a th:href="'/profile'"><span th:text="${user.getUsername()}"></span>'s Dogs</a></h1>
+        </div>
 
     </div>
 
 <div class="container">
-
-        <h2 class="header">User: <a th:href="'/profile'"><span th:text="${user.getUsername()}"></span></a></h2>
-
-
     <div class="row">
         <div class="card">
             <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${dogs}">
@@ -44,9 +41,7 @@
                     </form>
 
                 </div>
-        <!--<form method="GET" >-->
-            <!--<button class=" btn btn-primary">Delete <span th:text="${item.name}"></span></button>-->
-        <!--</form>-->
+
 
             </div>
         </div>
