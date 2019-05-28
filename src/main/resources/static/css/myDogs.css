@@ -1,33 +1,49 @@
-.dogBody{
-    font-family: 'Gill Sans Light Italic', sans-serif;
-    background-color: lightgrey;
-    border-radius: 10px;
-    height: 300px;
-    font-size: 1.5em;
-    text-align: center;
-    line-height: 25px;
+.jumbotron{
+    background-image:url("../images/pawprints.jpg");
+    height:200px;
+    width:100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
+
+.jumbotron h1{
+    background: white;
+    /*opacity: .6;*/
+    /*color: #5A838D;*/
+    color: red;
+    font-size: 4em;
+}
+.header{
+    font-family: 'Chalkduster', sans-serif;
+    text-align: center;
+}
+
 .dogName{
     font-family: 'chalkduster', cursive;
-    color: white;
-    font-size: 1.5em;
-    line-height: 40px;
     background-color: lightsteelblue;
     border-radius: 10px;
     text-align: center;
     height: 40px;
     margin-bottom: 5px;
 }
-/*.info{
-    font-family: 'Gill Sans Light', sans-serif;
-    !*color: #FD6B4B;*!
-    font-size: 1.5em;
+.name{
+    color: white;
+    font-size: 1.7em;
+    line-height: 40px;
+}
+.dogBody{
+    font-family: 'Gill Sans Light Italic', sans-serif;
     background-color: lightgrey;
     border-radius: 10px;
+    height: 320px;
+    font-size: 1.5em;
     text-align: center;
-    line-height: 40px;
-}*/
-.title{
-    font-family: 'Chalkduster', sans-serif;
-    text-align: center;
+    line-height: 25px;
 }
+
+.edit{
+    margin-top:20px;
+}
+
