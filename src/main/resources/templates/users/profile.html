@@ -12,37 +12,35 @@
 <body sec:authorize="isAuthenticated()">
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
-
+<div class="page">
 <div class="container" sec:authorize="isAuthenticated()">
 
-<h1>Your Profile: <span th:text="${user.getUsername()}"></span></h1>
+<h1 class="profile-Header">Your Profile: <span th:text="${user.getUsername()}"></span></h1>
 
     <div class="container">
         <div class="row">
 
-
         <div class="col-sm-6 col-lg-4">
-            <p>
-                <img width="150" th:src="@{${user.getPicture()}}"/>
-            </p>
+            <p><strong>Username: </strong><span th:text="${user.getUsername()}"></span></p>
+            <p><strong>Email: </strong><span th:text="${user.getEmail()}"></span></p>
         </div>
+                <div class="col-sm-3 col-lg-4">
+                    <form method="GET" action="/profile/mydogs">
+                    <button class="btn dogs-btn pt-2">My Dogs</button>
+                    </form>
+                </div>
 
-        <div class="col-sm-6 col-lg-4">
-            <p>Profile Information</p>
-            <p>Username: <span th:text="${user.getUsername()}"></span></p>
-            <p>Email: <span th:text="${user.getEmail()}"></span></p>
-            
-            <form method="GET" action="/profile/createDog">
-              <button class="btn btn-primary mt-2">Attach a Dog</button>
-            </form>
-      
-            <form method="GET" action="/profile/mydogs">
-              <button class="btn btn-info pt-2">My Dogs</button>
-            </form>
+                <div class="col-sm-3 col-lg-4">
+                    <form method="GET" action="/profile/createDog">
+                    <button class="btn attach-btn mt-2">Attach a Dog</button>
+                    </form>
+                </div>
+
+
+            </div>
              
         </div>
         </div>
-    </div>
 
 
     <div class="container">
@@ -50,7 +48,7 @@
         <h1 class="text-center">My Dog Days</h1>
         <form method="GET" action="events/create">
 
-        <button class="btn btn-info">Schedule An Event</button>
+        <!--<button class="btn btn-info">Schedule An Event</button>-->
 
 </form>
 
@@ -65,30 +63,39 @@
                         <span th:text="${item.title}"></span></a></h3>
                 </div>
                 <div class="eventBody">
-                    <p>Location: <span th:text="${item.location}"></span></p>
-                    <p>Date: <span th:text="${item.date}"></span></p>
-                    <p>Time: <span th:text="${item.time}"></span></p>
+                    <p><strong>Location: </strong><span th:text="${item.location}"></span></p>
+                    <p><strong>Date: </strong><span th:text="${item.date}"></span></p>
+                    <p><strong>Time: </strong><span th:text="${item.time}"></span></p>
 
+
+                    <div class="row">
+
+                        <div class="alter-btns col-12 col-md-6 col-lg-6">
                     <form method="GET" th:action="@{/events/{id}/edit(id = ${item.getId()})}">
-                        <button  class="btn btn-primary mt-2">Edit</button>
+                        <button  class="btn edit-btn">Edit</button>
                     </form>
+                        </div>
 
+                <div class="alter-btns col-12 col-md-6 col-lg-6">
                     <form method="GET" th:action="@{/events/{id}/delete(id = ${item.getId()})}">
-                        <button class="btn btn-primary mt-2">Delete</button>
+                        <button class="btn delete-btn">Delete</button>
                     </form>
                 </div>
+
+                    </div>
+                </div>
+            </div>
 
 
             </div>
         </div>
-    </div>
-
 
 
 
 
 
 </div>
+<!--</div>-->
 
 </body>
 </html>

@@ -169,7 +169,7 @@ public class EventController {
 
 
         eventRepo.save(event);
-        return "redirect:/events";
+        return "redirect:/profile";
     }
 
 
@@ -177,7 +177,7 @@ public class EventController {
     public String deletePost (@PathVariable Long id, Model model){
         Event event = eventRepo.findOne(id);
         eventRepo.delete(event);
-        return "redirect:/events";
+        return "redirect:/profile";
     }
 
 
