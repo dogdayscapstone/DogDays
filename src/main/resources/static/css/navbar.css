@@ -1,12 +1,12 @@
 #main-font{
  font-family: 'chalkduster', cursive;
-color:orangered;
+color:#00A676;
 }
 .navbar-color{
-    background-color:lightsteelblue;
-    color:darkblue;
+    background-color:#474954;
+    color:#F7F7FF;
 
 }
 li{
-    color:white;
+    color:#F7F7FF;
 }
