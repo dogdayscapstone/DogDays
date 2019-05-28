@@ -22,7 +22,7 @@
 
 .eventTitle{
     font-family: 'chalkduster', cursive;
-    background-color: lightsteelblue;
+    background-color: #00A676;
     border-radius: 10px;
     text-align: center;
     height: 40px;
@@ -47,7 +47,7 @@
     line-height: 40px;
 }
 .schedule-btn{
-    background-color: lightsteelblue;
+    background-color: #00A676;
     color: white;
     font-weight: bold;
     border: 1px solid black;
