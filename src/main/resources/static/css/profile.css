@@ -1,7 +1,22 @@
 .profile-Header{
     text-align: center;
-    margin: 20px;
-
+}
+.jumbotron {
+    background-image:url("../images/profileBG.jpg");
+    height: 200px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.profile-Header{
+    font-family: 'chalkduster', cursive;
+    background: white;
+    opacity: .8;
+    border-radius: 10px;
+    color: black;
+    font-size: 4em;
 }
 .eventTitle{
     font-family: 'chalkduster', cursive;
@@ -15,6 +30,10 @@
     color: white;
     line-height: 40px;
     font-size: 1.25em;
+}
+.sub-title{
+    font-family: 'chalkduster', cursive;
+
 }
 .eventBody{
     font-family: 'Gill Sans Light Italic', sans-serif;

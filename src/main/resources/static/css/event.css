@@ -11,9 +11,11 @@
 .jumbotron h1{
     background: white;
     opacity: .8;
+    border-radius: 10px;
     color: black;
     font-size: 4em;
 }
+
 .event-heading{
     font-family: 'chalkduster', cursive;
 }
