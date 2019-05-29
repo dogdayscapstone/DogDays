@@ -78,7 +78,7 @@
         <div class="form-group">
             <label for="title">Event</label>
             <br/>
-            <input  class="text-center round" id="title"  th:field="*{title}" />
+            <input  class="text-center round text-center" id="title"  th:field="*{title}" />
         </div>
 
         <br />
@@ -86,7 +86,7 @@
         <div class="form-group">
             <label for="description">Description</label>
 <br/>
-            <input id="description"  class="round" th:field="*{description}" />
+            <input id="description"  class="round text-center" th:field="*{description}" />
         </div>
 
         <br />
@@ -94,7 +94,7 @@
         <div class="form-group">
             <label for="location">Location</label>
         <br/>
-            <input id="location" class="round" th:field="*{location}" />
+            <input id="location" class="round text-center" th:field="*{location}" />
         </div>
 
         <br />
@@ -105,7 +105,7 @@
 
 
                     <div class='input-group date' id='datepicker'>
-                        <input type="text" id="undate" class="form-control round" name="undate" th:field="*{date}" />
+                        <input type="text" id="undate" class="form-control round text-center" name="undate" th:field="*{date}" />
                         <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar">
 
@@ -141,7 +141,7 @@
 
 
                     <div class='input-group date'  id='timepicker'>
-                        <input type='text' name="time" id="time" class="form-control round"  th:field="*{time}"/>
+                        <input type='text' name="time" id="time" class="form-control round text-center"  th:field="*{time}"/>
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>

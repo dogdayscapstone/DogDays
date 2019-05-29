@@ -6,70 +6,116 @@
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
     <link rel="stylesheet" href="../../../css/navbar.css"/>
+<style>
+    .editDog{
+        width: 900px;
+        height:750px;
+        border-radius: 1em !important;
+        border:3px solid #48ACF0 ;
+        font-family:'Noteworthy', sans-serif;
+        background-color:#48ACF0;
+        margin:auto;
+        font-size:20px;
+    }
 
+    input{
+        width:70%;
+        margin:auto;
+    }
+
+    #main-heading{
+        font-family: 'chalkduster', cursive;
+    }
+    .round{
+
+
+
+        border: 1px solid #223445;
+        border-radius: 18px;
+        -moz-border-radius: 5px;
+        display:inline-block;
+
+        -webkit-font-smoothing: antialiased;
+    }
+    #size{
+        width:30%;
+        text-align:center;
+        margin: auto;
+    }
+    .btn{
+        background-color:#00A676;
+    }
+
+
+</style>
 
 </head>
 <body sec:authorize="isAuthenticated()">
 <nav th:replace="fragments/navbar :: navbar" ></nav>
-<!--<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>-->
+
 
 <div class="container">
 
+        <div class="row text-center">
+            <div class="col text-center editDog">
 
-<h1>EDIT</h1>
+<h1 id="main-heading">EDIT YOUR POST</h1>
 
 <form th:action="@{/profile/mydogs/{id}/edit(id = ${dog.id})}" th:method="POST" th:object="${dog}">
     <div class="form-group">
         <label for="name">Name</label>
-        <input class="form-control" id="name" type="text"
+        <br/>
+        <input class="round text-center" id="name" type="text"
                th:field="*{name}" />
     </div>
-    <div class="form-group">
-        <label for="body">Description</label>
-        <textarea class="form-control" id="body"  rows = "10" cols = "10" th:field="*{description}" ></textarea>
-    </div>
+
     <div class="form-group">
         <label for="breed">Breed</label>
-        <input class="form-control" id="breed" type="text"
+        <br/>
+        <input class="round text-center" id="breed" type="text"
                th:field="*{breed}" />
     </div>
 
     <div class="form-group">
         <label for="dob">DOB</label>
-        <input class="form-control" id="dob" type="text"
+        <br/>
+        <input class="round text-center" id="dob" type="text"
                th:field="*{dob}" />
     </div>
 
     <div class="form-group">
         <label for="dob">Gender</label>
-        <input class="form-control" id="gender" type="text"
+        <br/>
+        <input class="round text-center" id="gender" type="text"
                th:field="*{gender}" />
     </div>
 
     <div class="form-group">
         <label for="temperament">Temperament</label>
-        <input class="form-control" id="temperament" type="text"
+        <br/>
+        <input class="round text-center " id="temperament" type="text"
                th:field="*{temperament}" />
     </div>
 
 
     <div class="form-group">
         <label for="picture">Picture</label>
-        <input class="form-control" id="picture" type="text"
+        <br/>
+        <input class="round text-center" id="picture" type="text"
                th:field="*{dogPicture}" />
+    </div>
+    <div class="form-group">
+        <label for="body">Description</label>
+        <br/>
+        <textarea class="round text-center" id="body"  rows = "3" cols = "30" th:field="*{description}" ></textarea>
     </div>
 
 
-    <button class="btn btn-success">Submit</button>
+    <button class="btn" id="size">Submit</button>
 </form>
 
+</div>
+</div>
 </div>
 </body>
 </html>
