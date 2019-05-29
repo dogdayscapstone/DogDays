@@ -125,8 +125,8 @@ public class EventController {
     @GetMapping("/events/{id}")
     public String getOneBook (Model model, @PathVariable Long id){
         Event event = eventRepo.findOne(id);
-
-        User user = event.getUser();
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userRepo.findOne(sessionUser.getId());
 
         Boolean isAttending = usersAttending(event, user);
 
@@ -194,8 +194,6 @@ public class EventController {
     public String attendEvent (HttpServletRequest request, @PathVariable Long id){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = userRepo.findOne(sessionUser.getId());
-
-//        User user = (User)request.getSession().getAttribute("user");
 
         Event event = eventRepo.findOne(id);
         List<Dog> dogs = currentUser.getDogs();
