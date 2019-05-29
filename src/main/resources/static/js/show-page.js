@@ -42,7 +42,7 @@ $(document).ready(function () {
         console.log(data);
         var popup = new mapboxgl.Popup()
             .setLngLat(data)
-            .setHTML("<p>Dog Meetup!</p>")
+            .setHTML(location)
             .addTo(map)
 
 
