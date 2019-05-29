@@ -1,5 +1,5 @@
 # Dog Days
-A full stack meetup application for dog owners across San Antonio. 
+A full stack meetup application for dog owners across San Antonio. Allowing guests to register for an account, create an event and join/unjoin an event. A logged in user will also be able to attach dogs to their profile. 
 
 
 # APIs
