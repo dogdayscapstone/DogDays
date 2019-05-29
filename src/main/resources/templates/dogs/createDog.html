@@ -66,27 +66,27 @@
         <div class="form-group">
             <label for="name" class="pt-2">Name</label>
             <br/>
-            <input id ="name" class="round"  th:field="*{name}" />
+            <input id ="name" class="round text-center"  th:field="*{name}" />
         </div>
 
         <div class="form-group">
             <label for="breed">Breed</label>
             <br/>
-            <input id="breed" class="round" th:field="*{breed}" />
+            <input id="breed" class="round text-center" th:field="*{breed}" />
 
         </div>
 
         <div class="form-group">
             <label for="dob">Birthday (Month/Year)</label>
             <br/>
-            <input id="dob" class="round" th:field="*{dob}" />
+            <input id="dob" class="round text-center" th:field="*{dob}" />
         </div>
 
 
         <div class="form-group">
             <label for="gender">Gender</label>
             <br/>
-            <select id="gender" name="gender" class="round" th:field="*{gender}">
+            <select id="gender" name="gender" class="round text-center" th:field="*{gender}">
                 <option value="M">M</option>
                 <option value="F">F</option>
             </select>
@@ -95,7 +95,7 @@
         <div class="form-group">
             <label for="temperament">Temperament</label>
             <br/>
-            <select id="temperament" name="temperament" class="round"  th:field="*{temperament}">
+            <select id="temperament" name="temperament" class="round text-center"  th:field="*{temperament}">
                 <option value="friendly with all dogs">Friendly / All Dogs</option>
                 <option value="friendly only with big dogs">Friendly / Only Big Dogs</option>
                 <option value="friendly only with small dogs">Friendly / Only Small Dogs</option>
@@ -105,13 +105,13 @@
         <div class="form-group">
             <label for="picture">Picture</label>
             <br/>
-            <input id="picture" class="round" th:field="*{dogPicture}" />
+            <input id="picture" class="round text-center" th:field="*{dogPicture}" />
         </div>
 
         <div class="form-group">
             <label for="description">Description</label>
             <br/>
-            <textarea rows="4" cols="50" id="description" class="round" th:field="*{description}" />
+            <textarea rows="4" cols="50" id="description" class="round text-center" th:field="*{description}" />
         </div>
 
         <input type="submit" class="btn btn-block round" id="size" value="Attach Now" />

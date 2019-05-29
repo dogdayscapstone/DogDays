@@ -3,53 +3,168 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Dog Days | Edit Event</title>
+    <link rel="icon" href="images/download.png" type="image/x-icon"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <span th:include="fragments/navbar :: bootstrap"></span>
     <link rel="stylesheet" href="../../css/navbar.css"/>
+<style>
 
+    .editEvent{
+        width: 850px;
+        height:670px;
+        border-radius: 1em !important;
+        border:3px solid #48ACF0 ;
+        font-family:'Noteworthy', sans-serif;
+        background-color:#48ACF0;
+        margin:auto;
+        margin-top:40px;
+        font-size:20px;
+    }
+
+    input{
+        width:70%;
+        margin:auto;
+    }
+
+    #size{
+        width:30%;
+        text-align:center;
+        margin: auto;
+    }
+    .btn{
+        background-color:#00A676;
+    }
+    .input-group{
+        width:70%;
+        margin:auto;
+        text-align:center;
+    }
+    #main-heading{
+        font-family: 'chalkduster', cursive;
+    }
+    .round{
+
+
+
+        border: 1px solid #223445;
+        border-radius: 18px;
+        -moz-border-radius: 5px;
+        display:inline-block;
+
+        -webkit-font-smoothing: antialiased;
+    }
+
+</style>
 
 </head>
 <body>
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
-<!--<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>-->
 
+<h1 id="main-heading">Edit your event</h1>
 <div class="container">
+
+
+    <div class="row text-center">
+        <div class="col text-center editEvent">
 
 <h1>EDIT</h1>
 
 <form th:action="@{/events/{id}/edit(id = ${event.id})}" th:method="POST" th:object="${event}">
 <div class="form-group">
     <label for="title">Title</label>
-    <input class="form-control" id="title" type="text" th:field="*{title}" />
+    <br/>
+    <input class="round text-center" id="title" type="text" th:field="*{title}" />
 </div>
-<div class="form-group">
-    <label for="body">Description</label>
-    <textarea class="form-control" id="body"  rows = "10" cols = "10" th:field="*{description}" ></textarea>
-</div>
+
     <div class="form-group">
     <label for="location">Location</label>
-    <input class="form-control" id="location" type="text" th:field="*{location}" />
+        <br/>
+    <input class="round text-center" id="location" type="text" th:field="*{location}" />
 </div>
 
     <div class="form-group">
-        <label for="date">Date</label>
-        <input class="form-control" id="date" type="text" th:field="*{date}" />
+        <label for="undate">Date</label>
+
+
+
+        <div class='input-group date' id='datepicker'>
+            <input type="text" id="undate" class="form-control round text-center" name="undate" th:field="*{date}" />
+            <span class="input-group-addon">
+		                        <span class="glyphicon glyphicon-calendar">
+
+                                </span>
+            </span>
+
+        </div>
     </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    <link rel="stylesheet"
+          href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
+    <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script >
+
+        $('#datepicker').datetimepicker({
+            defaultDate: new Date(),
+            format: 'MM-DD-YYYY',
+
+            sideBySide: true
+        });
+
+    </script>
+    <br />
 
     <div class="form-group">
-        <label for="date">Time</label>
-        <input class="form-control" id="time" type="text" th:field="*{time}" />
+        <label for="time">Time</label>
+        <br/>
+
+        <div class='input-group date'  id='timepicker'>
+            <input type='text' name="time" id="time" class="form-control round text-center"  th:field="*{time}"/>
+            <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    <link rel="stylesheet"
+          href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
+    <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script>
+
+        $('#timepicker').datetimepicker({
+            defaultDate: new Date(),
+            format: 'hh:mm A',
+            // orientation: "button",
+
+            sideBySide: true
+        });
+        $(document).ready(function () {
+            $('#timepicker').datetimepicker({
+                defaultDate: new Date()});
+        }).fillseconds();
+    </script>
+    <br />
+
+    <div class="form-group">
+        <label for="body">Description</label>
+        <br/>
+        <textarea class="round text-center" id="body"  rows = "3" cols = "40" th:field="*{description}" ></textarea>
     </div>
 
-    <button class="btn btn-success">Submit</button>
+    <button class="btn " id="size">Submit</button>
 </form>
+</div>
+    </div>
 </div>
 </body>
 </html>
