@@ -9,23 +9,33 @@
 
     <span th:include="fragments/navbar :: bootstrap"></span>
     <link rel="stylesheet" href="../../css/navbar.css"/>
-<style>
+
+    <style>
 
     .editEvent{
-        width: 850px;
-        height:670px;
+        width: auto;
+        max-width: 600px;
+        height: 700px;
         border-radius: 1em !important;
-        border:3px solid #48ACF0 ;
+        border:3px solid #00A676 ;
         font-family:'Noteworthy', sans-serif;
-        background-color:#48ACF0;
-        margin:auto;
-        margin-top:40px;
+        background-color: #474954;
+        margin: 25px auto;
         font-size:20px;
+        color: #00A676;
+
     }
 
     input{
         width:70%;
         margin:auto;
+        color: black;
+    }
+    .input-group{
+        color: black;
+    }
+    textarea{
+        width: 70%;
     }
 
     #size{
@@ -35,6 +45,10 @@
     }
     .btn{
         background-color:#00A676;
+        color: black;
+    }
+    .btn:hover{
+        color: white;
     }
     .input-group{
         width:70%;
@@ -44,17 +58,20 @@
     #main-heading{
         font-family: 'chalkduster', cursive;
     }
+    li{
+        padding: 0;
+    }
     .round{
-
-
-
         border: 1px solid #223445;
-        border-radius: 18px;
+        border-radius: 5px;
         -moz-border-radius: 5px;
         display:inline-block;
-
+        color: black;
         -webkit-font-smoothing: antialiased;
     }
+        #body{
+            color: black;
+        }
 
 </style>
 
@@ -62,17 +79,15 @@
 <body>
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
-<h1 id="main-heading">Edit your event</h1>
 <div class="container">
 
 
     <div class="row text-center">
         <div class="col text-center editEvent">
 
-<h1>EDIT</h1>
-
 <form th:action="@{/events/{id}/edit(id = ${event.id})}" th:method="POST" th:object="${event}">
 <div class="form-group">
+<h1 id="main-heading">Edit your event</h1>
     <label for="title">Title</label>
     <br/>
     <input class="round text-center" id="title" type="text" th:field="*{title}" />
@@ -158,7 +173,7 @@
     <div class="form-group">
         <label for="body">Description</label>
         <br/>
-        <textarea class="round text-center" id="body"  rows = "3" cols = "40" th:field="*{description}" ></textarea>
+        <textarea class="round text-center" id="body"  rows = "3" th:field="*{description}" ></textarea>
     </div>
 
     <button class="btn " id="size">Submit</button>

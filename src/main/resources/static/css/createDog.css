@@ -1,51 +1,50 @@
-.btn{
-    margin-bottom:3px;
-}
-
-.login-box {
-    width: 450px;
-    height:350px;
+.dogform{
+    width: auto;
+    max-width: 600px;
+    height:800px;
     border-radius: 1em !important;
     border:3px solid #00A676 ;
     font-family:'Noteworthy', sans-serif;
     background-color: #474954;
-    font-size:20px;
     margin: 25px auto;
+    font-size:20px;
     color: #00A676;
 
+}
+#size{
+    width:25%;
 }
 input{
     width:70%;
     color: black;
-}
-#size{
-    width:20%;
-}
 
-.login-btn{
+}
+select{
+    width:70%;
+    color: black;
+}
+textarea{
+    color: black;
+    width: 70%;
+}
+.btn{
+    margin:auto;
+    margin-bottom:1px;
     background-color:#00A676;
     color: black;
 }
-.login-btn:hover{
+.btn:hover{
     color: white;
 }
-#login-text{
+#main-heading{
     font-family:'chalkduster',cursive;
-
 }
-.round{
 
+.round{
     border: 1px solid #223445;
     border-radius: 5px;
     -moz-border-radius: 5px;
     display:inline-block;
 
     -webkit-font-smoothing: antialiased;
-}
-
-a:hover {
-    color:#FB3640;
-}
-.login-box{
-    margin-top:20px;
 }
