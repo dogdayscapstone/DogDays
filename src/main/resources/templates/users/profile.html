@@ -6,16 +6,22 @@
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
     <link rel="stylesheet" href="/css/profile.css"/>
+    <link rel="stylesheet" href="css/navbar.css"/>
+
 
 
 </head>
 <body sec:authorize="isAuthenticated()">
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
+    <div class="jumbotron ml-0 mr-0 pr-0 pl-0">
+<div class="container">
+        <h1 class="profile-Header">Your Profile: <span th:text="${user.getUsername()}"></span></h1>
+</div>
+    </div>
 <div class="page">
 <div class="container" sec:authorize="isAuthenticated()">
 
-<h1 class="profile-Header">Your Profile: <span th:text="${user.getUsername()}"></span></h1>
 
     <div class="container">
         <div class="row">
@@ -31,7 +37,7 @@
                 </div>
 
                 <div class="col-sm-3 col-lg-4">
-                    <form method="GET" action="/profile/createDog">
+                    <form method="GET" action="/dogs/createDog">
                     <button class="btn attach-btn mt-2">Attach a Dog</button>
                     </form>
                 </div>
@@ -45,7 +51,7 @@
 
     <div class="container">
 
-        <h1 class="text-center">My Dog Days</h1>
+        <h1 class="text-center sub-title">My Dog Days</h1>
         <form method="GET" action="events/create">
 
         <!--<button class="btn btn-info">Schedule An Event</button>-->

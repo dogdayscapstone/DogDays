@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Dog Days | Detailed Event</title>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
 
     <link rel="stylesheet" href="/css/show.css"/>
-    <link rel="stylesheet" href="/css/navbar.css"/>
+    <link rel="stylesheet" href="../css/navbar.css"/>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 
 </head>
 <body>
@@ -22,7 +22,9 @@
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
     <div class=" text-center jumbotron ml-0 mr-0 pr-0 pl-0">
-        <h1 class="mt-2 pt-2">Detailed Information</h1>
+        <div class="container">
+            <h1 class="mt-2 pt-2">Detailed Information</h1>
+        </div>
     </div>
 
 <div class="container">
@@ -36,7 +38,7 @@
 
                 <div class="eventBody">
                     <p><strong>Description: </strong><span th:text="${event.description}"></span></p>
-                    <p><strong>Location: </strong><span th:text="${event.location}"></span></p>
+                    <p id="location"><strong>Location: </strong><span th:text="${event.location}"></span></p>
                     <p><strong>Date: </strong><span th:text="${event.date}"></span></p>
                     <p><strong>Time: </strong><span th:text="${event.time}"></span></p>
                     <p id="count"><strong>Dogs Attending:</strong> <span th:text="${countAttending}"></span>
@@ -63,19 +65,16 @@
                     </p>
                 </div>
             </div>
+        </div>
 
+        <div class="col col-sm-6 col-lg-6">
 
+            <div id='map' style='width: 100%; height: 450px;'></div>
 
-    </div>
-
-    <div class="col col-sm-6 col-lg-6">
-
-        <div id='map' style='width: 100%; height: 450px;'></div>
-
-    </div>
-        <div class="row">
-            <div sec:authorize="isAuthenticated()">
-                <div class="comment-section">
+        </div>
+    <div class="row">
+        <div sec:authorize="isAuthenticated()">
+            <div class="col col-sm-12 col-lg-12 comment-section">
                     <h3 class="comment-title">Comments</h3>
                     <div class="comments" th:each="comment : ${comments}">
 

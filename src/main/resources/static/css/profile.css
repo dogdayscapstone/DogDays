@@ -1,11 +1,26 @@
 .profile-Header{
     text-align: center;
-    margin: 20px;
-
+}
+.jumbotron {
+    background-image:url("../images/profileBG.jpg");
+    height: 200px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.profile-Header{
+    font-family: 'chalkduster', cursive;
+    background: white;
+    opacity: .8;
+    border-radius: 10px;
+    color: black;
+    font-size: 4em;
 }
 .eventTitle{
     font-family: 'chalkduster', cursive;
-    background-color: lightsteelblue;
+    background-color: #00A676;
     border-radius: 10px;
     text-align: center;
     height: 40px;
@@ -16,10 +31,14 @@
     line-height: 40px;
     font-size: 1.25em;
 }
+.sub-title{
+    font-family: 'chalkduster', cursive;
+
+}
 .eventBody{
     font-family: 'Gill Sans Light Italic', sans-serif;
     background-image:url("../images/silhouette.png");
-    background-size: 250px 150px;
+    background-size: 300px 200px;
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid black;
@@ -32,7 +51,7 @@
 
 .attach-btn{
     width: 150px;
-    background-color: lightsteelblue;
+    background-color: #00A676;
     border: 1px solid black;
     color: white;
     margin-bottom: 5px;
@@ -40,7 +59,7 @@
 }
 .dogs-btn{
     width: 150px;
-    background-color: lightsteelblue;
+    background-color: #00A676;
     border: 1px solid black;
     color: white;
     margin-bottom: 5px;
@@ -57,14 +76,14 @@
 }
 .edit-btn{
     width: 100px;
-    background-color: lightsteelblue;
+    background-color: #00A676;
     border: 1px solid black;
     color: white;
     margin-bottom: 5px;
 }
 .delete-btn{
     width: 100px;
-    background-color: lightsteelblue;
+    background-color: #00A676;
     border: 1px solid black;
     color: white;
     margin-bottom: 5px;
