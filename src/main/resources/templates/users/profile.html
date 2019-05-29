@@ -12,15 +12,16 @@
 
 </head>
 <body sec:authorize="isAuthenticated()">
-<nav th:replace = "fragments/navbar :: navbar" ></nav>
+    <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
-    <div class="jumbotron ml-0 mr-0 pr-0 pl-0">
-<div class="container">
-        <h1 class="profile-Header">Your Profile: <span th:text="${user.getUsername()}"></span></h1>
-</div>
+    <div class="text-center jumbotron ml-0 mr-0 pr-0 pl-0">
+        <div class="container">
+            <h1 class="profile-Header">Your Profile: <span th:text="${user.getUsername()}"></span></h1>
+        </div>
     </div>
-<div class="page">
-<div class="container" sec:authorize="isAuthenticated()">
+
+    <div class="page">
+    <div class="container" sec:authorize="isAuthenticated()">
 
 
     <div class="container">

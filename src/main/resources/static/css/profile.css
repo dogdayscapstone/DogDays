@@ -1,23 +1,26 @@
-.profile-Header{
-    text-align: center;
+.jumbotron h1{
+    font-family: 'chalkduster', cursive;
+    text-align: left;
+    color: white;
+    font-size: 4.5em;
+    /*background: white;*/
+    /*opacity: .8;*/
+    /*border-radius: 10px;*/
+
 }
 .jumbotron {
-    background-image:url("../images/profileBG.jpg");
-    height: 200px;
+    background-image:url("../images/4dogs.jpg");
+    opacity: .8;
+    height: 250px;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
     -webkit-background-size: cover;
     background-size: cover;
 }
-.profile-Header{
-    font-family: 'chalkduster', cursive;
-    background: white;
-    opacity: .8;
-    border-radius: 10px;
-    color: black;
-    font-size: 4em;
-}
+
+
+
 .eventTitle{
     font-family: 'chalkduster', cursive;
     background-color: #00A676;

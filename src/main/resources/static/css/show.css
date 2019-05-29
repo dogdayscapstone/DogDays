@@ -1,6 +1,7 @@
 
 .jumbotron{
     background-image:url("../images/dog_stick.jpeg");
+    opacity: .8;
     height:200px;
     width:100%;
     background-repeat: no-repeat;
@@ -11,11 +12,12 @@
 }
 .jumbotron h1{
     font-family: 'chalkduster', cursive;
-    background: white;
-    border-radius: 10px;
-    opacity: .8;
+    /*background: white;*/
+    /*border-radius: 10px;*/
+    /*opacity: .8;*/
+    text-align: left;
     color: black;
-    font-size: 4em;
+    font-size: 4.5em;
 }
 .eventTitle{
     font-family: 'chalkduster', cursive;
