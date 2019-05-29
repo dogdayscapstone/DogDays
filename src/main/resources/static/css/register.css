@@ -1,10 +1,6 @@
-.btn{
-    margin-bottom:3px;
-}
-
-.login-box {
+.register-box {
     width: 450px;
-    height:350px;
+    height:420px;
     border-radius: 1em !important;
     border:3px solid #00A676 ;
     font-family:'Noteworthy', sans-serif;
@@ -12,29 +8,28 @@
     font-size:20px;
     margin: 25px auto;
     color: #00A676;
+    padding: 15px;
 
 }
-input{
-    width:70%;
+input {
+    width: 70%;
     color: black;
 }
 #size{
-    width:20%;
+    width: 30%;
 }
-
-.login-btn{
+.btn{
+    margin:auto;
+}
+.register-btn{
     background-color:#00A676;
     color: black;
 }
-.login-btn:hover{
+.register-btn:hover{
     color: white;
 }
-#login-text{
-    font-family:'chalkduster',cursive;
 
-}
 .round{
-
     border: 1px solid #223445;
     border-radius: 5px;
     -moz-border-radius: 5px;
@@ -42,10 +37,6 @@ input{
 
     -webkit-font-smoothing: antialiased;
 }
-
-a:hover {
-    color:#FB3640;
-}
-.login-box{
-    margin-top:20px;
+#main-heading{
+    font-family:'chalkduster',cursive;
 }

@@ -6,49 +6,8 @@
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
 
-    <style>
-        .dogform{
-            width: 900px;
-            height:750px;
-            border-radius: 1em !important;
-            border:3px solid #48ACF0 ;
-            font-family:'Noteworthy', sans-serif;
-            background-color:#48ACF0;
-            margin:auto;
-            font-size:20px;
-        }
-        #size{
-            width:25%;
-        }
-        input{
-            width:70%;
-
-        }
-        select{
-            width:70%;
-        }
-.btn{
-    margin:auto;
-    margin-bottom:1px;
-    background-color:#00A676;
-}
-        #main-heading{
-        font-family:'chalkduster',cursive;
-        }
-
-        .round{
-            border: 1px solid #223445;
-            border-radius: 18px;
-            -moz-border-radius: 5px;
-            display:inline-block;
-
-            -webkit-font-smoothing: antialiased;
-        }
-
-
-    </style>
-  
     <link rel="stylesheet" href="/css/navbar.css"/>
+    <link rel="stylesheet" href="/css/createDog.css"/>
   
 </head>
 
@@ -56,12 +15,12 @@
 <nav th:replace="fragments/navbar :: navbar" ></nav>
 
 
-<h2 class="text-center" id="main-heading">Attach A Dog Profile</h2>
 
 <div class="container">
     <div class="row text-center">
         <div class="col text-center dogform">
     <form th:action="@{/profile/createDog}" th:method="post" th:object="${dog}">
+<h2 class="text-center" id="main-heading">Attach A Dog Profile</h2>
 
         <div class="form-group">
             <label for="name" class="pt-2">Name</label>
@@ -111,7 +70,7 @@
         <div class="form-group">
             <label for="description">Description</label>
             <br/>
-            <textarea rows="4" cols="50" id="description" class="round text-center" th:field="*{description}" />
+            <textarea rows="3" id="description" class="round text-center" th:field="*{description}" />
         </div>
 
         <input type="submit" class="btn btn-block round" id="size" value="Attach Now" />

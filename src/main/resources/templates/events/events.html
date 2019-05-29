@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title>Dog Days | Upcoming</title>
@@ -22,7 +22,9 @@
 
         <div class="container border-head">
         <h1 class=" event-heading text-center">Upcoming Dog Days</h1>
-            <button class="btn schedule-btn">Schedule An Event</button>
+            <div sec:authorize="isAuthenticated()">
+                 <button class="btn schedule-btn">Schedule An Event</button>
+            </div>
         </div>
 
     </form>

@@ -8,45 +8,53 @@
     <link rel="stylesheet" href="../../../css/navbar.css"/>
 <style>
     .editDog{
-        width: 900px;
-        height:750px;
+        width: auto;
+        max-width: 600px;
+        height:800px;
         border-radius: 1em !important;
-        border:3px solid #48ACF0 ;
+        border:3px solid #00A676 ;
         font-family:'Noteworthy', sans-serif;
-        background-color:#48ACF0;
-        margin:auto;
+        background-color: #474954;
+        margin: 25px auto;
         font-size:20px;
-        margin-top:15px;
-    }
+        color: #00A676;
 
-    input{
-        width:70%;
-        margin:auto;
-    }
-
-    #main-heading{
-        font-family: 'chalkduster', cursive;
-    }
-    .round{
-
-
-
-        border: 1px solid #223445;
-        border-radius: 18px;
-        -moz-border-radius: 5px;
-        display:inline-block;
-
-        -webkit-font-smoothing: antialiased;
     }
     #size{
-        width:30%;
-        text-align:center;
-        margin: auto;
+        width:25%;
+        color: black;
+    }
+    #size:hover{
+        color: white;
+    }
+    input{
+        width:70%;
+        color: black;
+
+    }
+    select{
+        width:70%;
+        color: black;
+    }
+    textarea{
+        color: black;
+        width: 70%;
     }
     .btn{
+        margin: auto;
         background-color:#00A676;
     }
+    #main-heading{
+        font-family:'chalkduster',cursive;
+    }
 
+    .round{
+        border: 1px solid #223445;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display:inline-block;
+        -webkit-font-smoothing: antialiased;
+    }
 
 </style>
 
@@ -60,10 +68,10 @@
         <div class="row text-center">
             <div class="col text-center editDog">
 
-<h1 id="main-heading">EDIT YOUR POST</h1>
 
 <form th:action="@{/profile/mydogs/{id}/edit(id = ${dog.id})}" th:method="POST" th:object="${dog}">
     <div class="form-group">
+<h1 id="main-heading">Update Your Dog</h1>
         <label for="name">Name</label>
         <br/>
         <input class="round text-center" id="name" type="text"
@@ -108,11 +116,11 @@
     <div class="form-group">
         <label for="body">Description</label>
         <br/>
-        <textarea class="round text-center" id="body"  rows = "3" cols = "30" th:field="*{description}" ></textarea>
+        <textarea class="round text-center" id="body"  rows="3"  th:field="*{description}" ></textarea>
     </div>
 
 
-    <button class="btn" id="size">Submit</button>
+    <button class="btn" id="size">Save Edit</button>
 </form>
 
 </div>

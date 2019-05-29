@@ -1,51 +1,48 @@
-.btn{
-    margin-bottom:3px;
-}
-
-.login-box {
-    width: 450px;
-    height:350px;
+.editDog{
+    width: auto;
+    max-width: 600px;
+    height:800px;
     border-radius: 1em !important;
     border:3px solid #00A676 ;
     font-family:'Noteworthy', sans-serif;
     background-color: #474954;
-    font-size:20px;
     margin: 25px auto;
+    font-size:20px;
     color: #00A676;
 
+}
+#size{
+    width:25%;
+    color: black;
+}
+#size:hover{
+    color: white;
 }
 input{
     width:70%;
     color: black;
-}
-#size{
-    width:20%;
-}
 
-.login-btn{
-    background-color:#00A676;
+}
+select{
+    width:70%;
     color: black;
 }
-.login-btn:hover{
-    color: white;
+textarea{
+    color: black;
+    width: 70%;
 }
-#login-text{
+.btn{
+    margin: auto;
+    background-color:#00A676;
+}
+#main-heading{
     font-family:'chalkduster',cursive;
-
 }
-.round{
 
+.round{
     border: 1px solid #223445;
     border-radius: 5px;
     -moz-border-radius: 5px;
     display:inline-block;
-
     -webkit-font-smoothing: antialiased;
-}
-
-a:hover {
-    color:#FB3640;
-}
-.login-box{
-    margin-top:20px;
 }
