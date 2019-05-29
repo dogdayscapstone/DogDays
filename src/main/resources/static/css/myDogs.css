@@ -1,6 +1,7 @@
 .jumbotron{
     background-image:url("../images/pawprints.jpg");
-    height:200px;
+    opacity: .8;
+    height:250px;
     width:100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -9,11 +10,11 @@
 }
 
 .jumbotron h1{
-    background: white;
+    /*background: white;*/
     /*opacity: .6;*/
-    border-radius: 10px;
-    /*color: #FB3640;*/
-    font-size: 4em;
+    /*border-radius: 10px;*/
+    color: #891E23;
+    font-size: 4.5em;
 }
 .header >a{
     font-family: 'Chalkduster', sans-serif;
