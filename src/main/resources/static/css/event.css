@@ -1,18 +1,21 @@
 .jumbotron{
     background-image:url("../images/eventsDog.jpg");
-    height:200px;
+    opacity: .8;
+    height:250px;
     width:100%;
     background-repeat: no-repeat;
     background-position: center;
     -webkit-background-size: cover;
     background-size: cover;
 }
+
 .jumbotron h1{
-    background: white;
-    opacity: .8;
-    border-radius: 10px;
-    color: black;
-    font-size: 4em;
+    /*background: white;*/
+    /*opacity: .8;*/
+    /*border-radius: 10px;*/
+    color: white;
+    font-size: 4.5em;
+    text-align: left;
 }
 
 .event-heading{
@@ -53,4 +56,5 @@
     color: white;
     font-weight: bold;
     border: 1px solid black;
+    text-align: center;
 }
