@@ -5,38 +5,88 @@
     <title>Dog Days | Attach a Dog</title>
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
-    <link rel="stylesheet" href="/css/navbar.css"/>
 
+    <style>
+        .dogform{
+            width: 900px;
+            height:750px;
+            border-radius: 1em !important;
+            border:3px solid #48ACF0 ;
+            font-family:'Noteworthy', sans-serif;
+            background-color:#48ACF0;
+            margin:auto;
+            font-size:20px;
+        }
+        #size{
+            width:25%;
+        }
+        input{
+            width:70%;
+
+        }
+        select{
+            width:70%;
+        }
+.btn{
+    margin:auto;
+    margin-bottom:1px;
+    background-color:#00A676;
+}
+        #main-heading{
+        font-family:'chalkduster',cursive;
+        }
+
+        .round{
+            border: 1px solid #223445;
+            border-radius: 18px;
+            -moz-border-radius: 5px;
+            display:inline-block;
+
+            -webkit-font-smoothing: antialiased;
+        }
+
+
+    </style>
+  
+    <link rel="stylesheet" href="/css/navbar.css"/>
+  
 </head>
 
 <body>
 <nav th:replace="fragments/navbar :: navbar" ></nav>
 
 
-<h2 class="text-center">Attach A Dog Profile</h2>
+<h2 class="text-center" id="main-heading">Attach A Dog Profile</h2>
 
 <div class="container">
+    <div class="row text-center">
+        <div class="col text-center dogform">
     <form th:action="@{/profile/createDog}" th:method="post" th:object="${dog}">
 
         <div class="form-group">
-            <label for="name">Name</label>
-            <input id ="name" class="form-control" th:field="*{name}" />
+            <label for="name" class="pt-2">Name</label>
+            <br/>
+            <input id ="name" class="round"  th:field="*{name}" />
         </div>
 
         <div class="form-group">
             <label for="breed">Breed</label>
-            <input id="breed" class="form-control" th:field="*{breed}" />
+            <br/>
+            <input id="breed" class="round" th:field="*{breed}" />
+
         </div>
 
         <div class="form-group">
             <label for="dob">Birthday (Month/Year)</label>
-            <input id="dob" class="form-control" th:field="*{dob}" />
+            <br/>
+            <input id="dob" class="round" th:field="*{dob}" />
         </div>
 
 
         <div class="form-group">
             <label for="gender">Gender</label>
-            <select id="gender" name="gender" class="form-control" th:field="*{gender}">
+            <br/>
+            <select id="gender" name="gender" class="round" th:field="*{gender}">
                 <option value="M">M</option>
                 <option value="F">F</option>
             </select>
@@ -44,7 +94,8 @@
 
         <div class="form-group">
             <label for="temperament">Temperament</label>
-            <select id="temperament" name="temperament" class="form-control" th:field="*{temperament}">
+            <br/>
+            <select id="temperament" name="temperament" class="round"  th:field="*{temperament}">
                 <option value="friendly with all dogs">Friendly / All Dogs</option>
                 <option value="friendly only with big dogs">Friendly / Only Big Dogs</option>
                 <option value="friendly only with small dogs">Friendly / Only Small Dogs</option>
@@ -53,20 +104,23 @@
 
         <div class="form-group">
             <label for="picture">Picture</label>
-            <input id="picture" class="form-control" th:field="*{dogPicture}" />
+            <br/>
+            <input id="picture" class="round" th:field="*{dogPicture}" />
         </div>
 
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" class="form-control" th:field="*{description}" />
+            <br/>
+            <textarea rows="4" cols="50" id="description" class="round" th:field="*{description}" />
         </div>
 
-        <input type="submit" class="btn btn-block btn-primary" value="Attach Now" />
+        <input type="submit" class="btn btn-block round" id="size" value="Attach Now" />
     </form>
 
 </div>
 
-
+    </div>
+</div>
 
 </body>
 </html>

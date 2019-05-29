@@ -1,0 +1,31 @@
+.btn{
+    margin-bottom:3px;
+}
+
+.login-box {
+    width: 600px;
+    height:350px;
+    border-radius: 1em !important;
+    border:3px solid #48ACF0 ;
+    font-family:'Noteworthy', sans-serif;
+    background-color:#48ACF0;
+    font-size:20px;
+    margin: auto;
+
+}
+input{
+    width:70%;
+
+
+}
+#size{
+    width:20%;
+}
+
+.login-btn{
+    background-color:#00A676;
+}
+#login-text{
+    font-family:'chalkduster',cursive;
+
+}

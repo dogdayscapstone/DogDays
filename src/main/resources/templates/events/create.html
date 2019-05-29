@@ -4,11 +4,59 @@
     <meta charset="UTF-8"/>
     <title>Dog Days | Schedule An Event</title>
     <link rel="icon" href="images/download.png" type="image/x-icon"/>
-
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet" id="bootstrap-css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <span th:include="fragments/navbar :: bootstrap"></span>
+
+    <style>
+        .eventform{
+            width: 850px;
+            height:700px;
+            border-radius: 1em !important;
+            border:3px solid #48ACF0 ;
+            font-family:'Noteworthy', sans-serif;
+            background-color:#48ACF0;
+            margin:auto;
+            margin-top:40px;
+            font-size:20px;
+        }
+
+        input{
+            width:70%;
+            margin:auto;
+        }
+
+        #size{
+            width:30%;
+            text-align:center;
+            margin: auto;
+        }
+        .btn{
+            background-color:#00A676;
+        }
+        .input-group{
+            width:70%;
+            margin:auto;
+            text-align:center;
+        }
+        #main-heading{
+            font-family: 'chalkduster', cursive;
+        }
+        .round{
+
+
+
+            border: 1px solid #223445;
+            border-radius: 18px;
+            -moz-border-radius: 5px;
+            display:inline-block;
+
+            -webkit-font-smoothing: antialiased;
+        }
+
+
+    </style>
+  
     <link rel="stylesheet" href="/css/navbar.css"/>
 
 
@@ -16,30 +64,37 @@
 <body>
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
+
 <div class="container">
 
-    <h2>Schedule A New Dog Day</h2>
+        <div class="row text-center">
+            <div class="col text-center eventform">
+
+    <h2 class="text-center " id="main-heading">Schedule A New Dog Day</h2>
 
 
     <form th:action="@{/events/create}" th:method="post" th:object="${event}">
 
         <div class="form-group">
             <label for="title">Event</label>
-            <input id="title" class="form-control" th:field="*{title}" />
+            <br/>
+            <input  class="text-center round" id="title"  th:field="*{title}" />
         </div>
 
         <br />
 
         <div class="form-group">
             <label for="description">Description</label>
-            <input id="description" class="form-control" th:field="*{description}" />
+<br/>
+            <input id="description"  class="round" th:field="*{description}" />
         </div>
 
         <br />
 
         <div class="form-group">
             <label for="location">Location</label>
-            <input id="location" class="form-control" th:field="*{location}" />
+        <br/>
+            <input id="location" class="round" th:field="*{location}" />
         </div>
 
         <br />
@@ -47,18 +102,18 @@
         <div class="form-group">
             <label for="undate">Date</label>
 
-            <div class="row">
-                <div class='col-sm-6'>
 
 
                     <div class='input-group date' id='datepicker'>
-                        <input class="form-control" id="undate" name="undate" th:field="*{date}" />
+                        <input type="text" id="undate" class="form-control round" name="undate" th:field="*{date}" />
                         <span class="input-group-addon">
-		                        <span class="glyphicon glyphicon-calendar"></span>
-		                    </span>
-                    </div>
+		                        <span class="glyphicon glyphicon-calendar">
 
-                </div>
+                                </span>
+		                    </span>
+                    <!--</div>-->
+
+                <!--</div>-->
             </div>
         </div>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -68,7 +123,7 @@
         <link rel="stylesheet"
               href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
         <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js"></script>
-        <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>-->
+
         <script >
 
             $('#datepicker').datetimepicker({
@@ -77,27 +132,20 @@
 
                 sideBySide: true
             });
-            $(document).ready(function () {
-                $('#datepicker').datetimepicker({
-                    defaultDate: new Date()});
-            }).fillseconds();
 
         </script>
         <br />
 
         <div class="form-group">
-            <!--<label for="time">Time</label>-->
-            time:
-            <div class="row">
-                <div class='col-sm-6'>
-                    <div class='input-group date' id='timepicker'>
-                        <input type='text' class="form-control" id="untime" name="untime" th:field="*{time}"/>
-                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-adjust"></span>
-                    </span>
-                    </div>
+            <label for="time">Time</label>
 
-                </div>
+
+                    <div class='input-group date'  id='timepicker'>
+                        <input type='text' name="time" id="time" class="form-control round"  th:field="*{time}"/>
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+
             </div>
         </div>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -124,17 +172,18 @@
         </script>
         <br />
 
-        <div class="form-group">
-            <input type="submit" class="btn btn-block btn-primary" />
-        </div>
+
+            <input type="submit" id="size" class="btn btn-block " />
+
 
 
     </form>
 
 
+
+    </div>
+    </div>
 </div>
-
-
 </body>
 </html>
 
