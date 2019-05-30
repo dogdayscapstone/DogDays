@@ -1,24 +1,38 @@
-/*.top{*/
-    /*position: fixed;*/
-/*}*/
+/*nav{
+    position: fixed;
+}*/
 
+.main{
+    min-height: 5em;
+
+}
 #main-font{
     font-family: 'chalkduster', cursive;
     font-size: 2em;
     color:#00A676;
+    padding: 25px;
 }
 .navbar-color{
     background-color:#474954;
     color:#F7F7FF;
 
 }
+.navbar-brand{
+    padding: 22px 15px;
+}
 
 .nav-links a{
     color:#00A676;
+    /*padding: 40px;*/
+}
+.nav > li{
+    padding: 9px;
 }
 .navbar{
     margin: 0;
     border: none;
+    /*height: 5em;*/
+    /*padding: 25px;*/
 }
 .navbar-nav>li>a {
     font-family:'Noteworthy', sans-serif;
