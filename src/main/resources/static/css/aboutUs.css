@@ -1,0 +1,19 @@
+.aboutUs{
+    background: #3B8DC5;
+    height: 600px;
+    border-radius: 15px;
+    max-width: 350px;
+    color: white;
+    text-align: center;
+    margin: 25px 5px 5px 5px;
+    border: 3px solid black;
+}
+.round{
+    border-radius: 15px;
+    border: 3px solid black;
+}
+a.links{
+    color: white;
+    text-underline: none;
+    font-size: 2em;
+}
