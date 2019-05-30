@@ -14,6 +14,11 @@
     .eventBody{
         font-size:1.5em;
     }
+    .schedule-btn{
+        height:40px;
+        background-color: #48ACF0;
+
+    }
 </style>
 
 </head>
@@ -24,14 +29,7 @@
     <div class="big container">
         <h1 class="event-heading text-center">Upcoming Dog Days</h1>
 
-        <form method="GET" action="events/create">
-        <div class="container border-head">
-            <div sec:authorize="isAuthenticated()">
-                 <button class="btn schedule-btn">Schedule An Event</button>
-            </div>
-        </div>
 
-    </form>
     </div>
 </div>
 
@@ -40,6 +38,14 @@
 
 
     <div class="row">
+        <form method="GET" action="events/create">
+            <div class="container border-head text-center">
+                <div sec:authorize="isAuthenticated()">
+                    <button class="btn schedule-btn">Schedule An Event</button>
+                </div>
+            </div>
+
+        </form>
         <div class="card">
             <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
                 <div class="eventTitle">
