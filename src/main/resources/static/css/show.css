@@ -35,6 +35,7 @@
     margin-top: 0;
     font-size: 2em;
 }
+
 .eventBody {
     font-family: 'Gill Sans Light Italic', sans-serif;
     background-image: url("../images/silhouette.png");
@@ -44,7 +45,7 @@
     border: 2px solid black;
     border-radius: 10px;
     padding: 15px;
-    font-size: 1.5em;
+    font-size: 2em;
     line-height: 40px;
     margin-bottom: 5px;
 }
@@ -52,6 +53,7 @@
     border-radius: 15px;
     border: 2px solid black;
     box-shadow: grey;
+
 }
 .comment-btn{
     background-color: #00A676;

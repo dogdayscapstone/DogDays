@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="/css/show.css"/>
     <link rel="stylesheet" href="../css/navbar.css"/>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        .mapTitle {
+            font-family: 'chalkduster', cursive;
+            background-color: #00A676;
+            border-radius: 10px;
+            text-align: center;
+            height: 60px;
+            margin-bottom: 5px;
+        }
+.mapBody{
+    padding: 0px;
+    font-size: 2em;
+    line-height: 40px;
+    margin-bottom: 5px;
+}
+
+
+    </style>
 
 </head>
 <body>
@@ -68,10 +86,16 @@
         </div>
 
         <div class="col col-sm-6 col-lg-6">
+            <div class="rightSide">
+                <h2 class="mapTitle title"><strong><span>Location</span></strong> </h2>
+                <div class="mapBody">
 
-            <div id='map' style='width: 100%; height: 450px;'></div>
+            <div id='map' style='width: 100%; height: 375px;'></div>
+                </div>
+            </div>
 
         </div>
+    </div>
     <div class="row">
         <div sec:authorize="isAuthenticated()">
             <div class="col col-sm-12 col-lg-12 comment-section">
@@ -95,7 +119,7 @@
             </div>
         </div>
 
-    </div>
+
 </div>
 
 
