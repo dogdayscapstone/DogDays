@@ -4,7 +4,7 @@
 
 .jumbotron{
     background-image:url("../images/playingdog.jpg");
-    opacity: .8;
+    z-index: -1;
     height:300px;
     width:100%;
     background-color: #48ACF0;
@@ -21,10 +21,9 @@
 }
 .jumbotron h1{
     font-family: 'chalkduster', cursive;
-    /*background: white;*/
-    /*border-radius: 10px;*/
-    /*opacity: .7;*/
-    color: white;
-    text-align: left;
-    font-size: 4.5em;
+    background: white;
+    border-radius: 10px;
+    opacity: .8;
+    color: black;
+    font-size: 4.8em;
 }
