@@ -1,8 +1,8 @@
 
 .jumbotron{
     background-image:url("../images/dog_stick.jpeg");
-    opacity: .8;
-    height:200px;
+    z-index: -1;
+    height:250px;
     width:100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -12,12 +12,14 @@
 }
 .jumbotron h1{
     font-family: 'chalkduster', cursive;
-    /*background: white;*/
-    /*border-radius: 10px;*/
-    /*opacity: .8;*/
-    text-align: left;
+    background: white;
+    border-radius: 10px;
+    opacity: .8;
+    /*text-shadow: 7px 7px white;*/
+    text-align: center;
     color: black;
-    font-size: 4.5em;
+
+    font-size: 4.8em;
 }
 .eventTitle{
     font-family: 'chalkduster', cursive;
@@ -48,7 +50,7 @@
 }
 #map{
     border-radius: 15px;
-    border: 2px solid #FB3640;
+    border: 2px solid black;
     box-shadow: grey;
 }
 .comment-btn{

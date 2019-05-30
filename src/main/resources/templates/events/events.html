@@ -17,11 +17,11 @@
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
 <div class="text-center jumbotron ml-0 mr-0 pr-0 pl-0">
-    <div class="container">
-    <form method="GET" action="events/create">
+    <div class="big container">
+        <h1 class="event-heading text-center">Upcoming Dog Days</h1>
 
+        <form method="GET" action="events/create">
         <div class="container border-head">
-        <h1 class=" event-heading text-center">Upcoming Dog Days</h1>
             <div sec:authorize="isAuthenticated()">
                  <button class="btn schedule-btn">Schedule An Event</button>
             </div>

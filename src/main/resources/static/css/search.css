@@ -1,6 +1,7 @@
 .jumbotron{
     background-image:url("../images/searchDog.jpg");
-    height:200px;
+    z-index: -1;
+    height:250px;
     width:100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -14,7 +15,9 @@
     background: white;
     opacity: .8;
     color: black;
-    font-size: 4em;
+    border-radius: 10px;
+    /*text-shadow: 7px 7px white;*/
+    font-size: 4.8em;
 }
 .eventTitle{
     font-family: 'chalkduster', cursive;
