@@ -5,9 +5,10 @@
 .jumbotron{
     background-image:url("../images/playingdog.jpg");
     z-index: -1;
-    height:300px;
+    height:400px;
     width:100%;
-    background-color: #48ACF0;
+    padding-top: 130px;
+    /*background-color: #48ACF0;*/
     background-repeat: no-repeat;
     background-position: center;
     -webkit-background-size: cover;
@@ -17,13 +18,37 @@
 .homeFont{
     font-family:'Noteworthy', sans-serif;
     font-size:2.5em;
+    font-weight: bold;
     color:#FB3640;
 }
 .jumbotron h1{
     font-family: 'chalkduster', cursive;
     background: white;
+    min-height: 1.6em;
+    line-height: 1.5em;
     border-radius: 10px;
     opacity: .8;
     color: black;
     font-size: 4.8em;
+}
+
+.sign-up{
+    text-align: center;
+    min-width: 200px;
+    padding: 10px;
+    background-color: #FB3640;
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Noteworthy', sans-serif;
+    font-size: 1.5em;
+}
+
+.sign-up-div{
+    text-align: center;
+}
+
+p{
+    background-image: url("../images/puppy-paw.png");
+    background-size: 400px 500px;
+    /*z-index: -1;*/
 }
