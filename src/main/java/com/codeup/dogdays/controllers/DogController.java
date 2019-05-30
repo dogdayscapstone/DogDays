@@ -36,7 +36,6 @@ public class DogController {
     @GetMapping("/profile/mydogs")
     public String showDogsProfile(Model model, HttpServletRequest request) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = (User) request.getSession().getAttribute("user");
         model.addAttribute("user", sessionUser);
         model.addAttribute("dogs", EC.dogsByUser((List<Dog>)dogRepo.findAll(), userRepo.findOne(sessionUser.getId())));
 
@@ -65,7 +64,7 @@ public class DogController {
         User dbUser = userRepo.findOne(sessionUser.getId());
         dog.setDogs(dbUser);
         dogRepo.save(dog);
-        return "redirect:/profile/mydogs";
+        return "redirect:/profile";
     }
 
 
@@ -88,7 +87,7 @@ public class DogController {
 
         dogRepo.save(dog);
 
-        return "redirect:/profile/mydogs";
+        return "redirect:/profile";
     }
 
 

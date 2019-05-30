@@ -1,7 +1,9 @@
 package com.codeup.dogdays.controllers;
 
+import com.codeup.dogdays.models.Dog;
 import com.codeup.dogdays.models.Event;
 import com.codeup.dogdays.models.User;
+import com.codeup.dogdays.repositories.DogRepository;
 import com.codeup.dogdays.repositories.EventRepository;
 import com.codeup.dogdays.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,12 +23,14 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     private final EventRepository eventRepo;
     private EventController EC;
+    private final DogRepository dogRepo;
 
-    public UserController(UserRepository userRepo, EventController EC, EventRepository eventRepo, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository userRepo, EventController EC, EventRepository eventRepo, PasswordEncoder passwordEncoder, DogRepository dogRepo) {
         this.userRepo = userRepo;
         this.eventRepo = eventRepo;
         this.EC = EC;
         this.passwordEncoder = passwordEncoder;
+        this.dogRepo = dogRepo;
 
     }
 
@@ -87,11 +91,14 @@ public class UserController {
             @GetMapping("/profile")
             public String showProfilePage (HttpServletRequest request, Model vmodel) {
                 User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
                 if(sessionUser == null){
                     return "redirect:/login";
                 }
 
                 User currentUser = userRepo.findOne(sessionUser.getId());
+
+                vmodel.addAttribute("dogs", EC.dogsByUser((List<Dog>)dogRepo.findAll(), userRepo.findOne(sessionUser.getId())));
 
                 vmodel.addAttribute("user", currentUser);
 
