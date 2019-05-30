@@ -5,21 +5,17 @@
     <title>Dog Days | About </title>
 
     <th:block th:include="fragments/navbar :: bootstrap"></th:block>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/navbar.css"/>
+    <link rel="stylesheet" href="css/aboutUs.css"/>
+
 
 
 </head>
 <body>
 <nav th:replace = "fragments/navbar :: navbar" ></nav>
-<!--<td>
-    <span th:if="${session.user == null}"  >
-        <nav th:replace="fragments/navLoggedOut :: navbar"></nav>
-    </span>
-    <span th:unless="${session.user == null}">
-        <nav th:replace="fragments/navbar :: navbar"></nav>
-    </span>
-</td>-->
-<div class="container">
+
+<div class="container" align="center">
     <div class="row" align="center">
 
         <div class="col col-lg-4 aboutUs">
@@ -27,30 +23,30 @@
             <p>
                 <img width="300" class="round" src="/images/Megan.jpg"/>
             </p>
-            <p><a class="links" href="https://alumni.codeup.com/uploads/671-1558463980.pdf">Resume</a></p>
-            <p><a class="links" href="https://www.linkedin.com/in/megan-l-simmons/">LinkedIn</a></p>
-            <p><a class="links" href="https://github.com/megansimmons">GitHub</a></p>
-
-
+            <p><i class="far fa-file"></i><a class="links" href="https://alumni.codeup.com/uploads/671-1558463980.pdf">Resume</a></p>
+            <p><i class="fab fa-linkedin"></i><a class="links" href="https://www.linkedin.com/in/megan-l-simmons/">LinkedIn</a></p>
+            <p><i class="fab fa-github-square"></i><a class="links" href="https://github.com/megansimmons">GitHub</a></p>
         </div>
+
         <div class="col col-lg-4 aboutUs">
             <h3>Sabita Regmi</h3>
             <p>
                 <img width="300" class="round" src="/images/Sabita.jpg"/>
             </p>
-            <p><a class="links" href="https://alumni.codeup.com/uploads/672-1558124422.pdf">Resume</a></p>
-            <p><a class="links" href="https://www.linkedin.com/in/sabita-regmi/">LinkedIn</a></p>
-            <p><a class="links" href="https://github.com/Sabita-Regmi">GitHub</a></p>
+            <p><i class="far fa-file"></i><a class="links" href="https://alumni.codeup.com/uploads/672-1558124422.pdf">Resume</a></p>
+            <p><i class="fab fa-linkedin"></i><a class="links" href="https://www.linkedin.com/in/sabita-regmi/">LinkedIn</a></p>
+            <p><i class="fab fa-github-square"></i><a class="links" href="https://github.com/Sabita-Regmi">GitHub</a></p>
 
         </div>
+
         <div class="col col-lg-4 aboutUs">
             <h3>Marcus Aguirre</h3>
             <p>
                 <img width="300" class="round" src="/images/Marcus.jpg"/>
             </p>
-            <p><a class="links" href="https://alumni.codeup.com/uploads/663-1558106927.pdf">Resume</a></p>
-            <p><a class="links" href="https://www.linkedin.com/in/marcus-a-aguirre/">LinkedIn</a></p>
-            <p><a class="links" href="https://github.com/Marcus-Aguirre">GitHub</a></p>
+            <p><i class="far fa-file"></i><a class="links" href="https://alumni.codeup.com/uploads/663-1558106927.pdf">Resume</a></p>
+            <p><i class="fab fa-linkedin"></i><a class="links" href="https://www.linkedin.com/in/marcus-a-aguirre/">LinkedIn</a></p>
+            <p><i class="fab fa-github-square"></i><a class="links" href="https://github.com/Marcus-Aguirre">GitHub</a></p>
 
         </div>
 

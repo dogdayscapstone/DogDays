@@ -140,19 +140,19 @@ public class EventController {
 
         }else{
 
-        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userRepo.findOne(sessionUser.getId());
+            User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User user = userRepo.findOne(sessionUser.getId());
 
-        Boolean isAttending = usersAttending(event, sessionUser);
+            Boolean isAttending = usersAttending(event, sessionUser);
 
-        model.addAttribute("event", event);
-        model.addAttribute("commentA", new Comment());
-        model.addAttribute("countAttending", event.getDogAttendees().size());
-        model.addAttribute("location", event.getLocation());
-        model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
-        model.addAttribute("attending", isAttending);
+            model.addAttribute("event", event);
+            model.addAttribute("commentA", new Comment());
+            model.addAttribute("countAttending", event.getDogAttendees().size());
+            model.addAttribute("location", event.getLocation());
+            model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
+            model.addAttribute("attending", isAttending);
 
-        return "events/show";
+            return "events/show";
 
         }
 
@@ -170,19 +170,14 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/edit")
-    public String editPost (@ModelAttribute Event event,HttpServletRequest request){
+    public String editPost (@ModelAttribute Event event){
 
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = userRepo.findOne(sessionUser.getId());
         event.setUser(currentUser);
-
-//        User user = (User)request.getSession().getAttribute("user");
-//        User dbUser = userRepo.findOne(user.getId());
-
-//        event.setUser(dbUser);
-
-
         eventRepo.save(event);
+
+
         return "redirect:/profile";
     }
 
