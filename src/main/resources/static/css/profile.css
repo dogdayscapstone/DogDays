@@ -1,24 +1,27 @@
-.jumbotron h1{
-    font-family: 'chalkduster', cursive;
-    text-align: left;
-    color: white;
-    font-size: 4.5em;
-    /*background: white;*/
-    /*opacity: .8;*/
-    /*border-radius: 10px;*/
-
-}
 .jumbotron {
     background-image:url("../images/4dogs.jpg");
-    opacity: .8;
+    z-index: -1;
+    /*opacity: .7;*/
     height: 250px;
     width: 100%;
+    background-color: #48ACF0;
     background-repeat: no-repeat;
     background-position: center;
     -webkit-background-size: cover;
     background-size: cover;
 }
 
+.jumbotron h1{
+    font-family: 'chalkduster', cursive;
+    color: black;
+    /*text-shadow: 7px 7px black;*/
+    font-size: 4.8em;
+    text-align: center;
+    background: white;
+    opacity: .8;
+    border-radius: 10px;
+
+}
 
 
 .eventTitle{
