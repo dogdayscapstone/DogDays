@@ -16,6 +16,9 @@ input{
     width:70%;
     color: black;
     margin:auto;
+    font-family: 'Times',regular;
+
+
 }
 
 #size{
@@ -35,6 +38,7 @@ input{
     margin:auto;
     color: black;
     text-align:center;
+
 }
 #main-heading{
     font-family: 'chalkduster', cursive;

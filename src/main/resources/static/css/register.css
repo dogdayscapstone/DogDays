@@ -9,11 +9,13 @@
     margin: 25px auto;
     color: #00A676;
     padding: 15px;
+    margin-top:100px;
 
 }
 input {
     width: 70%;
     color: black;
+    font-family:'Times',regular;
 }
 #size{
     width: 30%;

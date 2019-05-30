@@ -17,15 +17,18 @@
 input{
     width:70%;
     color: black;
+    font-family: 'Times',regular;
 
 }
 select{
     width:70%;
     color: black;
+    font-family: 'Times',regular;
 }
 textarea{
     color: black;
     width: 70%;
+    font-family: 'Times',regular;
 }
 .btn{
     margin:auto;
