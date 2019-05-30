@@ -1,16 +1,16 @@
 .aboutUs{
-    background: #3B8DC5;
+    background-color: #474954;
     height: 600px;
     border-radius: 15px;
     max-width: 350px;
     color: white;
     text-align: center;
     margin: 35px 20px 20px 20px;
-    border: 3px solid black;
+    border: 3px solid #00A676;
 }
 .round{
     border-radius: 15px;
-    border: 3px solid black;
+    border: 3px solid #00A676;
 }
 a.links{
     color: white;
@@ -21,9 +21,12 @@ a.links{
     text-align: center;
 }
 .container{
-    margin-left: 140px;
+    /*margin-left: 10px;*/
 }
 p i{
     font-size: 25px;
     margin-right: 10px;
+}
+h3{
+    font-size: 2.5em;
 }
