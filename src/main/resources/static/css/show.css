@@ -68,6 +68,8 @@
     color: black;
     font-weight: bold;
     border: 1px solid black;
+    margin:auto;
+    font-size:20px;
 
 }
 .join:hover{
@@ -75,9 +77,11 @@
 }
 .unjoin{
     background-color: #FB3640;
-    color: black;
+    color: white;
     font-weight: bold;
     border: 1px solid black;
+    margin:auto;
+    font-size:20px;
 }
 .unjoin:hover{
     color: white;
