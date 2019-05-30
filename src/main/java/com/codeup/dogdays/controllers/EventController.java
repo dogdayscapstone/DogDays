@@ -125,37 +125,23 @@ public class EventController {
     @GetMapping("/events/{id}")
     public String getOneBook (Model model, @PathVariable Long id){
         Event event = eventRepo.findOne(id);
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
+        User user = event.getUser();
 
-            model.addAttribute("event", event);
-            model.addAttribute("commentA", new Comment());
-            model.addAttribute("countAttending", event.getDogAttendees().size());
-            model.addAttribute("location", event.getLocation());
-            model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
+        Boolean isAttending = usersAttending(event, user);
 
-            return "events/show";
+        model.addAttribute("event", event);
+        model.addAttribute("commentA", new Comment());
 
+        model.addAttribute("countAttending", event.getDogAttendees().size());
 
-        }else{
+        model.addAttribute("location", event.getLocation());
 
-            User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            User user = userRepo.findOne(sessionUser.getId());
+        model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
 
-            Boolean isAttending = usersAttending(event, sessionUser);
+        model.addAttribute("attending", isAttending);
 
-            model.addAttribute("event", event);
-            model.addAttribute("commentA", new Comment());
-            model.addAttribute("countAttending", event.getDogAttendees().size());
-            model.addAttribute("location", event.getLocation());
-            model.addAttribute("comments", CC.commentsByEvent((List<Comment>)commentRepo.findAll(), eventRepo.findById(id)));
-            model.addAttribute("attending", isAttending);
-
-            return "events/show";
-
-        }
-
+        return "events/show";
     }
 
 
@@ -225,7 +211,6 @@ public class EventController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = userRepo.findOne(sessionUser.getId());
 
-//        User user = (User)request.getSession().getAttribute("user");
         Event event = eventRepo.findOne(id);
         List<Dog> dogs = currentUser.getDogs();
         List<Dog> eventDogs = event.getDogAttendees();
