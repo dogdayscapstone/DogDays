@@ -101,16 +101,15 @@ h1{
 .eventBody{
     font-family: 'Gill Sans Light Italic', sans-serif;
     background-image:url("../images/silhouette.png");
-    background-size: 300px 200px;
+    background-size: 250px 150px;
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid black;
     border-radius: 10px;
-    height: 250px;
-    font-size: 1em;
+    height: 200px;
+    font-size: 2em;
     text-align: center;
     line-height: 40px;
-    margin-bottom: 25px;
 }
 
 .attach-btn{
@@ -141,15 +140,15 @@ h1{
 }
 .edit-btn{
     width: 100px;
-    background-color: #00A676;
-    border: 1px solid black;
+    background-color: #575963;
+    border: 1px solid #00A676;
     color: white;
     margin-bottom: 5px;
 }
 .delete-btn{
     width: 100px;
-    background-color: #00A676;
-    border: 1px solid black;
+    background-color: #575963;
+    border: 1px solid red;
     color: white;
     margin-bottom: 5px;
 }
