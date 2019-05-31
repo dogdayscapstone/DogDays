@@ -23,7 +23,7 @@
     line-height: 40px;
     margin-bottom: 5px;
 }
-        .btn{
+        .join, .unjoin{
             width:30%;
         }
 
@@ -75,14 +75,14 @@
                         <span th:if="${attending == true}">
 
                                 <form th:action="@{'/events/' + ${event.getId()} + '/unattend'}"  th:method="post">
-                                    <input id="decrement" class="btn unjoin btn-sm" type="submit" value="Not Me!" />
+                                    <input id="decrement" class="unjoin btn-sm" type="submit" value="Not Me!" />
                                 </form>
 
                         </span>
                             <span th:unless="${attending == true}">
 
                                 <form th:action="@{'/events/' + ${event.getId()} + '/attend'}"  th:method="post">
-                                    <input id="increment" class="btn join btn-sm" type="submit" value="Me Too!" />
+                                    <input id="increment" class="join btn-sm" type="submit" value="Me Too!" />
                                 </form>
 
                         </span>
