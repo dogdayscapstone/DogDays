@@ -46,7 +46,7 @@
 
         </form>
         <div class="card">
-            <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
+            <div class="col-12 col-sm-6 col-lg-4 backgrnd" th:each="item : ${events}">
                 <div class="eventTitle">
                     <h3><a class="title" th:href="'events/'+ ${item.getId()}">
                         <span th:text="${item.title}"></span></a></h3>
