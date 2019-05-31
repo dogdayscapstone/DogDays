@@ -20,22 +20,21 @@
         font-size: 1.9em;
 
     }
+
 </style>
 
 </head>
 <body id="bg">
-<nav th:replace = "fragments/navbar :: navbar" ></nav>
+        <nav th:replace = "fragments/navbar :: navbar" ></nav>
 
-<div class="text-center jumbotron ml-0 mr-0 pr-0 pl-0">
-    <div class="big container">
-        <h1 class="event-heading text-center">Upcoming Dog Days</h1>
+        <div class="text-center jumbotron ml-0 mr-0 pr-0 pl-0">
+            <div class="big container">
+                <h1 class="event-heading text-center">Upcoming Dog Days</h1>
+            </div>
+        </div>
 
+<div class="container-fluid">
 
-    </div>
-</div>
-
-
-<div class="container">
 
 
     <div class="row events">
@@ -48,7 +47,7 @@
 
         </form>
         <div class="card">
-            <div class="col-12 col-sm-6 col-lg-4" th:each="item : ${events}">
+            <div class="col-12 col-sm-6 col-lg-4 backgrnd" th:each="item : ${events}">
                 <div class="eventTitle">
                     <h3><a class="title" th:href="'events/'+ ${item.getId()}">
                         <span th:text="${item.title}"></span></a></h3>
@@ -64,5 +63,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>

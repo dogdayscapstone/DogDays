@@ -49,6 +49,7 @@
 
 p{
     background-image: url("../images/puppy-paw.png");
-    background-size: 400px 500px;
+    background-repeat: repeat;
+    background-size: 400px 100px;
     /*z-index: -1;*/
 }
