@@ -5,12 +5,26 @@
     max-width: 350px;
     color: white;
     text-align: center;
-    margin: 35px 20px 20px 20px;
+    margin: 20px 20px 0 20px;
     border: 3px solid #00A676;
+
 }
 .round{
     border-radius: 15px;
     border: 3px solid #00A676;
+}
+.eventTitle{
+    background-color:#474954;
+    border: 3px solid #00A676;
+    border-radius: 10px;
+    text-align: center;
+    height: 90px;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    font-size: 3em;
+    font-family: 'chalkduster', cursive;
+    line-height: 90px;
+    color: #00A676;
 }
 a.links{
     color: white;
