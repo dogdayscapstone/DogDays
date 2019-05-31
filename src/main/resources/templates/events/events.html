@@ -12,11 +12,12 @@
 
 <style>
     .eventBody{
-        font-size:1.5em;
+        font-size:2.25em;
     }
     .schedule-btn{
-        height:40px;
+        height:50px;
         background-color: #48ACF0;
+        font-size: 1.9em;
 
     }
 </style>
@@ -37,7 +38,7 @@
 <div class="container">
 
 
-    <div class="row">
+    <div class="row events">
         <form method="GET" action="events/create">
             <div class="container border-head text-center">
                 <div sec:authorize="isAuthenticated()">

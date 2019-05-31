@@ -47,16 +47,22 @@
     background-position: center;
     border: 1px solid black;
     border-radius: 10px;
-    height: 150px;
-    font-size: 3em;
+    height: 175px;
+    font-size: 2.5em;
     text-align: center;
-    line-height: 40px;
+    line-height: 50px;
     margin-bottom: 25px;
 }
 .schedule-btn{
     background-color: #00A676;
     color: white;
-    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.5em;
     border: 1px solid black;
-    text-align: left;
+    width: 360px;
+    height: 80px;
+    text-align: center;
+}
+.events{
+    margin-bottom: 50px;
 }
