@@ -45,3 +45,14 @@
     text-align: center;
     line-height: 40px;
 }
+.events{
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.bg-search{
+    background-image: url("../images/puppy-paw.png");
+    background-repeat: repeat;
+    background-size: 2100px 600px;
+    height: 600px;
+}
