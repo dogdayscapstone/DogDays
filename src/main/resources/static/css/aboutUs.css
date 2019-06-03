@@ -9,10 +9,12 @@
     border: 3px solid #00A676;
 
 }
+
 .round{
     border-radius: 15px;
     border: 3px solid #00A676;
 }
+
 .eventTitle{
     background-color:#474954;
     border: 3px solid #00A676;
@@ -43,4 +45,53 @@ p i{
 }
 h3{
     font-size: 2.5em;
+}
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    /*border: 1px solid #f1f1f1;*/
+    perspective: 1000px;
+    border-radius: 15px;
+    margin-left: 7px;
+    margin-bottom: 10px;
+    /*border: 3px solid #00A676;*/
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #474954;
+    color: black;
+}
+
+.flip-card-back {
+    /*background-color: dodgerblue;*/
+    /*color: white;*/
+    transform: rotateY(180deg);
+}
+.img {
+    border-radius: 15px;
+}
+
+.codeup {
+    margin-top: 20px;
 }
