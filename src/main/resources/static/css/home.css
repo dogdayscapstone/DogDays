@@ -9,9 +9,7 @@
     width:100%;
     padding-top: 130px;
     /*background-color: #48ACF0;*/
-    background-repeat: no-repeat;
     background-position: center;
-    -webkit-background-size: cover;
     background-size: cover;
 
 }
@@ -48,8 +46,12 @@
 }
 
 p{
+    /*z-index: -1;*/
+}
+.bg-home{
     background-image: url("../images/puppy-paw.png");
     background-repeat: repeat;
-    background-size: 400px 100px;
-    /*z-index: -1;*/
+    background-size: 1800px 600px;
+    height: 600px;
+
 }
